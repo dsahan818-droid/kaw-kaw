@@ -1,257 +1,569 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Little Surprise ❤️</title>
+    <title>A Little Secret ♡</title>
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        :root {
+            --main: #d96b88;
+            --light: #fff7f9;
+            --soft: #f7dce4;
+            --text: #604953;
+            --white: #ffffff;
         }
 
         body {
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
+
             display: flex;
             justify-content: center;
             align-items: center;
 
-            font-family: Arial, sans-serif;
+            font-family:
+                "Segoe Print",
+                "Bradley Hand",
+                "Comic Sans MS",
+                cursive;
 
-            background:
-                radial-gradient(circle at 20% 20%, #ffb6c9, transparent 35%),
-                radial-gradient(circle at 80% 80%, #c8a7ff, transparent 35%),
-                linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+            color: var(--text);
 
-            background-size: 200% 200%;
-            animation: backgroundMove 10s ease infinite;
+            background: #fff7f9;
+
+            cursor: default;
         }
 
-        /* Moving background */
-        @keyframes backgroundMove {
-            0% {
-                background-position: 0% 50%;
+        /* --------------------------------
+           SOFT MOVING BACKGROUND
+        -------------------------------- */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+
+            left: -180px;
+            top: -180px;
+
+            background: var(--soft);
+
+            border-radius: 50%;
+
+            opacity: 0.55;
+
+            animation: softFloat 9s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+
+            right: -180px;
+            bottom: -180px;
+
+            background: #f3e1e6;
+
+            border-radius: 50%;
+
+            opacity: 0.6;
+
+            animation: softFloat2 11s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+        @keyframes softFloat {
+            0%, 100% {
+                transform: translate(0, 0);
             }
 
             50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
+                transform: translate(50px, 30px);
             }
         }
 
-        /* Main card */
-        .password-box {
+        @keyframes softFloat2 {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-40px, -25px);
+            }
+        }
+
+        /* --------------------------------
+           SMALL CURSOR TRAIL
+        -------------------------------- */
+
+        .cursor-dot {
+            position: fixed;
+
+            width: 8px;
+            height: 8px;
+
+            background: var(--main);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            transform: translate(-50%, -50%);
+
+            opacity: 0.5;
+
+            z-index: 9999;
+
+            animation: cursorFade 0.7s ease-out forwards;
+        }
+
+        @keyframes cursorFade {
+            0% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* --------------------------------
+           MAIN CARD
+        -------------------------------- */
+
+        .box {
             position: relative;
             z-index: 10;
 
-            width: 90%;
-            max-width: 400px;
+            width: min(94%, 430px);
 
-            padding: 45px 30px;
+            padding: 28px 22px 25px;
+
+            background: rgba(255, 255, 255, 0.93);
+
+            border: 1px solid var(--soft);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 20px 60px rgba(80, 40, 50, 0.12);
 
             text-align: center;
 
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(20px);
+            animation: boxAppear 1s cubic-bezier(.2,.8,.2,1);
 
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
 
-            border-radius: 30px;
+        .box:hover {
+            transform: translateY(-4px);
 
             box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.2),
-                inset 0 0 30px rgba(255, 255, 255, 0.15);
-
-            animation: cardAppear 1.2s cubic-bezier(.17,.67,.3,1.3);
+                0 25px 70px rgba(80, 40, 50, 0.16);
         }
 
-        @keyframes cardAppear {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.8);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Lock */
-        .lock {
-            font-size: 65px;
-
-            display: inline-block;
-
-            margin-bottom: 15px;
-
-            animation:
-                lockFloat 3s ease-in-out infinite,
-                lockGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes lockFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes lockGlow {
-            0%, 100% {
-                filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
-            }
-
-            50% {
-                filter: drop-shadow(0 0 20px rgba(255,255,255,0.9));
-            }
-        }
-
-        h1 {
-            color: white;
-
-            font-size: 30px;
-
-            margin-bottom: 10px;
-
-            text-shadow:
-                0 3px 10px rgba(0, 0, 0, 0.2);
-
-            animation: textFade 1.5s ease;
-        }
-
-        .message {
-            color: rgba(255, 255, 255, 0.9);
-
-            font-size: 15px;
-
-            margin-bottom: 25px;
-
-            animation: textFade 1.8s ease;
-        }
-
-        @keyframes textFade {
+        @keyframes boxAppear {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform:
+                    translateY(35px)
+                    scale(0.94);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform:
+                    translateY(0)
+                    scale(1);
             }
         }
 
-        /* Password input */
-        .input-container {
-            position: relative;
+        /* --------------------------------
+           TITLE
+        -------------------------------- */
+
+        .tiny-heart {
+            font-size: 24px;
+
+            animation: heartBeat 2s ease-in-out infinite;
         }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        h1 {
+            margin-top: 5px;
+
+            color: var(--main);
+
+            font-size: 27px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            margin-top: 5px;
+
+            font-size: 13px;
+
+            color: #8b737b;
+        }
+
+        /* --------------------------------
+           CALENDAR
+        -------------------------------- */
+
+        .calendar {
+            margin-top: 20px;
+
+            padding: 16px;
+
+            background: var(--light);
+
+            border-radius: 20px;
+
+            border: 1px solid var(--soft);
+
+            transition: transform 0.3s ease;
+        }
+
+        .calendar:hover {
+            transform: scale(1.015);
+        }
+
+        .calendar-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 12px;
+
+            color: var(--main);
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .calendar-header span {
+            font-size: 13px;
+
+            color: #9b7e87;
+
+            font-weight: normal;
+        }
+
+        .days {
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap: 5px;
+        }
+
+        .day-name {
+            font-size: 10px;
+
+            color: #a1848d;
+
+            padding-bottom: 4px;
+        }
+
+        .day {
+            position: relative;
+
+            min-height: 38px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            color: var(--text);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        /* Empty calendar spaces */
+        .empty {
+            min-height: 38px;
+        }
+
+        /* Day hover / finger movement */
+        .day:not(.empty):hover {
+            transform:
+                translateY(-4px)
+                scale(1.08);
+
+            background: white;
+
+            box-shadow:
+                0 5px 14px rgba(100, 50, 65, 0.12);
+
+            z-index: 2;
+        }
+
+        /* Special day */
+        .special {
+            background: var(--main);
+
+            color: white !important;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 6px 15px rgba(217, 107, 136, 0.28);
+
+            animation:
+                specialPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes specialPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .special::after {
+            content: "♡";
+
+            position: absolute;
+
+            right: 2px;
+            top: -7px;
+
+            font-size: 12px;
+
+            color: var(--main);
+
+            animation: tinyFloat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes tinyFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* --------------------------------
+           CUTE CALENDAR DECORATIONS
+        -------------------------------- */
+
+        .calendar-decoration {
+            position: absolute;
+
+            font-size: 17px;
+
+            pointer-events: none;
+
+            animation: decorationFloat 3s ease-in-out infinite;
+        }
+
+        .dog {
+            left: 8px;
+            bottom: 8px;
+        }
+
+        .plane {
+            right: 8px;
+            top: 8px;
+            animation-delay: 0.5s;
+        }
+
+        .tree {
+            left: 45%;
+            top: -9px;
+            font-size: 15px;
+            animation-delay: 1s;
+        }
+
+        .flower {
+            right: 28px;
+            bottom: 8px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes decorationFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(3deg);
+            }
+        }
+
+        /* --------------------------------
+           HINT
+        -------------------------------- */
+
+        .hint {
+            margin-top: 15px;
+
+            font-size: 13px;
+
+            color: #806b72;
+
+            line-height: 1.6;
+        }
+
+        .hint strong {
+            color: var(--main);
+
+            font-weight: 600;
+        }
+
+        /* --------------------------------
+           PASSWORD INPUT
+        -------------------------------- */
 
         input {
             width: 100%;
 
-            padding: 16px 18px;
+            margin-top: 12px;
 
-            border: none;
+            padding: 14px;
 
-            border-radius: 15px;
+            border: 1px solid var(--soft);
+
+            border-radius: 13px;
 
             outline: none;
 
-            font-size: 16px;
+            background: white;
+
+            color: var(--text);
+
+            font-family: inherit;
+
+            font-size: 15px;
 
             text-align: center;
 
-            color: #555;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border 0.25s ease;
+        }
 
-            background: rgba(255, 255, 255, 0.92);
-
-            transition: all 0.3s ease;
+        input::placeholder {
+            color: #b29ca3;
         }
 
         input:focus {
-            transform: scale(1.03);
+            border-color: var(--main);
+
+            transform: scale(1.02);
 
             box-shadow:
-                0 0 0 3px rgba(255,255,255,0.3),
-                0 8px 25px rgba(0,0,0,0.15);
+                0 5px 20px rgba(217, 107, 136, 0.12);
         }
 
-        /* Hint */
-        .hint {
-            color: rgba(255,255,255,0.85);
+        /* --------------------------------
+           BUTTON
+        -------------------------------- */
 
-            font-size: 13px;
-
-            margin-top: 10px;
-
-            margin-bottom: 5px;
-        }
-
-        .hint span {
-            font-weight: bold;
-
-            color: white;
-        }
-
-        /* Button */
         button {
             width: 100%;
 
-            margin-top: 15px;
+            margin-top: 12px;
 
-            padding: 16px;
+            padding: 14px;
 
             border: none;
 
-            border-radius: 15px;
+            border-radius: 13px;
 
-            background: rgba(255,255,255,0.95);
+            background: var(--main);
 
-            color: #e75480;
+            color: white;
 
-            font-size: 16px;
+            font-family: inherit;
 
-            font-weight: bold;
+            font-size: 15px;
 
             cursor: pointer;
 
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         button:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform:
+                translateY(-3px)
+                scale(1.02);
 
             box-shadow:
-                0 10px 25px rgba(0,0,0,0.2);
+                0 8px 20px rgba(217, 107, 136, 0.25);
         }
 
         button:active {
             transform: scale(0.96);
         }
 
-        /* Error */
+        /* --------------------------------
+           ERROR
+        -------------------------------- */
+
         #error {
-            color: white;
-
-            font-size: 14px;
-
-            margin-top: 15px;
-
             display: none;
+
+            margin-top: 10px;
+
+            font-size: 12px;
+
+            color: var(--main);
 
             animation: shake 0.4s ease;
         }
@@ -262,143 +574,162 @@
             }
 
             25% {
-                transform: translateX(-8px);
+                transform: translateX(-7px);
             }
 
             75% {
-                transform: translateX(8px);
+                transform: translateX(7px);
             }
         }
 
-        /* Floating hearts */
-        .heart {
-            position: absolute;
+        /* --------------------------------
+           MOBILE
+        -------------------------------- */
 
-            bottom: -50px;
+        @media (max-width: 420px) {
 
-            color: rgba(255,255,255,0.7);
-
-            font-size: 20px;
-
-            pointer-events: none;
-
-            animation: floatHeart linear infinite;
-        }
-
-        @keyframes floatHeart {
-
-            0% {
-                transform:
-                    translateY(0)
-                    rotate(0deg)
-                    scale(0.8);
-
-                opacity: 0;
+            .box {
+                padding: 23px 15px 20px;
             }
 
-            10% {
-                opacity: 1;
+            h1 {
+                font-size: 24px;
             }
 
-            50% {
-                transform:
-                    translateY(-50vh)
-                    rotate(180deg)
-                    scale(1.1);
+            .calendar {
+                padding: 12px;
             }
 
-            100% {
-                transform:
-                    translateY(-110vh)
-                    rotate(360deg)
-                    scale(0.7);
+            .day {
+                min-height: 35px;
+                font-size: 12px;
+            }
 
-                opacity: 0;
+            .empty {
+                min-height: 35px;
             }
         }
-
-        /* Small stars */
-        .star {
-            position: absolute;
-
-            width: 4px;
-            height: 4px;
-
-            background: white;
-
-            border-radius: 50%;
-
-            opacity: 0.7;
-
-            animation: twinkle 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes twinkle {
-            from {
-                opacity: 0.2;
-                transform: scale(0.5);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-
     </style>
 </head>
 
 <body>
 
-    <!-- Floating hearts -->
-    <div class="heart" style="left: 10%; animation-duration: 8s; animation-delay: 0s;">❤️</div>
-    <div class="heart" style="left: 25%; animation-duration: 11s; animation-delay: 2s;">💕</div>
-    <div class="heart" style="left: 40%; animation-duration: 9s; animation-delay: 4s;">💗</div>
-    <div class="heart" style="left: 60%; animation-duration: 12s; animation-delay: 1s;">💖</div>
-    <div class="heart" style="left: 75%; animation-duration: 10s; animation-delay: 3s;">💕</div>
-    <div class="heart" style="left: 90%; animation-duration: 13s; animation-delay: 5s;">❤️</div>
+    <div class="box">
 
+        <div class="tiny-heart">♡</div>
 
-    <!-- Stars -->
-    <div class="star" style="top: 15%; left: 20%;"></div>
-    <div class="star" style="top: 30%; left: 85%; animation-delay: .5s;"></div>
-    <div class="star" style="top: 70%; left: 10%; animation-delay: 1s;"></div>
-    <div class="star" style="top: 80%; left: 90%; animation-delay: 1.5s;"></div>
-    <div class="star" style="top: 10%; left: 70%; animation-delay: .8s;"></div>
+        <h1>A Little Secret</h1>
 
-
-    <!-- Password Card -->
-    <div class="password-box">
-
-        <div class="lock">🔐</div>
-
-        <h1>A Little Surprise</h1>
-
-        <p class="message">
-            This little secret is just for you...
+        <p class="subtitle">
+            Some days are more special than others...
         </p>
 
-        <div class="input-container">
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter the password"
-                autocomplete="off"
-            >
+        <!-- CALENDAR -->
+
+        <div class="calendar">
+
+            <div class="calendar-header">
+                <span>♡</span>
+
+                February 2026
+
+                <span>♡</span>
+            </div>
+
+
+            <div class="days">
+
+                <!-- Week names -->
+
+                <div class="day-name">Sun</div>
+                <div class="day-name">Mon</div>
+                <div class="day-name">Tue</div>
+                <div class="day-name">Wed</div>
+                <div class="day-name">Thu</div>
+                <div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+
+
+                <!-- February 2026 starts Sunday -->
+
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+
+                <!-- SPECIAL DAY -->
+
+                <div class="day special">13</div>
+
+                <div class="day">14</div>
+
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+
+            </div>
+
+
+            <!-- Cute little decorations -->
+
+            <div class="calendar-decoration dog">🐶</div>
+
+            <div class="calendar-decoration plane">✈️</div>
+
+            <div class="calendar-decoration tree">🌳</div>
+
+            <div class="calendar-decoration flower">🌷</div>
 
         </div>
 
+
+        <!-- HINT -->
+
         <p class="hint">
-            💡 Hint: <span>Kaw</span>
+            🌷 <strong>A little clue...</strong><br>
+            the day our story first began ✈️🐶
         </p>
 
+
+        <!-- PASSWORD -->
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter the special date..."
+            autocomplete="off"
+        >
+
+
         <button onclick="checkPassword()">
-            Unlock My Surprise 💕
+            Unlock ♡
         </button>
 
+
         <div id="error">
-            Hmm... that's not the password ❤️
+            Almost... try the special date again ♡
         </div>
 
     </div>
@@ -406,61 +737,214 @@
 
     <script>
 
+        /* --------------------------------
+           PASSWORD
+        -------------------------------- */
+
         function checkPassword() {
 
             const password =
-                document.getElementById("password").value;
+                document.getElementById("password").value.trim();
 
-            // Your password
-            const correctPassword = "birthday";
+            /*
+                The password is:
+                2026 Feb 13
+            */
+
+            const correctPassword = "2026 Feb 13";
+
+            const error =
+                document.getElementById("error");
+
 
             if (password === correctPassword) {
 
-                // Small success animation
-                document.querySelector(".password-box").style.transform =
-                    "scale(1.08)";
+                const box =
+                    document.querySelector(".box");
 
-                document.querySelector(".password-box").style.transition =
-                    "0.5s ease";
+                box.style.transform =
+                    "scale(1.06)";
+
+                box.style.opacity = "0";
+
+                box.style.transition =
+                    "all 0.7s ease";
+
 
                 setTimeout(() => {
 
-                    window.location.href = "birthday.html";
+                    window.location.href =
+                        "birthday.html";
 
-                }, 600);
+                }, 700);
 
             } else {
 
-                const error =
-                    document.getElementById("error");
-
                 error.style.display = "block";
 
-                // Restart shake animation
                 error.style.animation = "none";
 
                 void error.offsetWidth;
 
-                error.style.animation = "shake 0.4s ease";
+                error.style.animation =
+                    "shake 0.4s ease";
             }
         }
 
 
-        // Press Enter to unlock
+        /* --------------------------------
+           ENTER KEY
+        -------------------------------- */
+
         document
             .getElementById("password")
-            .addEventListener("keypress", function(event) {
+            .addEventListener(
+                "keydown",
+                function(event) {
 
-                if (event.key === "Enter") {
-
-                    checkPassword();
+                    if (event.key === "Enter") {
+                        checkPassword();
+                    }
 
                 }
+            );
 
-            });
+
+        /* --------------------------------
+           CURSOR ANIMATION
+        -------------------------------- */
+
+        let lastCursorTime = 0;
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+                const now = Date.now();
+
+                /*
+                    Limit the number of dots so
+                    the animation stays smooth.
+                */
+
+                if (now - lastCursorTime < 45) {
+                    return;
+                }
+
+                lastCursorTime = now;
+
+
+                const dot =
+                    document.createElement("div");
+
+                dot.className =
+                    "cursor-dot";
+
+                dot.style.left =
+                    event.clientX + "px";
+
+                dot.style.top =
+                    event.clientY + "px";
+
+
+                document.body.appendChild(dot);
+
+
+                setTimeout(() => {
+
+                    dot.remove();
+
+                }, 700);
+
+            }
+        );
+
+
+        /* --------------------------------
+           TOUCH / FINGER MOVEMENT
+        -------------------------------- */
+
+        document.addEventListener(
+            "touchmove",
+            function(event) {
+
+                const touch =
+                    event.touches[0];
+
+                if (!touch) return;
+
+
+                const dot =
+                    document.createElement("div");
+
+                dot.className =
+                    "cursor-dot";
+
+                dot.style.left =
+                    touch.clientX + "px";
+
+                dot.style.top =
+                    touch.clientY + "px";
+
+
+                document.body.appendChild(dot);
+
+
+                setTimeout(() => {
+
+                    dot.remove();
+
+                }, 700);
+
+            },
+            { passive: true }
+        );
+
+
+        /* --------------------------------
+           CALENDAR DAY INTERACTION
+        -------------------------------- */
+
+        const days =
+            document.querySelectorAll(
+                ".day:not(.empty)"
+            );
+
+
+        days.forEach(day => {
+
+            day.addEventListener(
+                "pointerenter",
+                function() {
+
+                    if (!this.classList.contains("special")) {
+
+                        this.style.transform =
+                            "translateY(-4px) scale(1.08)";
+
+                    }
+
+                }
+            );
+
+
+            day.addEventListener(
+                "pointerleave",
+                function() {
+
+                    if (!this.classList.contains("special")) {
+
+                        this.style.transform =
+                            "";
+
+                    }
+
+                }
+            );
+
+        });
 
     </script>
 
 </body>
 </html>
-
