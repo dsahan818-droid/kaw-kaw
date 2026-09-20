@@ -63,11 +63,15 @@ body::after {
 }
 
 @keyframes backgroundFloat {
-    50% { transform: translate(35px, 25px); }
+    50% {
+        transform: translate(35px, 25px);
+    }
 }
 
 @keyframes backgroundFloat2 {
-    50% { transform: translate(-30px, -25px); }
+    50% {
+        transform: translate(-30px, -25px);
+    }
 }
 
 .box {
@@ -89,6 +93,7 @@ body::after {
         opacity: 0;
         transform: translateY(35px) scale(.94);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -103,7 +108,9 @@ body::after {
 }
 
 @keyframes heartBeat {
-    50% { transform: scale(1.18); }
+    50% {
+        transform: scale(1.18);
+    }
 }
 
 h1 {
@@ -197,9 +204,17 @@ h1 {
 }
 
 @keyframes selectedDate {
-    0% { transform: scale(.8); }
-    70% { transform: scale(1.12); }
-    100% { transform: scale(1.08); }
+    0% {
+        transform: scale(.8);
+    }
+
+    70% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1.08);
+    }
 }
 
 .scene {
@@ -246,12 +261,19 @@ h1 {
 }
 
 @keyframes sunFloat {
-    0%,100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-4px) rotate(2deg); }
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-4px) rotate(2deg);
+    }
 }
 
 @keyframes sunSpin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .cloud {
@@ -287,17 +309,8 @@ h1 {
     top: -9px;
 }
 
-.cloud-left {
-    left: 5px;
-    top: 112px;
-}
-
-.cloud-right {
-    right: 6px;
-    top: 116px;
-    transform: scale(.72);
-    animation-delay: 1.5s;
-}
+/* Left and right clouds removed.
+   Only the bottom cloud remains. */
 
 .cloud-bottom {
     left: 50%;
@@ -307,8 +320,13 @@ h1 {
 }
 
 @keyframes cloudFloat {
-    0%,100% { margin-left: 0; }
-    50% { margin-left: 7px; }
+    0%,100% {
+        margin-left: 0;
+    }
+
+    50% {
+        margin-left: 7px;
+    }
 }
 
 .plane {
@@ -332,8 +350,13 @@ h1 {
 }
 
 @keyframes planeMove {
-    0%,100% { transform: translate(0,0) rotate(-4deg); }
-    50% { transform: translate(-7px,-5px) rotate(3deg); }
+    0%,100% {
+        transform: translate(0,0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translate(-7px,-5px) rotate(3deg);
+    }
 }
 
 .dog {
@@ -344,8 +367,13 @@ h1 {
 }
 
 @keyframes dogBounce {
-    0%,100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-5px) rotate(2deg); }
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(2deg);
+    }
 }
 
 .tree {
@@ -357,8 +385,13 @@ h1 {
 }
 
 @keyframes treeSway {
-    0%,100% { transform: rotate(-1deg); }
-    50% { transform: rotate(2deg); }
+    0%,100% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
 }
 
 .flower {
@@ -366,26 +399,26 @@ h1 {
     animation: flowerFloat 3s ease-in-out infinite;
 }
 
+/*
+   Small flowers removed.
+
+   The remaining flower has been moved
+   closer to the area around date 23.
+*/
 .flower-one {
-    left: 25%;
-    bottom: 9px;
-}
-
-.flower-two {
-    right: 27%;
-    bottom: 10px;
-    animation-delay: 1.1s;
-}
-
-.flower-three {
-    left: 7px;
-    top: 180px;
-    animation-delay: 1.8s;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
 }
 
 @keyframes flowerFloat {
-    0%,100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-3px) rotate(4deg); }
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(4deg);
+    }
 }
 
 .date-message {
@@ -435,9 +468,17 @@ h1 {
 }
 
 @keyframes colorSelect {
-    0% { transform: scale(.9); }
-    70% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(.9);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 button.unlock {
@@ -478,9 +519,17 @@ button.unlock:disabled {
 }
 
 @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    75% {
+        transform: translateX(6px);
+    }
 }
 
 .cursor-dot {
@@ -501,6 +550,7 @@ button.unlock:disabled {
         opacity: .45;
         transform: translate(-50%,-50%) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translate(-50%,-50%) scale(0);
@@ -558,8 +608,12 @@ button.unlock:disabled {
 
 <div class="box">
     <div class="heart">♡</div>
+
     <h1>A Little Secret</h1>
-    <p class="subtitle">Some days are more special than others...</p>
+
+    <p class="subtitle">
+        Some days are more special than others...
+    </p>
 
     <div class="calendar-hint">
         🌸 A little clue... think back to the day our story began —
@@ -567,6 +621,7 @@ button.unlock:disabled {
     </div>
 
     <div class="calendar">
+
         <div class="calendar-header">
             <span>♡</span>
             February 2026
@@ -577,8 +632,8 @@ button.unlock:disabled {
             <div class="sun-face">•ᴗ•</div>
         </div>
 
-        <div class="scene cloud cloud-left"></div>
-        <div class="scene cloud cloud-right"></div>
+        <!-- Left and right clouds removed -->
+
         <div class="scene cloud cloud-bottom"></div>
 
         <div class="scene plane">✈️</div>
@@ -587,11 +642,13 @@ button.unlock:disabled {
         <div class="scene dog">🐶</div>
         <div class="scene tree">🌳</div>
 
+        <!-- Small flowers removed -->
+
+        <!-- Remaining flower moved -->
         <div class="scene flower flower-one">🌷</div>
-        <div class="scene flower flower-two">🌸</div>
-        <div class="scene flower flower-three">🌸</div>
 
         <div class="days">
+
             <div class="day-name">Sun</div>
             <div class="day-name">Mon</div>
             <div class="day-name">Tue</div>
@@ -631,6 +688,7 @@ button.unlock:disabled {
             <div class="day" data-date="26">26</div>
             <div class="day" data-date="27">27</div>
             <div class="day" data-date="28">28</div>
+
         </div>
     </div>
 
@@ -643,27 +701,42 @@ button.unlock:disabled {
     </div>
 
     <div class="color-options">
-        <div class="color-option" data-color="black" onclick="selectColor(this)">
+
+        <div class="color-option"
+             data-color="black"
+             onclick="selectColor(this)">
             🖤 Black
         </div>
-        <div class="color-option" data-color="white" onclick="selectColor(this)">
+
+        <div class="color-option"
+             data-color="white"
+             onclick="selectColor(this)">
             🤍 White
         </div>
-        <div class="color-option" data-color="blue" onclick="selectColor(this)">
+
+        <div class="color-option"
+             data-color="blue"
+             onclick="selectColor(this)">
             💙 Blue
         </div>
+
     </div>
 
-    <button class="unlock" id="unlockButton" onclick="unlockPage()" disabled>
+    <button class="unlock"
+            id="unlockButton"
+            onclick="unlockPage()"
+            disabled>
         Unlock ♡
     </button>
 
     <div id="error">
         Hmm... one little detail isn't quite right ♡
     </div>
+
 </div>
 
 <script>
+
 const correctDate = "13";
 const correctColor = "white";
 
@@ -672,73 +745,194 @@ let selectedColor = null;
 
 const days = document.querySelectorAll(".day[data-date]");
 
+/* ================================
+   DATE SELECTION
+================================ */
+
 days.forEach(day => {
+
     day.addEventListener("click", function() {
-        days.forEach(d => d.classList.remove("selected"));
+
+        days.forEach(d => {
+            d.classList.remove("selected");
+        });
+
         this.classList.add("selected");
+
         selectedDate = this.dataset.date;
-        document.getElementById("dateMessage").textContent = "February " + selectedDate + ", 2026 ♡";
+
+        document.getElementById("dateMessage").textContent =
+            "February " + selectedDate + ", 2026 ♡";
+
         checkReady();
+
     });
+
 });
 
+
+/* ================================
+   COLOR SELECTION
+================================ */
+
 function selectColor(element) {
+
     const options = document.querySelectorAll(".color-option");
-    options.forEach(option => option.classList.remove("selected"));
+
+    options.forEach(option => {
+        option.classList.remove("selected");
+    });
+
     element.classList.add("selected");
+
     selectedColor = element.dataset.color;
+
     checkReady();
 }
 
+
+/* ================================
+   CHECK UNLOCK BUTTON
+================================ */
+
 function checkReady() {
+
     const button = document.getElementById("unlockButton");
-    button.disabled = !(selectedDate !== null && selectedColor !== null);
+
+    button.disabled = !(
+        selectedDate !== null &&
+        selectedColor !== null
+    );
+
 }
+
+
+/* ================================
+   UNLOCK
+================================ */
 
 function unlockPage() {
+
     const error = document.getElementById("error");
-    if (selectedDate === correctDate && selectedColor === correctColor) {
+
+    if (
+        selectedDate === correctDate &&
+        selectedColor === correctColor
+    ) {
+
         const box = document.querySelector(".box");
+
         box.style.transform = "scale(1.05)";
         box.style.opacity = "0";
+
         setTimeout(() => {
+
             window.location.href = "birthday.html";
+
         }, 700);
+
     } else {
+
         error.style.display = "block";
+
         error.style.animation = "none";
+
         void error.offsetWidth;
+
         error.style.animation = "shake .4s ease";
+
     }
+
 }
 
+
+/* =================================================
+   FIX:
+   RESTORE PAGE WHEN RETURNING WITH BACK BUTTON
+================================================= */
+
+window.addEventListener("pageshow", function(event) {
+
+    const box = document.querySelector(".box");
+    const error = document.getElementById("error");
+
+    /*
+       When the browser restores this page from its
+       back/forward cache, reset the hidden animation.
+    */
+
+    box.style.opacity = "1";
+    box.style.transform = "translateY(0) scale(1)";
+
+    /*
+       Hide old error message.
+    */
+
+    error.style.display = "none";
+
+    /*
+       Make sure the unlock button is correctly enabled
+       or disabled according to the current selections.
+    */
+
+    checkReady();
+
+});
+
+
+/* ================================
+   MOUSE TRAIL
+================================ */
+
 let lastCursorTime = 0;
+
 document.addEventListener("mousemove", function(event) {
+
     const now = Date.now();
+
     if (now - lastCursorTime < 60) return;
+
     lastCursorTime = now;
 
     const dot = document.createElement("div");
+
     dot.className = "cursor-dot";
+
     dot.style.left = event.clientX + "px";
     dot.style.top = event.clientY + "px";
+
     document.body.appendChild(dot);
 
     setTimeout(() => dot.remove(), 600);
+
 });
 
+
+/* ================================
+   TOUCH TRAIL
+================================ */
+
 document.addEventListener("touchmove", function(event) {
+
     const touch = event.touches[0];
+
     if (!touch) return;
 
     const dot = document.createElement("div");
+
     dot.className = "cursor-dot";
+
     dot.style.left = touch.clientX + "px";
     dot.style.top = touch.clientY + "px";
+
     document.body.appendChild(dot);
 
     setTimeout(() => dot.remove(), 600);
-}, { passive: true });
+
+}, {
+    passive: true
+});
+
 </script>
 
 </body>
