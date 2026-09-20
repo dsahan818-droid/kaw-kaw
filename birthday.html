@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday ♡</title>
+
 
 <style>
 
@@ -19,25 +23,33 @@
     padding: 0;
 }
 
+
 :root {
+
     --main: #d96b88;
     --main-light: #f3b0c2;
     --light: #fff7f9;
     --soft: #f3d9e1;
     --text: #604953;
     --muted: #947d85;
+
 }
+
 
 /* =========================================
    BODY
 ========================================= */
 
 body {
+
     min-height: 100vh;
+
     overflow-x: hidden;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
@@ -53,15 +65,20 @@ body {
     background: #fff7f9;
 
     position: relative;
+
 }
 
+
 /* =========================================
-   BACKGROUND BUBBLES
+   SOFT BACKGROUND
+   No animated icons
 ========================================= */
 
 body::before,
 body::after {
+
     content: "";
+
     position: fixed;
 
     border-radius: 50%;
@@ -69,53 +86,43 @@ body::after {
     pointer-events: none;
 
     z-index: 0;
+
 }
 
+
 body::before {
+
     width: 500px;
+
     height: 500px;
 
     left: -220px;
+
     top: -220px;
 
     background: #f3d9e1;
 
-    opacity: .65;
+    opacity: .55;
 
-    animation:
-        backgroundFloat 9s ease-in-out infinite;
 }
 
+
 body::after {
+
     width: 450px;
+
     height: 450px;
 
     right: -190px;
+
     bottom: -190px;
 
     background: #f4e4e8;
 
-    opacity: .7;
-
-    animation:
-        backgroundFloat2 11s ease-in-out infinite;
-}
-
-@keyframes backgroundFloat {
-
-    50% {
-        transform: translate(35px, 25px);
-    }
+    opacity: .6;
 
 }
 
-@keyframes backgroundFloat2 {
-
-    50% {
-        transform: translate(-30px, -25px);
-    }
-
-}
 
 /* =========================================
    MAIN CARD
@@ -129,10 +136,10 @@ body::after {
 
     width: min(94%, 430px);
 
-    padding: 30px 23px 27px;
+    padding: 28px 22px 25px;
 
     background:
-        rgba(255,255,255,.95);
+        rgba(255,255,255,.96);
 
     border:
         1px solid var(--soft);
@@ -151,9 +158,6 @@ body::after {
 
 }
 
-/* =========================================
-   CARD APPEAR
-========================================= */
 
 @keyframes boxAppear {
 
@@ -179,15 +183,16 @@ body::after {
 
 }
 
+
 /* =========================================
-   TOP HEART
+   HEART
 ========================================= */
 
 .heart {
 
     display: inline-block;
 
-    font-size: 29px;
+    font-size: 25px;
 
     color: var(--main);
 
@@ -196,6 +201,7 @@ body::after {
         ease-in-out infinite;
 
 }
+
 
 @keyframes heartBeat {
 
@@ -208,13 +214,14 @@ body::after {
 
 }
 
+
 /* =========================================
    SMALL INTRO
 ========================================= */
 
 .small-title {
 
-    margin-top: 5px;
+    margin-top: 4px;
 
     color: var(--muted);
 
@@ -222,21 +229,23 @@ body::after {
 
 }
 
+
 /* =========================================
    MAIN TITLE
 ========================================= */
 
 h1 {
 
-    margin-top: 7px;
+    margin-top: 6px;
 
     color: var(--main);
 
-    font-size: 31px;
+    font-size: 30px;
 
     font-weight: 600;
 
 }
+
 
 /* =========================================
    CAKE
@@ -244,13 +253,11 @@ h1 {
 
 .cake {
 
-    position: relative;
-
     display: inline-block;
 
-    margin-top: 17px;
+    margin-top: 13px;
 
-    font-size: 62px;
+    font-size: 52px;
 
     animation:
         cakeFloat 3s
@@ -263,6 +270,7 @@ h1 {
         );
 
 }
+
 
 @keyframes cakeFloat {
 
@@ -277,24 +285,25 @@ h1 {
     50% {
 
         transform:
-            translateY(-7px)
+            translateY(-5px)
             rotate(2deg);
 
     }
 
 }
 
+
 /* =========================================
-   WISH
+   SHORT BIRTHDAY WISH
 ========================================= */
 
 .wish {
 
-    margin-top: 15px;
+    margin-top: 13px;
 
-    padding: 17px 15px;
+    padding: 14px 13px;
 
-    border-radius: 19px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
@@ -308,41 +317,217 @@ h1 {
 
     color: var(--text);
 
-    font-size: 14px;
+    font-size: 13px;
 
-    line-height: 1.8;
+    line-height: 1.7;
 
 }
 
-/* =========================================
-   HIGHLIGHTED NAME
-========================================= */
 
 .name {
 
     color: var(--main);
 
-    font-size: 20px;
+    font-size: 19px;
 
     font-weight: bold;
 
 }
 
+
 /* =========================================
-   LITTLE MESSAGE
+   COUNTDOWN
 ========================================= */
 
-.message {
+.countdown-title {
 
     margin-top: 15px;
 
     color: var(--muted);
 
-    font-size: 12px;
-
-    line-height: 1.7;
+    font-size: 11px;
 
 }
+
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 7px;
+
+    margin-top: 8px;
+
+}
+
+
+.count-box {
+
+    padding: 8px 4px;
+
+    background: #fff7fa;
+
+    border:
+        1px solid #f1d2dc;
+
+    border-radius: 12px;
+
+}
+
+
+.count-number {
+
+    display: block;
+
+    color: var(--main);
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    line-height: 1.1;
+
+}
+
+
+.count-label {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================
+   NEXT BIRTHDAY DATE
+========================================= */
+
+.next-birthday {
+
+    margin-top: 7px;
+
+    color: #a1848d;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question-box {
+
+    margin-top: 17px;
+
+    padding: 14px 12px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffafd,
+            #fff4f7
+        );
+
+    border:
+        1px solid #f1c7d4;
+
+}
+
+
+.question-title {
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+.answer-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+
+    margin-top: 10px;
+
+}
+
+
+.answer-option {
+
+    padding: 9px 4px;
+
+    border:
+        1px solid var(--soft);
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.answer-option:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(80,40,50,.10);
+
+}
+
+
+.answer-option.selected {
+
+    background: var(--main);
+
+    color: white;
+
+    border-color: var(--main);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 14px
+        rgba(217,107,136,.20);
+
+}
+
 
 /* =========================================
    DIVIDER
@@ -350,9 +535,9 @@ h1 {
 
 .divider {
 
-    margin: 19px auto 15px;
+    margin: 16px auto 12px;
 
-    width: 80px;
+    width: 70px;
 
     height: 1px;
 
@@ -361,6 +546,7 @@ h1 {
     position: relative;
 
 }
+
 
 .divider::after {
 
@@ -375,456 +561,266 @@ h1 {
     transform:
         translate(-50%, -50%);
 
-    padding: 0 7px;
+    padding: 0 6px;
 
     background: white;
 
     color: var(--main);
 
-    font-size: 15px;
+    font-size: 13px;
 
 }
 
+
 /* =========================================
-   SURPRISE BUTTON
+   DOG DRAG CONTROL
 ========================================= */
 
-.surprise {
+.dog-control {
+
+    position: relative;
 
     width: 100%;
 
-    margin-top: 17px;
+    height: 72px;
 
-    padding: 14px;
+    margin-top: 10px;
 
-    border: none;
+    border-radius: 18px;
 
-    border-radius: 15px;
+    background:
+        linear-gradient(
+            90deg,
+            #fff0f5,
+            #fff8fa,
+            #fff0f5
+        );
 
-    background: var(--main);
+    border:
+        1px solid var(--soft);
 
-    color: white;
+    overflow: hidden;
 
-    font-family: inherit;
-
-    font-size: 15px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 7px 18px
-        rgba(217,107,136,.20);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-    animation:
-        buttonGlow 3s
-        ease-in-out infinite;
-
-}
-
-.surprise:hover {
-
-    transform:
-        translateY(-3px)
-        scale(1.02);
-
-    box-shadow:
-        0 10px 25px
-        rgba(217,107,136,.28);
-
-}
-
-.surprise:active {
-
-    transform:
-        scale(.96);
-
-}
-
-@keyframes buttonGlow {
-
-    0%,100% {
-
-        box-shadow:
-            0 7px 18px
-            rgba(217,107,136,.20);
-
-    }
-
-    50% {
-
-        box-shadow:
-            0 9px 27px
-            rgba(217,107,136,.35);
-
-    }
-
-}
-
-/* =========================================
-   FLOATING DECORATIONS
-========================================= */
-
-.decoration {
-
-    position: fixed;
-
-    z-index: 1;
-
-    pointer-events: none;
+    touch-action: none;
 
     user-select: none;
 
 }
 
-/* Hearts */
 
-.heart-one {
+/* Path */
 
-    left: 10%;
+.dog-track {
 
-    top: 20%;
+    position: absolute;
 
-    font-size: 18px;
+    left: 25px;
 
-    animation:
-        floatOne 5s
-        ease-in-out infinite;
+    right: 25px;
 
-}
+    top: 50%;
 
-.heart-two {
+    height: 2px;
 
-    right: 11%;
+    border-top:
+        2px dashed #efc0ce;
 
-    top: 30%;
+    transform:
+        translateY(-50%);
 
-    font-size: 15px;
-
-    animation:
-        floatTwo 6s
-        ease-in-out infinite;
+    opacity: .65;
 
 }
 
-.heart-three {
 
-    left: 16%;
+/* =========================================
+   PAW PRINTS
+========================================= */
 
-    bottom: 19%;
+.paw {
 
-    font-size: 14px;
+    position: absolute;
 
-    animation:
-        floatThree 5.5s
-        ease-in-out infinite;
+    top: 50%;
 
-}
-
-/* Stars */
-
-.star-one {
-
-    right: 17%;
-
-    top: 16%;
-
-    font-size: 18px;
-
-    color: #f0bd58;
-
-    animation:
-        starTwinkle 2.5s
-        ease-in-out infinite;
-
-}
-
-.star-two {
-
-    left: 13%;
-
-    top: 48%;
+    transform:
+        translateY(-50%);
 
     font-size: 13px;
 
-    color: #e8adbd;
-
-    animation:
-        starTwinkle 3s
-        ease-in-out infinite;
-
-}
-
-/* Flowers */
-
-.flower-one {
-
-    left: 8%;
-
-    bottom: 25%;
-
-    font-size: 21px;
-
-    animation:
-        flowerFloat 4s
-        ease-in-out infinite;
-
-}
-
-.flower-two {
-
-    right: 8%;
-
-    bottom: 20%;
-
-    font-size: 18px;
-
-    animation:
-        flowerFloat2 4.5s
-        ease-in-out infinite;
-
-}
-
-/* =========================================
-   DECORATION ANIMATIONS
-========================================= */
-
-@keyframes floatOne {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(-5deg);
-
-        opacity: .6;
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-16px)
-            rotate(8deg);
-
-        opacity: 1;
-
-    }
-
-}
-
-@keyframes floatTwo {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(5deg);
-
-        opacity: .5;
-
-    }
-
-    50% {
-
-        transform:
-            translateY(13px)
-            rotate(-8deg);
-
-        opacity: 1;
-
-    }
-
-}
-
-@keyframes floatThree {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-12px)
-            scale(1.2);
-
-    }
-
-}
-
-@keyframes starTwinkle {
-
-    0%,100% {
-
-        opacity: .35;
-
-        transform:
-            scale(.8)
-            rotate(0deg);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.25)
-            rotate(20deg);
-
-    }
-
-}
-
-@keyframes flowerFloat {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(-4deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-8px)
-            rotate(5deg);
-
-    }
-
-}
-
-@keyframes flowerFloat2 {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(4deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-10px)
-            rotate(-5deg);
-
-    }
-
-}
-
-/* =========================================
-   SPARKLE PARTICLES
-========================================= */
-
-.sparkle {
-
-    position: fixed;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: var(--main-light);
+    opacity: .45;
 
     pointer-events: none;
 
-    z-index: 2;
-
-    animation:
-        sparkleFloat 4s
-        ease-in-out infinite;
-
 }
 
-.sparkle.s1 {
 
+.paw-1 {
     left: 25%;
-    top: 12%;
-
 }
 
-.sparkle.s2 {
 
-    right: 25%;
-    top: 22%;
-
-    animation-delay: 1s;
-
+.paw-2 {
+    left: 42%;
 }
 
-.sparkle.s3 {
 
-    left: 22%;
-    bottom: 12%;
-
-    animation-delay: 2s;
-
+.paw-3 {
+    left: 59%;
 }
 
-.sparkle.s4 {
 
-    right: 23%;
-    bottom: 17%;
-
-    animation-delay: .5s;
-
+.paw-4 {
+    left: 76%;
 }
 
-@keyframes sparkleFloat {
-
-    0%,100% {
-
-        opacity: .2;
-
-        transform:
-            scale(.5)
-            translateY(0);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.4)
-            translateY(-9px);
-
-    }
-
-}
 
 /* =========================================
-   RESPONSIVE
+   DRAG DOG
+========================================= */
+
+.drag-dog {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 50%;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform:
+        translateY(-50%);
+
+    font-size: 29px;
+
+    cursor: grab;
+
+    z-index: 3;
+
+    filter:
+        drop-shadow(
+            0 4px 4px
+            rgba(80,40,50,.14)
+        );
+
+    transition:
+        filter .2s ease;
+
+}
+
+
+.drag-dog:active {
+
+    cursor: grabbing;
+
+}
+
+
+.drag-dog.dragging {
+
+    cursor: grabbing;
+
+    filter:
+        drop-shadow(
+            0 7px 7px
+            rgba(80,40,50,.18)
+        );
+
+}
+
+
+/* =========================================
+   DOG HINT
+========================================= */
+
+.dog-hint {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 6px;
+
+    transform:
+        translateX(-50%);
+
+    color: #a1848d;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+#error {
+
+    display: none;
+
+    margin-top: 9px;
+
+    color: var(--main);
+
+    font-size: 11px;
+
+    animation:
+        shake .4s ease;
+
+}
+
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
 ========================================= */
 
 @media (max-width: 420px) {
 
     body {
 
-        padding: 15px;
+        padding: 14px;
 
     }
+
 
     .box {
 
         padding:
-            25px 17px 23px;
+            23px 15px 21px;
 
     }
+
 
     h1 {
 
@@ -832,45 +828,43 @@ h1 {
 
     }
 
+
     .cake {
 
-        font-size: 55px;
+        font-size: 47px;
 
     }
+
 
     .wish {
 
-        font-size: 13px;
-
-        line-height: 1.7;
+        font-size: 12px;
 
     }
 
-    .heart-one {
 
-        left: 5%;
+    .count-number {
 
-    }
-
-    .heart-two {
-
-        right: 5%;
+        font-size: 15px;
 
     }
 
-    .flower-one {
 
-        left: 4%;
+    .count-label {
+
+        font-size: 7px;
 
     }
 
-    .flower-two {
 
-        right: 4%;
+    .question-title {
+
+        font-size: 12px;
 
     }
 
 }
+
 
 /* =========================================
    REDUCED MOTION
@@ -882,11 +876,11 @@ h1 {
     *::before,
     *::after {
 
-        animation-duration: .01ms !important;
+        animation-duration:
+            .01ms !important;
 
-        animation-iteration-count: 1 !important;
-
-        scroll-behavior: auto !important;
+        animation-iteration-count:
+            1 !important;
 
     }
 
@@ -896,35 +890,9 @@ h1 {
 
 </head>
 
+
 <body>
 
-<!-- =====================================
-     FLOATING DECORATIONS
-===================================== -->
-
-<div class="decoration heart-one">♡</div>
-
-<div class="decoration heart-two">♥</div>
-
-<div class="decoration heart-three">♡</div>
-
-<div class="decoration star-one">✦</div>
-
-<div class="decoration star-two">✧</div>
-
-<div class="decoration flower-one">🌷</div>
-
-<div class="decoration flower-two">🌸</div>
-
-<!-- Sparkles -->
-
-<div class="sparkle s1"></div>
-
-<div class="sparkle s2"></div>
-
-<div class="sparkle s3"></div>
-
-<div class="sparkle s4"></div>
 
 <!-- =====================================
      MAIN CARD
@@ -932,228 +900,1019 @@ h1 {
 
 <div class="box">
 
-```
-<div class="heart">
-    ♡
-</div>
 
-
-<p class="small-title">
-    Today is a little more special...
-</p>
-
-
-<h1>
-    Happy Birthday ❤️
-</h1>
-
-
-<div class="cake">
-    🎂
-</div>
-
-
-<div class="wish">
-
-    <div class="name">
-        Happy Birthday, My Love ♡
+    <div class="heart">
+        ♡
     </div>
 
-    <br>
 
-    I hope your day is filled with
-    beautiful moments, genuine smiles,
-    and all the happiness you deserve.
+    <p class="small-title">
+        Today is a little more special...
+    </p>
 
-    <br><br>
 
-    Thank you for being one of the
-    most beautiful parts of my life.
+    <h1>
+        Happy Birthday ❤️
+    </h1>
 
-    <br><br>
 
-    I hope this new year of your life
-    brings you closer to everything
-    you've ever dreamed of.
+    <div class="cake">
+        🎂
+    </div>
 
-    <br><br>
 
-    And most importantly...
+    <!-- =================================
+         SHORT WISH
+    ================================== -->
 
-    <br>
+    <div class="wish">
 
-    <strong>
-        I hope I get to be beside you
-        for many more birthdays. ❤️
-    </strong>
+        <div class="name">
+            Happy Birthday, Kawya ♡
+        </div>
+
+        <br>
+
+        May your day be filled with
+        little smiles, beautiful moments,
+        and lots of happiness. ♡
+
+        <br>
+
+        I hope this new year brings you
+        many wonderful memories.
+
+    </div>
+
+
+    <!-- =================================
+         COUNTDOWN
+    ================================== -->
+
+    <div class="countdown-title">
+
+        Until your next birthday ♡
+
+    </div>
+
+
+    <div class="countdown">
+
+
+        <div class="count-box">
+
+            <span
+                class="count-number"
+                id="days"
+            >
+                0
+            </span>
+
+            <span class="count-label">
+                DAYS
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <span
+                class="count-number"
+                id="hours"
+            >
+                0
+            </span>
+
+            <span class="count-label">
+                HOURS
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <span
+                class="count-number"
+                id="minutes"
+            >
+                0
+            </span>
+
+            <span class="count-label">
+                MINUTES
+            </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+            <span
+                class="count-number"
+                id="seconds"
+            >
+                0
+            </span>
+
+            <span class="count-label">
+                SECONDS
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="next-birthday">
+
+        Next birthday • December 09, 2027 ♡
+
+    </div>
+
+
+    <!-- =================================
+         QUESTION
+    ================================== -->
+
+    <div class="question-box">
+
+
+        <div class="question-title">
+
+            Do you remember what color
+            flower I gave you the first time? 🌸
+
+        </div>
+
+
+        <div class="answer-options">
+
+
+            <div
+                class="answer-option"
+                data-answer="white"
+                onclick="selectAnswer(this)"
+            >
+                🤍 White
+            </div>
+
+
+            <div
+                class="answer-option"
+                data-answer="purple"
+                onclick="selectAnswer(this)"
+            >
+                💜 Purple
+            </div>
+
+
+            <div
+                class="answer-option"
+                data-answer="yellow"
+                onclick="selectAnswer(this)"
+            >
+                💛 Yellow
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <!-- =================================
+         DOG DRAG CONTROL
+    ================================== -->
+
+    <div
+        class="dog-control"
+        id="dogControl"
+        aria-label="Drag the dog to continue"
+    >
+
+
+        <div class="dog-track"></div>
+
+
+        <!-- Paw prints -->
+
+        <div class="paw paw-1">
+            🐾
+        </div>
+
+        <div class="paw paw-2">
+            🐾
+        </div>
+
+        <div class="paw paw-3">
+            🐾
+        </div>
+
+        <div class="paw paw-4">
+            🐾
+        </div>
+
+
+        <!-- Draggable dog -->
+
+        <div
+            class="drag-dog"
+            id="dragDog"
+            role="button"
+            aria-label="Drag the dog to continue"
+        >
+            🐶
+        </div>
+
+
+        <div
+            class="dog-hint"
+            id="dogHint"
+        >
+            Choose an answer & drag the little dog → ♡
+        </div>
+
+
+    </div>
+
+
+    <div id="error">
+
+        Hmm... one little memory isn't quite right ♡
+
+    </div>
+
 
 </div>
 
-
-<div class="message">
-
-    This little website is only a tiny
-    way of telling you how special
-    you are to me.
-
-    <br>
-
-    There is still one more thing
-    waiting for you... 👀
-
-</div>
-
-
-<div class="divider"></div>
-
-
-<button
-    class="surprise"
-    onclick="goToSurprise()">
-
-    🎁 One More Surprise ♡
-
-</button>
-```
-
-</div>
 
 <script>
 
+
 /* =========================================
-   GO TO THIRD PAGE
+   COUNTDOWN TIMER
+   Next birthday:
+   December 09, 2027
 ========================================= */
 
-function goToSurprise() {
+const nextBirthday =
+    new Date(
+        "December 09, 2027 00:00:00"
+    );
 
-    const box =
-        document.querySelector(".box");
+
+function updateCountdown() {
+
+
+    const now =
+        new Date();
+
+
+    const difference =
+        nextBirthday.getTime() -
+        now.getTime();
+
 
     /*
-       Small exit animation
+       If the countdown reaches zero,
+       show zero instead of negative values.
     */
 
-    box.style.transition =
-        "transform .5s ease, opacity .5s ease";
+    if (difference <= 0) {
 
-    box.style.transform =
-        "scale(1.05)";
+        document.getElementById(
+            "days"
+        ).textContent = "0";
 
-    box.style.opacity =
-        "0";
+        document.getElementById(
+            "hours"
+        ).textContent = "0";
+
+        document.getElementById(
+            "minutes"
+        ).textContent = "0";
+
+        document.getElementById(
+            "seconds"
+        ).textContent = "0";
+
+        return;
+
+    }
+
+
+    const totalSeconds =
+        Math.floor(
+            difference / 1000
+        );
+
+
+    const days =
+        Math.floor(
+            totalSeconds / 86400
+        );
+
+
+    const hours =
+        Math.floor(
+            (totalSeconds % 86400) /
+            3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) /
+            60
+        );
+
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById(
+        "days"
+    ).textContent = days;
+
+
+    document.getElementById(
+        "hours"
+    ).textContent =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/*
+   Start countdown immediately.
+*/
+
+updateCountdown();
+
+
+/*
+   Update every second.
+*/
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================
+   QUESTION ANSWER
+========================================= */
+
+const correctAnswer =
+    "white";
+
+
+let selectedAnswer = null;
+
+
+function selectAnswer(element) {
+
+
+    const options =
+        document.querySelectorAll(
+            ".answer-option"
+        );
+
 
     /*
-       Open third page
+       Remove old selection.
     */
 
-    setTimeout(function() {
+    options.forEach(option => {
 
-        window.location.href =
-            "third.html";
+        option.classList.remove(
+            "selected"
+        );
 
-    }, 500);
+    });
+
+
+    /*
+       Select new answer.
+    */
+
+    element.classList.add(
+        "selected"
+    );
+
+
+    selectedAnswer =
+        element.dataset.answer;
+
+
+    /*
+       Update dog hint.
+    */
+
+    const dogHint =
+        document.getElementById(
+            "dogHint"
+        );
+
+
+    dogHint.textContent =
+        "Now drag the little dog → ♡";
 
 }
 
 
 /* =========================================
-   RESTORE PAGE WHEN USING BACK BUTTON
+   DOG DRAGGING
+========================================= */
+
+const dogControl =
+    document.getElementById(
+        "dogControl"
+    );
+
+
+const dragDog =
+    document.getElementById(
+        "dragDog"
+    );
+
+
+let isDraggingDog = false;
+
+let dogStartX = 0;
+
+let dogStartLeft = 10;
+
+let dogReturnTimer = null;
+
+
+/* =========================================
+   POINTER POSITION
+========================================= */
+
+function getPointerX(event) {
+
+
+    if (event.touches) {
+
+        return event.touches[0].clientX;
+
+    }
+
+
+    return event.clientX;
+
+}
+
+
+/* =========================================
+   START DOG DRAG
+========================================= */
+
+function startDogDrag(event) {
+
+
+    /*
+       Cancel previous return animation.
+    */
+
+    if (dogReturnTimer) {
+
+        clearTimeout(
+            dogReturnTimer
+        );
+
+        dogReturnTimer = null;
+
+    }
+
+
+    isDraggingDog = true;
+
+
+    dogStartX =
+        getPointerX(event);
+
+
+    /*
+       Continue from the dog's
+       current position.
+    */
+
+    dogStartLeft =
+        dragDog.offsetLeft;
+
+
+    dragDog.classList.add(
+        "dragging"
+    );
+
+
+    /*
+       Disable transition while
+       manually dragging.
+    */
+
+    dragDog.style.transition =
+        "none";
+
+
+    if (event.cancelable) {
+
+        event.preventDefault();
+
+    }
+
+}
+
+
+/* =========================================
+   MOVE DOG
+========================================= */
+
+function moveDogDrag(event) {
+
+
+    if (!isDraggingDog) {
+
+        return;
+
+    }
+
+
+    const currentX =
+        getPointerX(event);
+
+
+    const deltaX =
+        currentX - dogStartX;
+
+
+    const maxLeft =
+        dogControl.clientWidth -
+        dragDog.offsetWidth -
+        10;
+
+
+    const newLeft =
+        Math.max(
+            10,
+
+            Math.min(
+                maxLeft,
+
+                dogStartLeft + deltaX
+            )
+        );
+
+
+    dragDog.style.left =
+        newLeft + "px";
+
+
+    if (event.cancelable) {
+
+        event.preventDefault();
+
+    }
+
+}
+
+
+/* =========================================
+   SMOOTH DOG RETURN
+========================================= */
+
+function returnDogToStart() {
+
+
+    /*
+       Stop dragging.
+    */
+
+    isDraggingDog = false;
+
+
+    dragDog.classList.remove(
+        "dragging"
+    );
+
+
+    /*
+       Cancel previous timer.
+    */
+
+    if (dogReturnTimer) {
+
+        clearTimeout(
+            dogReturnTimer
+        );
+
+        dogReturnTimer = null;
+
+    }
+
+
+    /*
+       Remember current position.
+
+       This prevents the dog from
+       suddenly jumping.
+    */
+
+    const currentPosition =
+        dragDog.offsetLeft;
+
+
+    dragDog.style.transition =
+        "none";
+
+
+    dragDog.style.left =
+        currentPosition + "px";
+
+
+    /*
+       Force browser to register
+       the current position.
+    */
+
+    void dragDog.offsetWidth;
+
+
+    /*
+       Smoothly walk back.
+    */
+
+    dragDog.style.transition =
+        "left 1.5s cubic-bezier(.22,.61,.36,1)";
+
+
+    dragDog.style.left =
+        "10px";
+
+
+    /*
+       Clean up after animation.
+    */
+
+    dogReturnTimer =
+        setTimeout(
+            function() {
+
+                dragDog.style.transition =
+                    "none";
+
+                dragDog.style.left =
+                    "10px";
+
+                dogReturnTimer = null;
+
+            },
+            1550
+        );
+
+}
+
+
+/* =========================================
+   WRONG ANSWER
+========================================= */
+
+function showWrongAnswer() {
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    /*
+       Show error.
+    */
+
+    error.style.display =
+        "block";
+
+
+    /*
+       Restart shake animation.
+    */
+
+    error.style.animation =
+        "none";
+
+
+    void error.offsetWidth;
+
+
+    error.style.animation =
+        "shake .4s ease";
+
+
+    /*
+       Send dog back.
+    */
+
+    returnDogToStart();
+
+}
+
+
+/* =========================================
+   RELEASE DOG
+========================================= */
+
+function endDogDrag() {
+
+
+    if (!isDraggingDog) {
+
+        return;
+
+    }
+
+
+    /*
+       Stop dragging.
+    */
+
+    isDraggingDog = false;
+
+
+    dragDog.classList.remove(
+        "dragging"
+    );
+
+
+    const maxLeft =
+        dogControl.clientWidth -
+        dragDog.offsetWidth -
+        10;
+
+
+    const currentLeft =
+        dragDog.offsetLeft;
+
+
+    /*
+       Dog must reach almost
+       completely to the right.
+    */
+
+    const destination =
+        maxLeft - 8;
+
+
+    /*
+       If dog did not reach
+       the end, return it.
+    */
+
+    if (currentLeft < destination) {
+
+        returnDogToStart();
+
+        return;
+
+    }
+
+
+    /*
+       Dog reached the end.
+
+       Now check answer.
+    */
+
+    if (
+        selectedAnswer ===
+        correctAnswer
+    ) {
+
+        unlockPage();
+
+    }
+
+    else {
+
+        showWrongAnswer();
+
+    }
+
+}
+
+
+/* =========================================
+   POINTER EVENTS
+========================================= */
+
+dragDog.addEventListener(
+    "pointerdown",
+    startDogDrag
+);
+
+
+document.addEventListener(
+    "pointermove",
+    moveDogDrag
+);
+
+
+document.addEventListener(
+    "pointerup",
+    endDogDrag
+);
+
+
+document.addEventListener(
+    "pointercancel",
+    endDogDrag
+);
+
+
+/* =========================================
+   UNLOCK
+========================================= */
+
+function unlockPage() {
+
+
+    const box =
+        document.querySelector(
+            ".box"
+        );
+
+
+    const dogHint =
+        document.getElementById(
+            "dogHint"
+        );
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    /*
+       Correct answer.
+    */
+
+    if (
+        selectedAnswer ===
+        correctAnswer
+    ) {
+
+
+        error.style.display =
+            "none";
+
+
+        dogHint.textContent =
+            "You remembered! ♡";
+
+
+        /*
+           Cute exit animation.
+        */
+
+        box.style.transition =
+            "transform .6s ease, opacity .6s ease";
+
+
+        box.style.transform =
+            "scale(1.05)";
+
+
+        box.style.opacity =
+            "0";
+
+
+        /*
+           Open next page.
+        */
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "third.html";
+
+            },
+            650
+        );
+
+    }
+
+    else {
+
+        showWrongAnswer();
+
+    }
+
+}
+
+
+/* =========================================
+   PAGE RESTORE
 ========================================= */
 
 window.addEventListener(
     "pageshow",
     function() {
 
-        const box =
-            document.querySelector(".box");
 
-        box.style.opacity = "1";
+        const box =
+            document.querySelector(
+                ".box"
+            );
+
+
+        const error =
+            document.getElementById(
+                "error"
+            );
+
+
+        /*
+           Restore card.
+        */
+
+        box.style.opacity =
+            "1";
+
 
         box.style.transform =
             "translateY(0) scale(1)";
 
-    }
-);
+
+        /*
+           Hide error.
+        */
+
+        error.style.display =
+            "none";
 
 
-/* =========================================
-   LITTLE CLICK SPARKLE EFFECT
-========================================= */
+        /*
+           Cancel old return timer.
+        */
 
-document.addEventListener(
-    "click",
-    function(event) {
+        if (dogReturnTimer) {
 
-        for (let i = 0; i < 5; i++) {
-
-            const sparkle =
-                document.createElement("div");
-
-            sparkle.style.position =
-                "fixed";
-
-            sparkle.style.left =
-                event.clientX + "px";
-
-            sparkle.style.top =
-                event.clientY + "px";
-
-            sparkle.style.width =
-                "5px";
-
-            sparkle.style.height =
-                "5px";
-
-            sparkle.style.borderRadius =
-                "50%";
-
-            sparkle.style.background =
-                "#f3b0c2";
-
-            sparkle.style.pointerEvents =
-                "none";
-
-            sparkle.style.zIndex =
-                "9999";
-
-            sparkle.style.transition =
-                "all .7s ease";
-
-            document.body.appendChild(
-                sparkle
+            clearTimeout(
+                dogReturnTimer
             );
 
-            const angle =
-                (Math.PI * 2 / 5) * i;
-
-            const distance = 25 +
-                Math.random() * 25;
-
-            setTimeout(function() {
-
-                sparkle.style.transform =
-                    `translate(
-                        ${Math.cos(angle) * distance}px,
-                        ${Math.sin(angle) * distance}px
-                    )`;
-
-                sparkle.style.opacity =
-                    "0";
-
-            }, 20);
-
-            setTimeout(function() {
-
-                sparkle.remove();
-
-            }, 750);
+            dogReturnTimer = null;
 
         }
 
+
+        /*
+           Reset dog.
+        */
+
+        dragDog.style.transition =
+            "none";
+
+
+        dragDog.style.left =
+            "10px";
+
+
+        isDraggingDog = false;
+
     }
+
 );
 
 </script>
 
+
 </body>
+
 </html>
