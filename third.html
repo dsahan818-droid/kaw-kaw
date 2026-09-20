@@ -1,1 +1,806 @@
-hiiiiiiiiiiiiii
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Memories ♡</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #fff5f8, #f9f4ff, #fff9f0);
+        color: #51434b;
+        overflow-x: hidden;
+    }
+
+    /* Soft fixed decorations */
+    .blob {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .blob.one {
+        width: 180px;
+        height: 180px;
+        background: #ffdce8;
+        top: -60px;
+        left: -60px;
+    }
+
+    .blob.two {
+        width: 220px;
+        height: 220px;
+        background: #e8dcff;
+        bottom: -90px;
+        right: -80px;
+    }
+
+    .blob.three {
+        width: 100px;
+        height: 100px;
+        background: #fff0c7;
+        top: 45%;
+        right: -40px;
+    }
+
+    .page {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 35px 15px 50px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 650px;
+        text-align: center;
+    }
+
+    /* Header */
+    .header {
+        margin-bottom: 25px;
+    }
+
+    .small-heart {
+        font-size: 22px;
+        animation: heartbeat 1.8s infinite;
+    }
+
+    .header h1 {
+        margin-top: 7px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #6a5260;
+    }
+
+    .header p {
+        margin-top: 7px;
+        font-size: 14px;
+        color: #9a818c;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.15);
+        }
+    }
+
+    /* Main card */
+    .memory-card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255,255,255,0.9);
+        border-radius: 28px;
+        padding: 28px 22px;
+        box-shadow: 0 15px 45px rgba(112, 81, 99, 0.12);
+        backdrop-filter: blur(10px);
+        min-height: 390px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.35s ease;
+    }
+
+    .memory-number {
+        font-size: 13px;
+        color: #b18b9d;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
+
+    .memory-icon {
+        font-size: 48px;
+        margin-bottom: 14px;
+    }
+
+    .memory-card h2 {
+        font-size: 25px;
+        color: #624c59;
+        margin-bottom: 14px;
+    }
+
+    .date {
+        display: inline-block;
+        padding: 9px 18px;
+        border-radius: 20px;
+        background: #fff0f5;
+        color: #b56d88;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+
+    .memory-text {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #806d76;
+        max-width: 450px;
+        margin: auto;
+    }
+
+    .placeholder {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 15px;
+        background: #faf5ff;
+        color: #967fa4;
+        font-size: 13px;
+        border: 1px dashed #d7c3df;
+    }
+
+    /* Next button */
+    .next-button,
+    .cute-button {
+        border: none;
+        cursor: pointer;
+        margin-top: 25px;
+        padding: 12px 24px;
+        border-radius: 25px;
+        background: linear-gradient(135deg, #f3a9c3, #c9a8ed);
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 7px 18px rgba(192, 132, 164, 0.22);
+        transition: 0.25s ease;
+    }
+
+    .next-button:hover,
+    .cute-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(192, 132, 164, 0.3);
+    }
+
+    .next-button:active,
+    .cute-button:active {
+        transform: scale(0.96);
+    }
+
+    /* Final message */
+    .final-message {
+        display: none;
+        animation: fadeUp 0.7s ease;
+    }
+
+    .final-message.show {
+        display: block;
+    }
+
+    .final-icon {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .final-message h2 {
+        font-size: 24px;
+        color: #654d5b;
+        margin-bottom: 18px;
+    }
+
+    .final-message p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #806d76;
+        max-width: 470px;
+        margin: auto;
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Progress dots */
+    .progress {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e5d7df;
+        transition: 0.3s ease;
+    }
+
+    .dot.active {
+        width: 22px;
+        border-radius: 10px;
+        background: #d79ab3;
+    }
+
+    /* Extra sections */
+    .extra-section {
+        margin-top: 25px;
+        background: rgba(255,255,255,0.82);
+        border-radius: 25px;
+        padding: 23px 20px;
+        box-shadow: 0 10px 30px rgba(112, 81, 99, 0.08);
+    }
+
+    .extra-section h3 {
+        font-size: 20px;
+        color: #654d5b;
+        margin-bottom: 8px;
+    }
+
+    .extra-section p {
+        font-size: 13px;
+        color: #907d86;
+        line-height: 1.6;
+    }
+
+    /* WhatsApp button */
+    .chat-button {
+        margin-top: 15px;
+        padding: 11px 20px;
+        border-radius: 22px;
+        border: 1px solid #efd8e1;
+        background: #fff8fb;
+        color: #a4657e;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: 0.25s ease;
+    }
+
+    .chat-button:hover {
+        transform: translateY(-2px);
+        background: #fff0f6;
+    }
+
+    /* Poem */
+    .poem {
+        margin-top: 15px;
+        padding: 18px;
+        border-radius: 18px;
+        background: #fff8fc;
+        border: 1px dashed #e8cbd9;
+        color: #876f7b;
+        font-size: 14px;
+        line-height: 2;
+    }
+
+    /* Chat viewer */
+    .chat-viewer {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(30, 25, 30, 0.92);
+        padding: 20px;
+        overflow-y: auto;
+        animation: fadeIn 0.35s ease;
+    }
+
+    .chat-viewer.show {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .chat-content {
+        width: 100%;
+        max-width: 650px;
+        text-align: center;
+        padding: 10px 0 35px;
+    }
+
+    .chat-title {
+        color: white;
+        font-size: 21px;
+        margin: 8px 0 18px;
+    }
+
+    .chat-subtitle {
+        color: #d8cdd3;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .chat-image {
+        display: block;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: auto;
+        border-radius: 18px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .return-button {
+        margin-top: 20px;
+        padding: 11px 22px;
+        border: none;
+        border-radius: 24px;
+        background: white;
+        color: #735766;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.25s ease;
+    }
+
+    .return-button:hover {
+        transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+
+        .page {
+            padding-top: 25px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+        }
+
+        .memory-card {
+            min-height: 370px;
+            padding: 25px 18px;
+        }
+
+        .memory-card h2 {
+            font-size: 22px;
+        }
+
+        .memory-icon {
+            font-size: 42px;
+        }
+
+        .final-message h2 {
+            font-size: 21px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Fixed background decorations -->
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<div class="page">
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="small-heart">♡</div>
+            <h1>Our Little Memories</h1>
+            <p>A few first things I'll always remember, Kawya ♡</p>
+        </div>
+
+
+        <!-- FIRST THINGS CARD -->
+        <div class="memory-card" id="memoryCard">
+
+            <div class="memory-number" id="memoryNumber">
+                FIRST THING 1 OF 4
+            </div>
+
+            <div class="memory-icon" id="memoryIcon">
+                💬
+            </div>
+
+            <h2 id="memoryTitle">
+                Our First Chat
+            </h2>
+
+            <div class="date" id="memoryDate">
+                09 December 2025
+            </div>
+
+            <p class="memory-text" id="memoryText">
+                The day our little conversation started.
+                It was your birthday, and somehow that day became
+                the beginning of one of my favourite memories. ♡
+            </p>
+
+            <div class="placeholder" id="placeholder" style="display:none;">
+                Placeholder — I'll add the real memory here later. ♡
+            </div>
+
+            <button class="next-button" id="nextButton" onclick="nextMemory()">
+                Next Memory ♡
+            </button>
+
+        </div>
+
+
+        <!-- PROGRESS DOTS -->
+        <div class="progress" id="progress">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+
+        <!-- FINAL MESSAGE -->
+        <div class="final-message" id="finalMessage">
+
+            <div class="final-icon">💗</div>
+
+            <h2>And these are our first things...</h2>
+
+            <p>
+                These are our first things.
+                We have to make many more memories, so we'll make them.
+                I'm always with you, Sudu Noona. ♡
+            </p>
+
+            <button class="cute-button" onclick="restartMemories()">
+                ↶ See Them Again
+            </button>
+
+        </div>
+
+
+        <!-- FIRST WHATSAPP CHAT -->
+        <div class="extra-section">
+
+            <h3>💌 A Little Piece of Our Beginning</h3>
+
+            <p>
+                Our very first WhatsApp chat started on
+                <b>09 December 2025</b> — your birthday. ♡
+            </p>
+
+            <button class="chat-button" onclick="openChat()">
+                💬 Open Our First Chat
+            </button>
+
+        </div>
+
+
+        <!-- POEM -->
+        <div class="extra-section">
+
+            <h3>🌸 A Little Poem</h3>
+
+            <p>
+                A little poem for you — I'll complete these words one day. ♡
+            </p>
+
+            <div class="poem">
+
+                <!-- PLACEHOLDER POEM — CHANGE THIS LATER -->
+
+                <span>
+                    ඔබේ සිනහව මතකයක් වගේ,<br>
+                    නිහඬ දවසක හිතට එනවා... ♡<br><br>
+
+                    ඔබ ළඟ නැති මොහොතකත්,<br>
+                    ඔබේ මතකය ළඟම ඉන්නවා... 🌸<br><br>
+
+                    <i>
+                    [ මෙතනට මම ලියන ලස්සනම කවිය
+                    එක දවසක දාන්නම්... ♡ ]
+                    </i>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- WHATSAPP CHAT VIEWER -->
+<div class="chat-viewer" id="chatViewer">
+
+    <div class="chat-content">
+
+        <div class="chat-title">
+            💬 Our First Little Conversation
+        </div>
+
+        <div class="chat-subtitle">
+            09 December 2025 — The beginning of our little chat ♡
+        </div>
+
+        <!--
+            IMPORTANT:
+            Put your uploaded WhatsApp screenshot in the same folder
+            as this HTML file and name it:
+
+            first-whatsapp-chat.jpg
+        -->
+
+        <img
+            src="first-whatsapp-chat.jpg"
+            alt="Our first WhatsApp chat"
+            class="chat-image"
+        >
+
+        <button class="return-button" onclick="closeChat()">
+            ← Back to Our Memories
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* ==========================================
+       FIRST THINGS DATA
+    ========================================== */
+
+    const memories = [
+
+        {
+            icon: "💬",
+            title: "Our First Chat",
+            date: "09 December 2025",
+            text:
+                "The day our little conversation started. " +
+                "It was your birthday, and somehow that day became " +
+                "the beginning of one of my favourite memories."
+        },
+
+        {
+            icon: "🌸",
+            title: "Our First Meetup",
+            date: "13 February 2026",
+            text:
+                "The first time we actually met. " +
+                "A date that became another little chapter " +
+                "in our story. ♡"
+        },
+
+        {
+            icon: "💗",
+            title: "Our First Kiss",
+            date: "Date to be remembered",
+            text:
+                "I can't remember the exact date yet... " +
+                "so this little place is waiting for the real date.",
+            placeholder: true
+        },
+
+        {
+            icon: "🌷",
+            title: "Our First Date",
+            date: "22 July 2026",
+            text:
+                "Our first proper date — another day that became " +
+                "a memory I want to keep for a very long time. ♡"
+        }
+
+    ];
+
+
+    let currentMemory = 0;
+
+
+    /* ==========================================
+       SHOW MEMORY
+    ========================================== */
+
+    function showMemory(index) {
+
+        const memory = memories[index];
+
+        const card = document.getElementById("memoryCard");
+
+        const number = document.getElementById("memoryNumber");
+        const icon = document.getElementById("memoryIcon");
+        const title = document.getElementById("memoryTitle");
+        const date = document.getElementById("memoryDate");
+        const text = document.getElementById("memoryText");
+        const placeholder = document.getElementById("placeholder");
+
+        /* Small fade animation */
+
+        card.style.opacity = "0";
+        card.style.transform = "translateY(8px)";
+
+        setTimeout(() => {
+
+            number.textContent =
+                "FIRST THING " + (index + 1) + " OF 4";
+
+            icon.textContent = memory.icon;
+
+            title.textContent = memory.title;
+
+            date.textContent = memory.date;
+
+            text.textContent = memory.text;
+
+            if (memory.placeholder) {
+
+                placeholder.style.display = "block";
+
+            } else {
+
+                placeholder.style.display = "none";
+
+            }
+
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+
+        }, 180);
+
+
+        /* Update dots */
+
+        const dots = document.querySelectorAll(".dot");
+
+        dots.forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+    }
+
+
+    /* ==========================================
+       NEXT MEMORY
+    ========================================== */
+
+    function nextMemory() {
+
+        if (currentMemory < memories.length - 1) {
+
+            currentMemory++;
+
+            showMemory(currentMemory);
+
+        } else {
+
+            /* Finished all memories */
+
+            document.getElementById("memoryCard").style.display = "none";
+
+            document.getElementById("progress").style.display = "none";
+
+            document
+                .getElementById("finalMessage")
+                .classList.add("show");
+
+        }
+
+    }
+
+
+    /* ==========================================
+       RESTART MEMORIES
+    ========================================== */
+
+    function restartMemories() {
+
+        currentMemory = 0;
+
+        document.getElementById("memoryCard").style.display = "flex";
+
+        document.getElementById("progress").style.display = "flex";
+
+        document
+            .getElementById("finalMessage")
+            .classList.remove("show");
+
+        showMemory(0);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* ==========================================
+       WHATSAPP CHAT VIEWER
+    ========================================== */
+
+    function openChat() {
+
+        document
+            .getElementById("chatViewer")
+            .classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeChat() {
+
+        document
+            .getElementById("chatViewer")
+            .classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* ==========================================
+       ESCAPE KEY TO CLOSE CHAT
+    ========================================== */
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+
+            closeChat();
+
+        }
+
+    });
+
+
+    /* ==========================================
+       INITIALIZE
+    ========================================== */
+
+    showMemory(0);
+
+</script>
+
+</body>
+</html>
