@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +17,9 @@
         :root {
             --main: #d96b88;
             --light: #fff7f9;
-            --soft: #f7dce4;
+            --soft: #f3d9e1;
             --text: #604953;
+            --muted: #947d85;
             --white: #ffffff;
         }
 
@@ -28,6 +30,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            padding: 20px;
 
             font-family:
                 "Segoe Print",
@@ -42,18 +46,20 @@
             cursor: default;
         }
 
-        /* --------------------------------
-           SOFT MOVING BACKGROUND
-        -------------------------------- */
+        /* =========================================
+           SOFT BACKGROUND
+        ========================================= */
 
         body::before {
             content: "";
+
             position: fixed;
+
             width: 500px;
             height: 500px;
 
-            left: -180px;
-            top: -180px;
+            left: -200px;
+            top: -200px;
 
             background: var(--soft);
 
@@ -61,105 +67,71 @@
 
             opacity: 0.55;
 
-            animation: softFloat 9s ease-in-out infinite;
+            animation: backgroundFloat 9s ease-in-out infinite;
 
             pointer-events: none;
+
+            z-index: 0;
         }
 
         body::after {
             content: "";
+
             position: fixed;
+
             width: 450px;
             height: 450px;
 
             right: -180px;
             bottom: -180px;
 
-            background: #f3e1e6;
+            background: #f4e4e8;
 
             border-radius: 50%;
 
             opacity: 0.6;
 
-            animation: softFloat2 11s ease-in-out infinite;
+            animation: backgroundFloat2 11s ease-in-out infinite;
 
             pointer-events: none;
+
+            z-index: 0;
         }
 
-        @keyframes softFloat {
+        @keyframes backgroundFloat {
             0%, 100% {
                 transform: translate(0, 0);
             }
 
             50% {
-                transform: translate(50px, 30px);
+                transform: translate(40px, 30px);
             }
         }
 
-        @keyframes softFloat2 {
+        @keyframes backgroundFloat2 {
             0%, 100% {
                 transform: translate(0, 0);
             }
 
             50% {
-                transform: translate(-40px, -25px);
+                transform: translate(-35px, -25px);
             }
         }
 
-        /* --------------------------------
-           SMALL CURSOR TRAIL
-        -------------------------------- */
-
-        .cursor-dot {
-            position: fixed;
-
-            width: 8px;
-            height: 8px;
-
-            background: var(--main);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            transform: translate(-50%, -50%);
-
-            opacity: 0.5;
-
-            z-index: 9999;
-
-            animation: cursorFade 0.7s ease-out forwards;
-        }
-
-        @keyframes cursorFade {
-            0% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(1);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(0);
-                opacity: 0;
-            }
-        }
-
-        /* --------------------------------
-           MAIN CARD
-        -------------------------------- */
+        /* =========================================
+           MAIN BOX
+        ========================================= */
 
         .box {
             position: relative;
+
             z-index: 10;
 
             width: min(94%, 430px);
 
             padding: 28px 22px 25px;
 
-            background: rgba(255, 255, 255, 0.93);
+            background: rgba(255, 255, 255, 0.95);
 
             border: 1px solid var(--soft);
 
@@ -174,19 +146,13 @@
 
             transition:
                 transform 0.4s ease,
-                box-shadow 0.4s ease;
-        }
-
-        .box:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 25px 70px rgba(80, 40, 50, 0.16);
+                opacity 0.6s ease;
         }
 
         @keyframes boxAppear {
             from {
                 opacity: 0;
+
                 transform:
                     translateY(35px)
                     scale(0.94);
@@ -194,18 +160,23 @@
 
             to {
                 opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
             }
         }
 
-        /* --------------------------------
+        /* =========================================
            TITLE
-        -------------------------------- */
+        ========================================= */
 
-        .tiny-heart {
-            font-size: 24px;
+        .heart {
+            display: inline-block;
+
+            font-size: 25px;
+
+            color: var(--main);
 
             animation: heartBeat 2s ease-in-out infinite;
         }
@@ -228,38 +199,34 @@
             font-size: 27px;
 
             font-weight: 600;
-
-            letter-spacing: 0.5px;
         }
 
         .subtitle {
             margin-top: 5px;
 
-            font-size: 13px;
+            color: var(--muted);
 
-            color: #8b737b;
+            font-size: 13px;
         }
 
-        /* --------------------------------
+        /* =========================================
            CALENDAR
-        -------------------------------- */
+        ========================================= */
 
         .calendar {
+            position: relative;
+
             margin-top: 20px;
 
-            padding: 16px;
+            padding: 17px 15px;
 
             background: var(--light);
 
-            border-radius: 20px;
-
             border: 1px solid var(--soft);
 
-            transition: transform 0.3s ease;
-        }
+            border-radius: 20px;
 
-        .calendar:hover {
-            transform: scale(1.015);
+            overflow: hidden;
         }
 
         .calendar-header {
@@ -279,11 +246,9 @@
         }
 
         .calendar-header span {
+            color: #c49aa6;
+
             font-size: 13px;
-
-            color: #9b7e87;
-
-            font-weight: normal;
         }
 
         .days {
@@ -296,16 +261,18 @@
         }
 
         .day-name {
-            font-size: 10px;
+            padding-bottom: 4px;
 
             color: #a1848d;
 
-            padding-bottom: 4px;
+            font-size: 10px;
         }
 
-        .day {
-            position: relative;
+        /* =========================================
+           CALENDAR DAYS
+        ========================================= */
 
+        .day {
             min-height: 38px;
 
             display: flex;
@@ -316,9 +283,11 @@
 
             border-radius: 10px;
 
+            color: var(--text);
+
             font-size: 13px;
 
-            color: var(--text);
+            cursor: pointer;
 
             transition:
                 transform 0.2s ease,
@@ -326,159 +295,158 @@
                 box-shadow 0.2s ease;
         }
 
-        /* Empty calendar spaces */
-        .empty {
-            min-height: 38px;
-        }
-
-        /* Day hover / finger movement */
-        .day:not(.empty):hover {
+        .day:hover {
             transform:
-                translateY(-4px)
-                scale(1.08);
+                translateY(-3px)
+                scale(1.06);
 
-            background: white;
+            background: #ffffff;
 
             box-shadow:
-                0 5px 14px rgba(100, 50, 65, 0.12);
-
-            z-index: 2;
+                0 5px 15px rgba(90, 45, 60, 0.10);
         }
 
-        /* Special day */
-        .special {
+        /* Selected date */
+        .day.selected {
             background: var(--main);
 
-            color: white !important;
+            color: white;
 
-            font-weight: bold;
+            transform: scale(1.08);
 
             box-shadow:
-                0 6px 15px rgba(217, 107, 136, 0.28);
+                0 7px 18px rgba(217, 107, 136, 0.25);
 
-            animation:
-                specialPulse 2.5s ease-in-out infinite;
+            animation: selectedDate 0.35s ease;
         }
 
-        @keyframes specialPulse {
-            0%, 100% {
-                transform: scale(1);
+        @keyframes selectedDate {
+            0% {
+                transform: scale(0.8);
             }
 
-            50% {
+            70% {
+                transform: scale(1.12);
+            }
+
+            100% {
                 transform: scale(1.08);
             }
         }
 
-        .special::after {
-            content: "♡";
+        /* =========================================
+           FIXED CALENDAR DECORATIONS
+        ========================================= */
 
+        .decoration {
             position: absolute;
-
-            right: 2px;
-            top: -7px;
-
-            font-size: 12px;
-
-            color: var(--main);
-
-            animation: tinyFloat 1.8s ease-in-out infinite;
-        }
-
-        @keyframes tinyFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-3px);
-            }
-        }
-
-        /* --------------------------------
-           CUTE CALENDAR DECORATIONS
-        -------------------------------- */
-
-        .calendar-decoration {
-            position: absolute;
-
-            font-size: 17px;
 
             pointer-events: none;
 
-            animation: decorationFloat 3s ease-in-out infinite;
+            user-select: none;
+
+            z-index: 3;
+
+            animation: gentleFloat 3s ease-in-out infinite;
         }
 
         .dog {
             left: 8px;
-            bottom: 8px;
+            bottom: 7px;
+
+            font-size: 17px;
         }
 
         .plane {
             right: 8px;
-            top: 8px;
+            top: 7px;
+
+            font-size: 16px;
+
             animation-delay: 0.5s;
         }
 
         .tree {
-            left: 45%;
-            top: -9px;
+            left: 46%;
+            top: 4px;
+
             font-size: 15px;
+
             animation-delay: 1s;
         }
 
         .flower {
-            right: 28px;
-            bottom: 8px;
+            right: 30px;
+            bottom: 7px;
+
+            font-size: 16px;
+
             animation-delay: 1.5s;
         }
 
-        @keyframes decorationFloat {
+        @keyframes gentleFloat {
             0%, 100% {
-                transform: translateY(0) rotate(-3deg);
+                transform:
+                    translateY(0)
+                    rotate(-2deg);
             }
 
             50% {
-                transform: translateY(-4px) rotate(3deg);
+                transform:
+                    translateY(-3px)
+                    rotate(2deg);
             }
         }
 
-        /* --------------------------------
-           HINT
-        -------------------------------- */
+        /*
+            IMPORTANT:
+            Decorations have pointer-events:none,
+            so the cursor cannot move them.
+        */
 
-        .hint {
-            margin-top: 15px;
+        /* =========================================
+           DATE MESSAGE
+        ========================================= */
 
-            font-size: 13px;
-
-            color: #806b72;
-
-            line-height: 1.6;
-        }
-
-        .hint strong {
-            color: var(--main);
-
-            font-weight: 600;
-        }
-
-        /* --------------------------------
-           PASSWORD INPUT
-        -------------------------------- */
-
-        input {
-            width: 100%;
+        .date-message {
+            min-height: 20px;
 
             margin-top: 12px;
 
-            padding: 14px;
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        /* =========================================
+           COLOR SELECTION
+        ========================================= */
+
+        .question {
+            margin-top: 14px;
+
+            color: var(--text);
+
+            font-size: 14px;
+        }
+
+        .color-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 9px;
+
+            margin-top: 10px;
+        }
+
+        .color-option {
+            padding: 11px 5px;
 
             border: 1px solid var(--soft);
 
             border-radius: 13px;
-
-            outline: none;
 
             background: white;
 
@@ -486,43 +454,67 @@
 
             font-family: inherit;
 
-            font-size: 15px;
+            font-size: 12px;
 
-            text-align: center;
+            cursor: pointer;
 
             transition:
                 transform 0.25s ease,
-                box-shadow 0.25s ease,
-                border 0.25s ease;
+                background 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        input::placeholder {
-            color: #b29ca3;
-        }
-
-        input:focus {
-            border-color: var(--main);
-
-            transform: scale(1.02);
+        .color-option:hover {
+            transform:
+                translateY(-3px);
 
             box-shadow:
-                0 5px 20px rgba(217, 107, 136, 0.12);
+                0 6px 15px rgba(80, 40, 50, 0.10);
         }
 
-        /* --------------------------------
-           BUTTON
-        -------------------------------- */
+        .color-option.selected {
+            background: var(--main);
 
-        button {
+            color: white;
+
+            border-color: var(--main);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 16px rgba(217, 107, 136, 0.22);
+
+            animation: colorSelect 0.3s ease;
+        }
+
+        @keyframes colorSelect {
+            0% {
+                transform: scale(0.9);
+            }
+
+            70% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* =========================================
+           UNLOCK BUTTON
+        ========================================= */
+
+        button.unlock {
             width: 100%;
 
-            margin-top: 12px;
+            margin-top: 16px;
 
             padding: 14px;
 
             border: none;
 
-            border-radius: 13px;
+            border-radius: 14px;
 
             background: var(--main);
 
@@ -536,34 +528,43 @@
 
             transition:
                 transform 0.25s ease,
-                box-shadow 0.25s ease;
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
         }
 
-        button:hover {
+        button.unlock:not(:disabled):hover {
             transform:
                 translateY(-3px)
                 scale(1.02);
 
             box-shadow:
-                0 8px 20px rgba(217, 107, 136, 0.25);
+                0 9px 22px rgba(217, 107, 136, 0.25);
         }
 
-        button:active {
+        button.unlock:not(:disabled):active {
             transform: scale(0.96);
         }
 
-        /* --------------------------------
-           ERROR
-        -------------------------------- */
+        button.unlock:disabled {
+            opacity: 0.55;
+
+            cursor: not-allowed;
+
+            box-shadow: none;
+        }
+
+        /* =========================================
+           ERROR MESSAGE
+        ========================================= */
 
         #error {
             display: none;
 
             margin-top: 10px;
 
-            font-size: 12px;
-
             color: var(--main);
+
+            font-size: 12px;
 
             animation: shake 0.4s ease;
         }
@@ -574,17 +575,61 @@
             }
 
             25% {
-                transform: translateX(-7px);
+                transform: translateX(-6px);
             }
 
             75% {
-                transform: translateX(7px);
+                transform: translateX(6px);
             }
         }
 
-        /* --------------------------------
+        /* =========================================
+           CURSOR TRAIL
+        ========================================= */
+
+        .cursor-dot {
+            position: fixed;
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--main);
+
+            pointer-events: none;
+
+            z-index: 9999;
+
+            opacity: 0.45;
+
+            transform: translate(-50%, -50%);
+
+            animation:
+                cursorFade 0.6s ease-out forwards;
+        }
+
+        @keyframes cursorFade {
+            from {
+                opacity: 0.45;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+            }
+
+            to {
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(0);
+            }
+        }
+
+        /* =========================================
            MOBILE
-        -------------------------------- */
+        ========================================= */
 
         @media (max-width: 420px) {
 
@@ -597,16 +642,13 @@
             }
 
             .calendar {
-                padding: 12px;
+                padding: 13px 10px;
             }
 
             .day {
                 min-height: 35px;
-                font-size: 12px;
-            }
 
-            .empty {
-                min-height: 35px;
+                font-size: 12px;
             }
         }
     </style>
@@ -616,7 +658,7 @@
 
     <div class="box">
 
-        <div class="tiny-heart">♡</div>
+        <div class="heart">♡</div>
 
         <h1>A Little Secret</h1>
 
@@ -625,7 +667,9 @@
         </p>
 
 
-        <!-- CALENDAR -->
+        <!-- =====================================
+             CALENDAR
+        ====================================== -->
 
         <div class="calendar">
 
@@ -640,8 +684,6 @@
 
             <div class="days">
 
-                <!-- Week names -->
-
                 <div class="day-name">Sun</div>
                 <div class="day-name">Mon</div>
                 <div class="day-name">Tue</div>
@@ -651,85 +693,121 @@
                 <div class="day-name">Sat</div>
 
 
-                <!-- February 2026 starts Sunday -->
+                <!-- February 1, 2026 = Sunday -->
 
-                <div class="day">1</div>
-                <div class="day">2</div>
-                <div class="day">3</div>
-                <div class="day">4</div>
-                <div class="day">5</div>
-                <div class="day">6</div>
-                <div class="day">7</div>
+                <div class="day" data-date="1">1</div>
+                <div class="day" data-date="2">2</div>
+                <div class="day" data-date="3">3</div>
+                <div class="day" data-date="4">4</div>
+                <div class="day" data-date="5">5</div>
+                <div class="day" data-date="6">6</div>
+                <div class="day" data-date="7">7</div>
 
-                <div class="day">8</div>
-                <div class="day">9</div>
-                <div class="day">10</div>
-                <div class="day">11</div>
-                <div class="day">12</div>
+                <div class="day" data-date="8">8</div>
+                <div class="day" data-date="9">9</div>
+                <div class="day" data-date="10">10</div>
+                <div class="day" data-date="11">11</div>
+                <div class="day" data-date="12">12</div>
 
-                <!-- SPECIAL DAY -->
+                <!-- Correct date is NOT highlighted -->
 
-                <div class="day special">13</div>
+                <div class="day" data-date="13">13</div>
 
-                <div class="day">14</div>
+                <div class="day" data-date="14">14</div>
 
-                <div class="day">15</div>
-                <div class="day">16</div>
-                <div class="day">17</div>
-                <div class="day">18</div>
-                <div class="day">19</div>
-                <div class="day">20</div>
-                <div class="day">21</div>
+                <div class="day" data-date="15">15</div>
+                <div class="day" data-date="16">16</div>
+                <div class="day" data-date="17">17</div>
+                <div class="day" data-date="18">18</div>
+                <div class="day" data-date="19">19</div>
+                <div class="day" data-date="20">20</div>
+                <div class="day" data-date="21">21</div>
 
-                <div class="day">22</div>
-                <div class="day">23</div>
-                <div class="day">24</div>
-                <div class="day">25</div>
-                <div class="day">26</div>
-                <div class="day">27</div>
-                <div class="day">28</div>
+                <div class="day" data-date="22">22</div>
+                <div class="day" data-date="23">23</div>
+                <div class="day" data-date="24">24</div>
+                <div class="day" data-date="25">25</div>
+                <div class="day" data-date="26">26</div>
+                <div class="day" data-date="27">27</div>
+                <div class="day" data-date="28">28</div>
 
             </div>
 
 
-            <!-- Cute little decorations -->
+            <!-- FIXED DECORATIONS -->
 
-            <div class="calendar-decoration dog">🐶</div>
+            <div class="decoration dog">🐶</div>
 
-            <div class="calendar-decoration plane">✈️</div>
+            <div class="decoration plane">✈️</div>
 
-            <div class="calendar-decoration tree">🌳</div>
+            <div class="decoration tree">🌳</div>
 
-            <div class="calendar-decoration flower">🌷</div>
+            <div class="decoration flower">🌷</div>
 
         </div>
 
 
-        <!-- HINT -->
+        <!-- DATE STATUS -->
 
-        <p class="hint">
-            🌷 <strong>A little clue...</strong><br>
-            the day our story first began ✈️🐶
-        </p>
+        <div class="date-message" id="dateMessage">
+            Choose a special day ♡
+        </div>
 
 
-        <!-- PASSWORD -->
+        <!-- =====================================
+             COLOR QUESTION
+        ====================================== -->
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter the special date..."
-            autocomplete="off"
+        <div class="question">
+            And what color was she wearing that day? ♡
+        </div>
+
+
+        <div class="color-options">
+
+            <div
+                class="color-option"
+                data-color="white"
+                onclick="selectColor(this)"
+            >
+                🤍 White
+            </div>
+
+            <div
+                class="color-option"
+                data-color="black"
+                onclick="selectColor(this)"
+            >
+                🖤 Black
+            </div>
+
+            <div
+                class="color-option"
+                data-color="blue"
+                onclick="selectColor(this)"
+            >
+                💙 Blue
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             UNLOCK
+        ====================================== -->
+
+        <button
+            class="unlock"
+            id="unlockButton"
+            onclick="unlockPage()"
+            disabled
         >
-
-
-        <button onclick="checkPassword()">
             Unlock ♡
         </button>
 
 
         <div id="error">
-            Almost... try the special date again ♡
+            Hmm... one little detail isn't quite right ♡
         </div>
 
     </div>
@@ -737,38 +815,189 @@
 
     <script>
 
-        /* --------------------------------
-           PASSWORD
-        -------------------------------- */
+        /* =========================================
+           SETTINGS
+        ========================================= */
 
-        function checkPassword() {
+        /*
+            Correct date:
+            February 13, 2026
 
-            const password =
-                document.getElementById("password").value.trim();
+            Correct trouser color:
+            CHANGE THIS if necessary.
+
+            Options:
+            "white"
+            "black"
+            "blue"
+        */
+
+        const correctDate = "13";
+
+        const correctColor = "white";
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        let selectedDate = null;
+
+        let selectedColor = null;
+
+
+        /* =========================================
+           CALENDAR DATE SELECTION
+        ========================================= */
+
+        const days =
+            document.querySelectorAll(".day[data-date]");
+
+
+        days.forEach(day => {
+
+            day.addEventListener("click", function() {
+
+                /* Remove previous selection */
+
+                days.forEach(d => {
+                    d.classList.remove("selected");
+                });
+
+
+                /* Select clicked date */
+
+                this.classList.add("selected");
+
+                selectedDate =
+                    this.dataset.date;
+
+
+                /* Update message */
+
+                const dateMessage =
+                    document.getElementById(
+                        "dateMessage"
+                    );
+
+
+                dateMessage.textContent =
+                    "February " +
+                    selectedDate +
+                    ", 2026 ♡";
+
+
+                checkReady();
+
+            });
+
+        });
+
+
+        /* =========================================
+           COLOR SELECTION
+        ========================================= */
+
+        function selectColor(element) {
+
+            const options =
+                document.querySelectorAll(
+                    ".color-option"
+                );
+
+
+            /* Remove old selection */
+
+            options.forEach(option => {
+
+                option.classList.remove(
+                    "selected"
+                );
+
+            });
+
+
+            /* Select new color */
+
+            element.classList.add(
+                "selected"
+            );
+
+
+            selectedColor =
+                element.dataset.color;
+
+
+            checkReady();
+        }
+
+
+        /* =========================================
+           ENABLE / DISABLE UNLOCK
+        ========================================= */
+
+        function checkReady() {
+
+            const button =
+                document.getElementById(
+                    "unlockButton"
+                );
+
 
             /*
-                The password is:
-                2026 Feb 13
+                Button becomes active only
+                when BOTH answers are selected.
             */
 
-            const correctPassword = "2026 Feb 13";
+            if (
+                selectedDate !== null &&
+                selectedColor !== null
+            ) {
+
+                button.disabled = false;
+
+            } else {
+
+                button.disabled = true;
+
+            }
+
+        }
+
+
+        /* =========================================
+           UNLOCK
+        ========================================= */
+
+        function unlockPage() {
 
             const error =
-                document.getElementById("error");
+                document.getElementById(
+                    "error"
+                );
 
 
-            if (password === correctPassword) {
+            /*
+                Check both answers
+            */
+
+            if (
+                selectedDate === correctDate &&
+                selectedColor === correctColor
+            ) {
 
                 const box =
-                    document.querySelector(".box");
+                    document.querySelector(
+                        ".box"
+                    );
+
+
+                /* Beautiful exit animation */
 
                 box.style.transform =
-                    "scale(1.06)";
+                    "scale(1.05)";
 
                 box.style.opacity = "0";
-
-                box.style.transition =
-                    "all 0.7s ease";
 
 
                 setTimeout(() => {
@@ -778,43 +1007,38 @@
 
                 }, 700);
 
+
             } else {
 
-                error.style.display = "block";
+                /*
+                    Wrong answer
+                */
 
-                error.style.animation = "none";
+                error.style.display =
+                    "block";
+
+
+                error.style.animation =
+                    "none";
+
 
                 void error.offsetWidth;
 
+
                 error.style.animation =
                     "shake 0.4s ease";
+
             }
+
         }
 
 
-        /* --------------------------------
-           ENTER KEY
-        -------------------------------- */
-
-        document
-            .getElementById("password")
-            .addEventListener(
-                "keydown",
-                function(event) {
-
-                    if (event.key === "Enter") {
-                        checkPassword();
-                    }
-
-                }
-            );
-
-
-        /* --------------------------------
-           CURSOR ANIMATION
-        -------------------------------- */
+        /* =========================================
+           CURSOR TRAIL
+        ========================================= */
 
         let lastCursorTime = 0;
+
 
         document.addEventListener(
             "mousemove",
@@ -822,26 +1046,34 @@
 
                 const now = Date.now();
 
+
                 /*
-                    Limit the number of dots so
-                    the animation stays smooth.
+                    Keep the trail light and smooth.
                 */
 
-                if (now - lastCursorTime < 45) {
+                if (
+                    now - lastCursorTime < 60
+                ) {
                     return;
                 }
+
 
                 lastCursorTime = now;
 
 
                 const dot =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 dot.className =
                     "cursor-dot";
 
+
                 dot.style.left =
                     event.clientX + "px";
+
 
                 dot.style.top =
                     event.clientY + "px";
@@ -854,15 +1086,15 @@
 
                     dot.remove();
 
-                }, 700);
+                }, 600);
 
             }
         );
 
 
-        /* --------------------------------
-           TOUCH / FINGER MOVEMENT
-        -------------------------------- */
+        /* =========================================
+           TOUCH / FINGER TRAIL
+        ========================================= */
 
         document.addEventListener(
             "touchmove",
@@ -871,17 +1103,25 @@
                 const touch =
                     event.touches[0];
 
-                if (!touch) return;
+
+                if (!touch) {
+                    return;
+                }
 
 
                 const dot =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 dot.className =
                     "cursor-dot";
 
+
                 dot.style.left =
                     touch.clientX + "px";
+
 
                 dot.style.top =
                     touch.clientY + "px";
@@ -894,57 +1134,16 @@
 
                     dot.remove();
 
-                }, 700);
+                }, 600);
 
             },
-            { passive: true }
+            {
+                passive: true
+            }
         );
-
-
-        /* --------------------------------
-           CALENDAR DAY INTERACTION
-        -------------------------------- */
-
-        const days =
-            document.querySelectorAll(
-                ".day:not(.empty)"
-            );
-
-
-        days.forEach(day => {
-
-            day.addEventListener(
-                "pointerenter",
-                function() {
-
-                    if (!this.classList.contains("special")) {
-
-                        this.style.transform =
-                            "translateY(-4px) scale(1.08)";
-
-                    }
-
-                }
-            );
-
-
-            day.addEventListener(
-                "pointerleave",
-                function() {
-
-                    if (!this.classList.contains("special")) {
-
-                        this.style.transform =
-                            "";
-
-                    }
-
-                }
-            );
-
-        });
 
     </script>
 
 </body>
 </html>
+```
