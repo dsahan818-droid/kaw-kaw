@@ -217,6 +217,8 @@ h1 {
     }
 }
 
+/* Calendar decorations */
+
 .scene {
     position: absolute;
     z-index: 2;
@@ -309,9 +311,6 @@ h1 {
     top: -9px;
 }
 
-/* Left and right clouds removed.
-   Only the bottom cloud remains. */
-
 .cloud-bottom {
     left: 50%;
     bottom: 7px;
@@ -376,6 +375,25 @@ h1 {
     }
 }
 
+/* Cute cow near date 1 */
+
+.cow {
+    left: 3%;
+    top: 75px;
+    font-size: 25px;
+    animation: cowBounce 3.8s ease-in-out infinite;
+}
+
+@keyframes cowBounce {
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-4px) rotate(3deg);
+    }
+}
+
 .tree {
     right: 9px;
     bottom: 5px;
@@ -394,21 +412,16 @@ h1 {
     }
 }
 
+/* Flower moved near date 9 */
+
 .flower {
     font-size: 18px;
     animation: flowerFloat 3s ease-in-out infinite;
 }
 
-/*
-   Small flowers removed.
-
-   The remaining flower has been moved
-   closer to the area around date 23.
-*/
 .flower-one {
-    left: 50%;
-    bottom: 34px;
-    transform: translateX(-50%);
+    left: 20%;
+    top: 91px;
 }
 
 @keyframes flowerFloat {
@@ -481,33 +494,93 @@ h1 {
     }
 }
 
-button.unlock {
+/* Draggable airplane replacing the Unlock button */
+
+.plane-control {
+    position: relative;
     width: 100%;
-    margin-top: 16px;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    background: var(--main);
-    color: white;
-    font-family: inherit;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+    height: 72px;
+    margin-top: 14px;
+    border-radius: 18px;
+    background: linear-gradient(
+        90deg,
+        #fff0f5,
+        #fff8fa,
+        #fff0f5
+    );
+    border: 1px solid var(--soft);
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
 }
 
-button.unlock:not(:disabled):hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 9px 22px rgba(217,107,136,.25);
+.plane-track {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 50%;
+    height: 2px;
+    border-top: 2px dashed #efc0ce;
+    transform: translateY(-50%);
+    opacity: .75;
 }
 
-button.unlock:not(:disabled):active {
-    transform: scale(.96);
+.drag-plane {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    font-size: 31px;
+    cursor: grab;
+    z-index: 2;
+    filter: drop-shadow(0 4px 4px rgba(80,40,50,.14));
+    transition: filter .2s ease;
 }
 
-button.unlock:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-    box-shadow: none;
+.drag-plane:active {
+    cursor: grabbing;
+}
+
+.drag-plane.dragging {
+    cursor: grabbing;
+    filter: drop-shadow(0 7px 7px rgba(80,40,50,.18));
+}
+
+.plane-control::before,
+.plane-control::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c49aa6;
+    font-size: 12px;
+}
+
+.plane-control::before {
+    content: "← drag";
+    left: 9px;
+    top: 12px;
+}
+
+.plane-control::after {
+    content: "drag →";
+    right: 9px;
+    top: 60px;
+}
+
+.plane-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 7px;
+    transform: translateX(-50%);
+    color: #a1848d;
+    font-size: 10px;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 #error {
@@ -558,6 +631,7 @@ button.unlock:disabled {
 }
 
 @media (max-width: 420px) {
+
     .box {
         padding: 23px 15px 20px;
     }
@@ -596,6 +670,11 @@ button.unlock:disabled {
         font-size: 27px;
     }
 
+    .cow {
+        left: 1px;
+        font-size: 22px;
+    }
+
     .tree {
         right: 4px;
         font-size: 33px;
@@ -607,6 +686,7 @@ button.unlock:disabled {
 <body>
 
 <div class="box">
+
     <div class="heart">♡</div>
 
     <h1>A Little Secret</h1>
@@ -632,19 +712,19 @@ button.unlock:disabled {
             <div class="sun-face">•ᴗ•</div>
         </div>
 
-        <!-- Left and right clouds removed -->
-
         <div class="scene cloud cloud-bottom"></div>
 
         <div class="scene plane">✈️</div>
         <div class="scene plane-trail"></div>
 
         <div class="scene dog">🐶</div>
+
+        <!-- Cute cow near date 1 -->
+        <div class="scene cow">🐮</div>
+
         <div class="scene tree">🌳</div>
 
-        <!-- Small flowers removed -->
-
-        <!-- Remaining flower moved -->
+        <!-- Flower moved near date 9 -->
         <div class="scene flower flower-one">🌷</div>
 
         <div class="days">
@@ -722,12 +802,25 @@ button.unlock:disabled {
 
     </div>
 
-    <button class="unlock"
-            id="unlockButton"
-            onclick="unlockPage()"
-            disabled>
-        Unlock ♡
-    </button>
+    <!-- Draggable airplane -->
+    <div class="plane-control"
+         id="planeControl"
+         aria-label="Drag the airplane to continue">
+
+        <div class="plane-track"></div>
+
+        <div class="drag-plane"
+             id="dragPlane"
+             role="button"
+             aria-label="Drag airplane to continue">
+            ✈️
+        </div>
+
+        <div class="plane-hint" id="planeHint">
+            Drag the little plane to the right ♡
+        </div>
+
+    </div>
 
     <div id="error">
         Hmm... one little detail isn't quite right ♡
@@ -744,6 +837,7 @@ let selectedDate = null;
 let selectedColor = null;
 
 const days = document.querySelectorAll(".day[data-date]");
+
 
 /* ================================
    DATE SELECTION
@@ -792,54 +886,228 @@ function selectColor(element) {
 
 
 /* ================================
-   CHECK UNLOCK BUTTON
+   PLANE / CONTINUE
 ================================ */
 
 function checkReady() {
 
-    const button = document.getElementById("unlockButton");
+    const hint = document.getElementById("planeHint");
 
-    button.disabled = !(
-        selectedDate !== null &&
-        selectedColor !== null
-    );
+    if (selectedDate !== null && selectedColor !== null) {
+
+        hint.textContent =
+            "Everything is ready — fly to the right ♡";
+
+    } else {
+
+        hint.textContent =
+            "Drag the little plane to the right ♡";
+
+    }
 
 }
 
 
+const planeControl =
+    document.getElementById("planeControl");
+
+const dragPlane =
+    document.getElementById("dragPlane");
+
+let isDraggingPlane = false;
+let planeStartX = 0;
+let planeStartLeft = 0;
+
+
+/* Get mouse/touch position */
+
+function getPointerX(event) {
+
+    if (event.touches) {
+        return event.touches[0].clientX;
+    }
+
+    return event.clientX;
+}
+
+
+/* Start dragging */
+
+function startPlaneDrag(event) {
+
+    isDraggingPlane = true;
+
+    planeStartX = getPointerX(event);
+
+    planeStartLeft = dragPlane.offsetLeft;
+
+    dragPlane.classList.add("dragging");
+
+    dragPlane.style.transition = "none";
+
+    if (event.cancelable) {
+        event.preventDefault();
+    }
+
+}
+
+
+/* Move airplane */
+
+function movePlaneDrag(event) {
+
+    if (!isDraggingPlane) return;
+
+    const currentX = getPointerX(event);
+
+    const deltaX =
+        currentX - planeStartX;
+
+    const maxLeft =
+        planeControl.clientWidth -
+        dragPlane.offsetWidth -
+        10;
+
+    const newLeft =
+        Math.max(
+            10,
+            Math.min(
+                maxLeft,
+                planeStartLeft + deltaX
+            )
+        );
+
+    dragPlane.style.left =
+        newLeft + "px";
+
+    if (event.cancelable) {
+        event.preventDefault();
+    }
+
+}
+
+
+/* Release airplane */
+
+function endPlaneDrag() {
+
+    if (!isDraggingPlane) return;
+
+    isDraggingPlane = false;
+
+    dragPlane.classList.remove("dragging");
+
+    const maxLeft =
+        planeControl.clientWidth -
+        dragPlane.offsetWidth -
+        10;
+
+    const currentLeft =
+        dragPlane.offsetLeft;
+
+    const destination =
+        maxLeft - 8;
+
+
+    /* Reached destination */
+
+    if (currentLeft >= destination) {
+
+        unlockPage();
+
+    }
+
+    /* Didn't reach destination */
+
+    else {
+
+        dragPlane.style.transition =
+            "left .35s ease";
+
+        dragPlane.style.left =
+            "10px";
+
+    }
+
+}
+
+
+/* Mouse + touch + pointer support */
+
+dragPlane.addEventListener(
+    "pointerdown",
+    startPlaneDrag
+);
+
+document.addEventListener(
+    "pointermove",
+    movePlaneDrag
+);
+
+document.addEventListener(
+    "pointerup",
+    endPlaneDrag
+);
+
+document.addEventListener(
+    "pointercancel",
+    endPlaneDrag
+);
+
+
 /* ================================
-   UNLOCK
+   GO TO BIRTHDAY PAGE
 ================================ */
 
 function unlockPage() {
 
-    const error = document.getElementById("error");
+    const error =
+        document.getElementById("error");
+
 
     if (
         selectedDate === correctDate &&
         selectedColor === correctColor
     ) {
 
-        const box = document.querySelector(".box");
+        const box =
+            document.querySelector(".box");
 
-        box.style.transform = "scale(1.05)";
-        box.style.opacity = "0";
+        const planeHint =
+            document.getElementById("planeHint");
+
+
+        planeHint.textContent =
+            "Flying to your birthday surprise... ♡";
+
+
+        box.style.transform =
+            "scale(1.05)";
+
+        box.style.opacity =
+            "0";
+
 
         setTimeout(() => {
 
-            window.location.href = "birthday.html";
+            window.location.href =
+                "birthday.html";
 
         }, 700);
 
+
     } else {
 
-        error.style.display = "block";
+        error.style.display =
+            "block";
 
-        error.style.animation = "none";
+        error.style.animation =
+            "none";
 
         void error.offsetWidth;
 
-        error.style.animation = "shake .4s ease";
+        error.style.animation =
+            "shake .4s ease";
 
     }
 
@@ -847,37 +1115,45 @@ function unlockPage() {
 
 
 /* =================================================
-   FIX:
    RESTORE PAGE WHEN RETURNING WITH BACK BUTTON
 ================================================= */
 
-window.addEventListener("pageshow", function(event) {
+window.addEventListener(
+    "pageshow",
+    function(event) {
 
-    const box = document.querySelector(".box");
-    const error = document.getElementById("error");
+        const box =
+            document.querySelector(".box");
 
-    /*
-       When the browser restores this page from its
-       back/forward cache, reset the hidden animation.
-    */
+        const error =
+            document.getElementById("error");
 
-    box.style.opacity = "1";
-    box.style.transform = "translateY(0) scale(1)";
 
-    /*
-       Hide old error message.
-    */
+        box.style.opacity =
+            "1";
 
-    error.style.display = "none";
+        box.style.transform =
+            "translateY(0) scale(1)";
 
-    /*
-       Make sure the unlock button is correctly enabled
-       or disabled according to the current selections.
-    */
 
-    checkReady();
+        error.style.display =
+            "none";
 
-});
+
+        checkReady();
+
+
+        const dragPlane =
+            document.getElementById("dragPlane");
+
+        dragPlane.style.transition =
+            "none";
+
+        dragPlane.style.left =
+            "10px";
+
+    }
+);
 
 
 /* ================================
@@ -886,52 +1162,80 @@ window.addEventListener("pageshow", function(event) {
 
 let lastCursorTime = 0;
 
-document.addEventListener("mousemove", function(event) {
+document.addEventListener(
+    "mousemove",
+    function(event) {
 
-    const now = Date.now();
+        const now = Date.now();
 
-    if (now - lastCursorTime < 60) return;
+        if (
+            now - lastCursorTime < 60
+        ) {
+            return;
+        }
 
-    lastCursorTime = now;
+        lastCursorTime = now;
 
-    const dot = document.createElement("div");
+        const dot =
+            document.createElement("div");
 
-    dot.className = "cursor-dot";
+        dot.className =
+            "cursor-dot";
 
-    dot.style.left = event.clientX + "px";
-    dot.style.top = event.clientY + "px";
+        dot.style.left =
+            event.clientX + "px";
 
-    document.body.appendChild(dot);
+        dot.style.top =
+            event.clientY + "px";
 
-    setTimeout(() => dot.remove(), 600);
+        document.body.appendChild(dot);
 
-});
+        setTimeout(
+            () => dot.remove(),
+            600
+        );
+
+    }
+);
 
 
 /* ================================
    TOUCH TRAIL
 ================================ */
 
-document.addEventListener("touchmove", function(event) {
+document.addEventListener(
+    "touchmove",
+    function(event) {
 
-    const touch = event.touches[0];
+        const touch =
+            event.touches[0];
 
-    if (!touch) return;
+        if (!touch) return;
 
-    const dot = document.createElement("div");
+        const dot =
+            document.createElement("div");
 
-    dot.className = "cursor-dot";
+        dot.className =
+            "cursor-dot";
 
-    dot.style.left = touch.clientX + "px";
-    dot.style.top = touch.clientY + "px";
+        dot.style.left =
+            touch.clientX + "px";
 
-    document.body.appendChild(dot);
+        dot.style.top =
+            touch.clientY + "px";
 
-    setTimeout(() => dot.remove(), 600);
+        document.body.appendChild(dot);
 
-}, {
-    passive: true
-});
+        setTimeout(
+            () => dot.remove(),
+            600
+        );
+
+    },
+    {
+        passive: true
+    }
+);
 
 </script>
 
