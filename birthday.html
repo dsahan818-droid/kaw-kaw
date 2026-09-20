@@ -1,18 +1,1159 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ♡</title>
+
+<style>
+
+/* =========================================
+   BASIC RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --main: #d96b88;
+    --main-light: #f3b0c2;
+    --light: #fff7f9;
+    --soft: #f3d9e1;
+    --text: #604953;
+    --muted: #947d85;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    color: var(--text);
+
+    background: #fff7f9;
+
+    position: relative;
+}
+
+/* =========================================
+   BACKGROUND BUBBLES
+========================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+
+    left: -220px;
+    top: -220px;
+
+    background: #f3d9e1;
+
+    opacity: .65;
+
+    animation:
+        backgroundFloat 9s ease-in-out infinite;
+}
+
+body::after {
+    width: 450px;
+    height: 450px;
+
+    right: -190px;
+    bottom: -190px;
+
+    background: #f4e4e8;
+
+    opacity: .7;
+
+    animation:
+        backgroundFloat2 11s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+
+    50% {
+        transform: translate(35px, 25px);
+    }
+
+}
+
+@keyframes backgroundFloat2 {
+
+    50% {
+        transform: translate(-30px, -25px);
+    }
+
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.box {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(94%, 430px);
+
+    padding: 30px 23px 27px;
+
+    background:
+        rgba(255,255,255,.95);
+
+    border:
+        1px solid var(--soft);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(80,40,50,.12);
+
+    text-align: center;
+
+    animation:
+        boxAppear 1s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+/* =========================================
+   CARD APPEAR
+========================================= */
+
+@keyframes boxAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.94);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+/* =========================================
+   TOP HEART
+========================================= */
+
+.heart {
+
+    display: inline-block;
+
+    font-size: 29px;
+
+    color: var(--main);
+
+    animation:
+        heartBeat 2s
+        ease-in-out infinite;
+
+}
+
+@keyframes heartBeat {
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+    }
+
+}
+
+/* =========================================
+   SMALL INTRO
+========================================= */
+
+.small-title {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+
+    margin-top: 7px;
+
+    color: var(--main);
+
+    font-size: 31px;
+
+    font-weight: 600;
+
+}
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake {
+
+    position: relative;
+
+    display: inline-block;
+
+    margin-top: 17px;
+
+    font-size: 62px;
+
+    animation:
+        cakeFloat 3s
+        ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 5px 5px
+            rgba(80,40,50,.10)
+        );
+
+}
+
+@keyframes cakeFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-2deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px)
+            rotate(2deg);
+
+    }
+
+}
+
+/* =========================================
+   WISH
+========================================= */
+
+.wish {
+
+    margin-top: 15px;
+
+    padding: 17px 15px;
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffafd,
+            #fff3f7
+        );
+
+    border:
+        1px solid #f1c7d4;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+/* =========================================
+   HIGHLIGHTED NAME
+========================================= */
+
+.name {
+
+    color: var(--main);
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+/* =========================================
+   LITTLE MESSAGE
+========================================= */
+
+.message {
+
+    margin-top: 15px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+
+    margin: 19px auto 15px;
+
+    width: 80px;
+
+    height: 1px;
+
+    background: #efc6d3;
+
+    position: relative;
+
+}
+
+.divider::after {
+
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    padding: 0 7px;
+
+    background: white;
+
+    color: var(--main);
+
+    font-size: 15px;
+
+}
+
+/* =========================================
+   SURPRISE BUTTON
+========================================= */
+
+.surprise {
+
+    width: 100%;
+
+    margin-top: 17px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: var(--main);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px
+        rgba(217,107,136,.20);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    animation:
+        buttonGlow 3s
+        ease-in-out infinite;
+
+}
+
+.surprise:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 10px 25px
+        rgba(217,107,136,.28);
+
+}
+
+.surprise:active {
+
+    transform:
+        scale(.96);
+
+}
+
+@keyframes buttonGlow {
+
+    0%,100% {
+
+        box-shadow:
+            0 7px 18px
+            rgba(217,107,136,.20);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 9px 27px
+            rgba(217,107,136,.35);
+
+    }
+
+}
+
+/* =========================================
+   FLOATING DECORATIONS
+========================================= */
+
+.decoration {
+
+    position: fixed;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    user-select: none;
+
+}
+
+/* Hearts */
+
+.heart-one {
+
+    left: 10%;
+
+    top: 20%;
+
+    font-size: 18px;
+
+    animation:
+        floatOne 5s
+        ease-in-out infinite;
+
+}
+
+.heart-two {
+
+    right: 11%;
+
+    top: 30%;
+
+    font-size: 15px;
+
+    animation:
+        floatTwo 6s
+        ease-in-out infinite;
+
+}
+
+.heart-three {
+
+    left: 16%;
+
+    bottom: 19%;
+
+    font-size: 14px;
+
+    animation:
+        floatThree 5.5s
+        ease-in-out infinite;
+
+}
+
+/* Stars */
+
+.star-one {
+
+    right: 17%;
+
+    top: 16%;
+
+    font-size: 18px;
+
+    color: #f0bd58;
+
+    animation:
+        starTwinkle 2.5s
+        ease-in-out infinite;
+
+}
+
+.star-two {
+
+    left: 13%;
+
+    top: 48%;
+
+    font-size: 13px;
+
+    color: #e8adbd;
+
+    animation:
+        starTwinkle 3s
+        ease-in-out infinite;
+
+}
+
+/* Flowers */
+
+.flower-one {
+
+    left: 8%;
+
+    bottom: 25%;
+
+    font-size: 21px;
+
+    animation:
+        flowerFloat 4s
+        ease-in-out infinite;
+
+}
+
+.flower-two {
+
+    right: 8%;
+
+    bottom: 20%;
+
+    font-size: 18px;
+
+    animation:
+        flowerFloat2 4.5s
+        ease-in-out infinite;
+
+}
+
+/* =========================================
+   DECORATION ANIMATIONS
+========================================= */
+
+@keyframes floatOne {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+        opacity: .6;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-16px)
+            rotate(8deg);
+
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes floatTwo {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(5deg);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(13px)
+            rotate(-8deg);
+
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes floatThree {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px)
+            scale(1.2);
+
+    }
+
+}
+
+@keyframes starTwinkle {
+
+    0%,100% {
+
+        opacity: .35;
+
+        transform:
+            scale(.8)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.25)
+            rotate(20deg);
+
+    }
+
+}
+
+@keyframes flowerFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-4deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px)
+            rotate(5deg);
+
+    }
+
+}
+
+@keyframes flowerFloat2 {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(4deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px)
+            rotate(-5deg);
+
+    }
+
+}
+
+/* =========================================
+   SPARKLE PARTICLES
+========================================= */
+
+.sparkle {
+
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--main-light);
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation:
+        sparkleFloat 4s
+        ease-in-out infinite;
+
+}
+
+.sparkle.s1 {
+
+    left: 25%;
+    top: 12%;
+
+}
+
+.sparkle.s2 {
+
+    right: 25%;
+    top: 22%;
+
+    animation-delay: 1s;
+
+}
+
+.sparkle.s3 {
+
+    left: 22%;
+    bottom: 12%;
+
+    animation-delay: 2s;
+
+}
+
+.sparkle.s4 {
+
+    right: 23%;
+    bottom: 17%;
+
+    animation-delay: .5s;
+
+}
+
+@keyframes sparkleFloat {
+
+    0%,100% {
+
+        opacity: .2;
+
+        transform:
+            scale(.5)
+            translateY(0);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.4)
+            translateY(-9px);
+
+    }
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 420px) {
+
+    body {
+
+        padding: 15px;
+
+    }
+
+    .box {
+
+        padding:
+            25px 17px 23px;
+
+    }
+
+    h1 {
+
+        font-size: 27px;
+
+    }
+
+    .cake {
+
+        font-size: 55px;
+
+    }
+
+    .wish {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+    }
+
+    .heart-one {
+
+        left: 5%;
+
+    }
+
+    .heart-two {
+
+        right: 5%;
+
+    }
+
+    .flower-one {
+
+        left: 4%;
+
+    }
+
+    .flower-two {
+
+        right: 4%;
+
+    }
+
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <h1>🎂 Happy Birthday ❤️</h1>
+<!-- =====================================
+     FLOATING DECORATIONS
+===================================== -->
 
-    <p>Welcome to your special surprise!</p>
+<div class="decoration heart-one">♡</div>
+
+<div class="decoration heart-two">♥</div>
+
+<div class="decoration heart-three">♡</div>
+
+<div class="decoration star-one">✦</div>
+
+<div class="decoration star-two">✧</div>
+
+<div class="decoration flower-one">🌷</div>
+
+<div class="decoration flower-two">🌸</div>
+
+<!-- Sparkles -->
+
+<div class="sparkle s1"></div>
+
+<div class="sparkle s2"></div>
+
+<div class="sparkle s3"></div>
+
+<div class="sparkle s4"></div>
+
+<!-- =====================================
+     MAIN CARD
+===================================== -->
+
+<div class="box">
+
+```
+<div class="heart">
+    ♡
+</div>
+
+
+<p class="small-title">
+    Today is a little more special...
+</p>
+
+
+<h1>
+    Happy Birthday ❤️
+</h1>
+
+
+<div class="cake">
+    🎂
+</div>
+
+
+<div class="wish">
+
+    <div class="name">
+        Happy Birthday, My Love ♡
+    </div>
+
+    <br>
+
+    I hope your day is filled with
+    beautiful moments, genuine smiles,
+    and all the happiness you deserve.
+
+    <br><br>
+
+    Thank you for being one of the
+    most beautiful parts of my life.
+
+    <br><br>
+
+    I hope this new year of your life
+    brings you closer to everything
+    you've ever dreamed of.
+
+    <br><br>
+
+    And most importantly...
+
+    <br>
+
+    <strong>
+        I hope I get to be beside you
+        for many more birthdays. ❤️
+    </strong>
+
+</div>
+
+
+<div class="message">
+
+    This little website is only a tiny
+    way of telling you how special
+    you are to me.
+
+    <br>
+
+    There is still one more thing
+    waiting for you... 👀
+
+</div>
+
+
+<div class="divider"></div>
+
+
+<button
+    class="surprise"
+    onclick="goToSurprise()">
+
+    🎁 One More Surprise ♡
+
+</button>
+```
+
+</div>
+
+<script>
+
+/* =========================================
+   GO TO THIRD PAGE
+========================================= */
+
+function goToSurprise() {
+
+    const box =
+        document.querySelector(".box");
+
+    /*
+       Small exit animation
+    */
+
+    box.style.transition =
+        "transform .5s ease, opacity .5s ease";
+
+    box.style.transform =
+        "scale(1.05)";
+
+    box.style.opacity =
+        "0";
+
+    /*
+       Open third page
+    */
+
+    setTimeout(function() {
+
+        window.location.href =
+            "third.html";
+
+    }, 500);
+
+}
+
+
+/* =========================================
+   RESTORE PAGE WHEN USING BACK BUTTON
+========================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        const box =
+            document.querySelector(".box");
+
+        box.style.opacity = "1";
+
+        box.style.transform =
+            "translateY(0) scale(1)";
+
+    }
+);
+
+
+/* =========================================
+   LITTLE CLICK SPARKLE EFFECT
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        for (let i = 0; i < 5; i++) {
+
+            const sparkle =
+                document.createElement("div");
+
+            sparkle.style.position =
+                "fixed";
+
+            sparkle.style.left =
+                event.clientX + "px";
+
+            sparkle.style.top =
+                event.clientY + "px";
+
+            sparkle.style.width =
+                "5px";
+
+            sparkle.style.height =
+                "5px";
+
+            sparkle.style.borderRadius =
+                "50%";
+
+            sparkle.style.background =
+                "#f3b0c2";
+
+            sparkle.style.pointerEvents =
+                "none";
+
+            sparkle.style.zIndex =
+                "9999";
+
+            sparkle.style.transition =
+                "all .7s ease";
+
+            document.body.appendChild(
+                sparkle
+            );
+
+            const angle =
+                (Math.PI * 2 / 5) * i;
+
+            const distance = 25 +
+                Math.random() * 25;
+
+            setTimeout(function() {
+
+                sparkle.style.transform =
+                    `translate(
+                        ${Math.cos(angle) * distance}px,
+                        ${Math.sin(angle) * distance}px
+                    )`;
+
+                sparkle.style.opacity =
+                    "0";
+
+            }, 20);
+
+            setTimeout(function() {
+
+                sparkle.remove();
+
+            }, 750);
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
-
