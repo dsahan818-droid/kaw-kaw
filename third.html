@@ -6,6 +6,7 @@
 <title>Our Little Memories ♡</title>
 
 <style>
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -14,13 +15,24 @@
 
     body {
         min-height: 100vh;
-        font-family: "Segoe UI", Arial, sans-serif;
+
+        /* Main cute handwritten font */
+        font-family:
+            "Segoe Print",
+            "Bradley Hand",
+            "Comic Sans MS",
+            "Noto Sans Sinhala",
+            "Iskoola Pota",
+            cursive;
+
         background: linear-gradient(135deg, #fff5f8, #f9f4ff, #fff9f0);
         color: #51434b;
         overflow-x: hidden;
     }
 
+
     /* Soft fixed decorations */
+
     .blob {
         position: fixed;
         border-radius: 50%;
@@ -53,6 +65,7 @@
         right: -40px;
     }
 
+
     .page {
         position: relative;
         z-index: 1;
@@ -69,7 +82,9 @@
         text-align: center;
     }
 
+
     /* Header */
+
     .header {
         margin-bottom: 25px;
     }
@@ -92,16 +107,22 @@
         color: #9a818c;
     }
 
+
     @keyframes heartbeat {
+
         0%, 100% {
             transform: scale(1);
         }
+
         50% {
             transform: scale(1.15);
         }
+
     }
 
+
     /* Main card */
+
     .memory-card {
         background: rgba(255, 255, 255, 0.88);
         border: 1px solid rgba(255,255,255,0.9);
@@ -110,9 +131,11 @@
         box-shadow: 0 15px 45px rgba(112, 81, 99, 0.12);
         backdrop-filter: blur(10px);
         min-height: 390px;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         transition: 0.35s ease;
     }
 
@@ -163,7 +186,23 @@
         border: 1px dashed #d7c3df;
     }
 
-    /* Next button */
+
+    /* Buttons */
+
+    .next-button,
+    .cute-button,
+    .chat-button,
+    .return-button {
+
+        font-family:
+            "Segoe Print",
+            "Bradley Hand",
+            "Comic Sans MS",
+            cursive;
+
+        font-weight: 600;
+    }
+
     .next-button,
     .cute-button {
         border: none;
@@ -190,7 +229,9 @@
         transform: scale(0.96);
     }
 
+
     /* Final message */
+
     .final-message {
         display: none;
         animation: fadeUp 0.7s ease;
@@ -219,18 +260,24 @@
         margin: auto;
     }
 
+
     @keyframes fadeUp {
+
         from {
             opacity: 0;
             transform: translateY(15px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
         }
+
     }
 
+
     /* Progress dots */
+
     .progress {
         display: flex;
         justify-content: center;
@@ -252,7 +299,9 @@
         background: #d79ab3;
     }
 
+
     /* Extra sections */
+
     .extra-section {
         margin-top: 25px;
         background: rgba(255,255,255,0.82);
@@ -273,7 +322,9 @@
         line-height: 1.6;
     }
 
+
     /* WhatsApp button */
+
     .chat-button {
         margin-top: 15px;
         padding: 11px 20px;
@@ -292,7 +343,9 @@
         background: #fff0f6;
     }
 
+
     /* Poem */
+
     .poem {
         margin-top: 15px;
         padding: 18px;
@@ -302,9 +355,20 @@
         color: #876f7b;
         font-size: 14px;
         line-height: 2;
+
+        /* Sinhala-friendly font */
+        font-family:
+            "Noto Sans Sinhala",
+            "Iskoola Pota",
+            "Segoe Print",
+            "Bradley Hand",
+            "Comic Sans MS",
+            cursive;
     }
 
+
     /* Chat viewer */
+
     .chat-viewer {
         display: none;
         position: fixed;
@@ -367,16 +431,22 @@
         transform: translateY(-2px);
     }
 
+
     @keyframes fadeIn {
+
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
+
     }
 
+
     /* Mobile */
+
     @media (max-width: 500px) {
 
         .page {
@@ -403,30 +473,42 @@
         .final-message h2 {
             font-size: 21px;
         }
+
     }
+
 </style>
 </head>
+
 
 <body>
 
 <!-- Fixed background decorations -->
+
 <div class="blob one"></div>
 <div class="blob two"></div>
 <div class="blob three"></div>
+
 
 <div class="page">
 
     <div class="container">
 
+
         <!-- HEADER -->
+
         <div class="header">
+
             <div class="small-heart">♡</div>
+
             <h1>Our Little Memories</h1>
+
             <p>A few first things I'll always remember, Kawya ♡</p>
+
         </div>
 
 
         <!-- FIRST THINGS CARD -->
+
         <div class="memory-card" id="memoryCard">
 
             <div class="memory-number" id="memoryNumber">
@@ -463,20 +545,26 @@
 
 
         <!-- PROGRESS DOTS -->
+
         <div class="progress" id="progress">
+
             <div class="dot active"></div>
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
+
         </div>
 
 
         <!-- FINAL MESSAGE -->
+
         <div class="final-message" id="finalMessage">
 
             <div class="final-icon">💗</div>
 
-            <h2>And these are our first things...</h2>
+            <h2>
+                And these are our first things...
+            </h2>
 
             <p>
                 These are our first things.
@@ -492,9 +580,12 @@
 
 
         <!-- FIRST WHATSAPP CHAT -->
+
         <div class="extra-section">
 
-            <h3>💌 A Little Piece of Our Beginning</h3>
+            <h3>
+                💌 A Little Piece of Our Beginning
+            </h3>
 
             <p>
                 Our very first WhatsApp chat started on
@@ -509,9 +600,12 @@
 
 
         <!-- POEM -->
+
         <div class="extra-section">
 
-            <h3>🌸 A Little Poem</h3>
+            <h3>
+                🌸 A Little Poem
+            </h3>
 
             <p>
                 A little poem for you — I'll complete these words one day. ♡
@@ -519,9 +613,8 @@
 
             <div class="poem">
 
-                <!-- PLACEHOLDER POEM — CHANGE THIS LATER -->
-
                 <span>
+
                     ඔබේ සිනහව මතකයක් වගේ,<br>
                     නිහඬ දවසක හිතට එනවා... ♡<br><br>
 
@@ -529,9 +622,10 @@
                     ඔබේ මතකය ළඟම ඉන්නවා... 🌸<br><br>
 
                     <i>
-                    [ මෙතනට මම ලියන ලස්සනම කවිය
-                    එක දවසක දාන්නම්... ♡ ]
+                        [ මෙතනට මම ලියන ලස්සනම කවිය
+                        එක දවසක දාන්නම්... ♡ ]
                     </i>
+
                 </span>
 
             </div>
@@ -539,10 +633,12 @@
         </div>
 
     </div>
+
 </div>
 
 
 <!-- WHATSAPP CHAT VIEWER -->
+
 <div class="chat-viewer" id="chatViewer">
 
     <div class="chat-content">
@@ -554,6 +650,7 @@
         <div class="chat-subtitle">
             09 December 2025 — The beginning of our little chat ♡
         </div>
+
 
         <!--
             IMPORTANT:
@@ -569,6 +666,7 @@
             class="chat-image"
         >
 
+
         <button class="return-button" onclick="closeChat()">
             ← Back to Our Memories
         </button>
@@ -580,6 +678,7 @@
 
 <script>
 
+
     /* ==========================================
        FIRST THINGS DATA
     ========================================== */
@@ -588,38 +687,54 @@
 
         {
             icon: "💬",
+
             title: "Our First Chat",
+
             date: "09 December 2025",
+
             text:
                 "The day our little conversation started. " +
                 "It was your birthday, and somehow that day became " +
                 "the beginning of one of my favourite memories."
         },
 
+
         {
             icon: "🌸",
+
             title: "Our First Meetup",
+
             date: "13 February 2026",
+
             text:
                 "The first time we actually met. " +
                 "A date that became another little chapter " +
                 "in our story. ♡"
         },
 
+
         {
             icon: "💗",
+
             title: "Our First Kiss",
+
             date: "Date to be remembered",
+
             text:
                 "I can't remember the exact date yet... " +
                 "so this little place is waiting for the real date.",
+
             placeholder: true
         },
 
+
         {
             icon: "🌷",
+
             title: "Our First Date",
+
             date: "22 July 2026",
+
             text:
                 "Our first proper date — another day that became " +
                 "a memory I want to keep for a very long time. ♡"
@@ -648,10 +763,12 @@
         const text = document.getElementById("memoryText");
         const placeholder = document.getElementById("placeholder");
 
+
         /* Small fade animation */
 
         card.style.opacity = "0";
         card.style.transform = "translateY(8px)";
+
 
         setTimeout(() => {
 
@@ -666,6 +783,7 @@
 
             text.textContent = memory.text;
 
+
             if (memory.placeholder) {
 
                 placeholder.style.display = "block";
@@ -676,6 +794,7 @@
 
             }
 
+
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
 
@@ -685,6 +804,7 @@
         /* Update dots */
 
         const dots = document.querySelectorAll(".dot");
+
 
         dots.forEach((dot, i) => {
 
