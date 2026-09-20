@@ -1,9 +1,7 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -64,7 +62,6 @@ body {
 body::before,
 body::after {
     content: "";
-
     position: fixed;
 
     border-radius: 50%;
@@ -151,116 +148,6 @@ body::after {
     animation:
         boxAppear 1s
         cubic-bezier(.2,.8,.2,1);
-
-    transform-origin: center center;
-
-    transition:
-        transform .15s ease-out,
-        filter .15s ease-out;
-}
-
-/* =========================================
-   CARD PAPER ROCKET ANIMATION
-========================================= */
-
-.box.paper-flying {
-
-    animation:
-        paperRocket 1.2s
-        cubic-bezier(.2,.8,.2,1)
-        infinite alternate;
-
-}
-
-@keyframes paperRocket {
-
-    0% {
-        transform:
-            translateX(0)
-            rotate(-1deg)
-            scale(1);
-    }
-
-    35% {
-        transform:
-            translateX(-4px)
-            rotate(1deg)
-            scale(1.015);
-    }
-
-    70% {
-        transform:
-            translateX(5px)
-            rotate(-1deg)
-            scale(1.025);
-    }
-
-    100% {
-        transform:
-            translateX(-3px)
-            rotate(1.5deg)
-            scale(1.015);
-    }
-
-}
-
-/* Little paper edges */
-
-.box.paper-flying::before,
-.box.paper-flying::after {
-
-    content: "✦";
-
-    position: absolute;
-
-    color: var(--main-light);
-
-    font-size: 15px;
-
-    opacity: .8;
-
-    pointer-events: none;
-
-    animation:
-        paperSparkle .7s
-        ease-in-out infinite alternate;
-}
-
-.box.paper-flying::before {
-
-    left: 8px;
-    top: 35%;
-
-}
-
-.box.paper-flying::after {
-
-    right: 8px;
-    bottom: 30%;
-
-    animation-delay: .25s;
-
-}
-
-@keyframes paperSparkle {
-
-    from {
-        transform:
-            translateY(4px)
-            scale(.7)
-        rotate(0deg);
-
-        opacity: .25;
-    }
-
-    to {
-        transform:
-            translateY(-8px)
-            scale(1.2)
-        rotate(25deg);
-
-        opacity: 1;
-    }
 
 }
 
@@ -499,152 +386,50 @@ h1 {
 }
 
 /* =========================================
-   AIRPLANE AREA
+   SURPRISE BUTTON
 ========================================= */
 
-.flight-area {
+.surprise {
 
     width: 100%;
 
-    height: 82px;
+    margin-top: 17px;
 
-    margin-top: 8px;
+    padding: 14px;
 
-    position: relative;
+    border: none;
 
-    overflow: hidden;
+    border-radius: 15px;
 
-    border-radius: 18px;
+    background: var(--main);
 
-    touch-action: none;
+    color: white;
 
-}
+    font-family: inherit;
 
-/* Cute dotted flight path */
+    font-size: 15px;
 
-.flight-path {
-
-    position: absolute;
-
-    left: 20px;
-    right: 20px;
-
-    top: 42px;
-
-    border-top:
-        2px dashed #efc6d3;
-
-    opacity: .7;
-
-}
-
-/* Destination */
-
-.destination {
-
-    position: absolute;
-
-    right: 7px;
-
-    top: 25px;
-
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    border-radius: 50%;
-
-    background: #fff0f5;
-
-    border:
-        1px solid #f1c7d4;
-
-    font-size: 20px;
+    cursor: pointer;
 
     box-shadow:
-        0 5px 14px
-        rgba(217,107,136,.12);
+        0 7px 18px
+        rgba(217,107,136,.20);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 
     animation:
-        destinationPulse 2s
+        buttonGlow 3s
         ease-in-out infinite;
 
 }
 
-@keyframes destinationPulse {
-
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-
-}
-
-/* =========================================
-   DRAGGABLE AIRPLANE
-========================================= */
-
-.plane {
-
-    position: absolute;
-
-    left: 8px;
-
-    top: 19px;
-
-    width: 52px;
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #fff0f5
-        );
-
-    border:
-        1px solid #f1c7d4;
-
-    box-shadow:
-        0 7px 18px
-        rgba(217,107,136,.18);
-
-    font-size: 28px;
-
-    cursor: grab;
-
-    user-select: none;
-
-    z-index: 5;
-
-    touch-action: none;
-
-    transition:
-        box-shadow .2s ease,
-        transform .2s ease;
-
-}
-
-.plane:hover {
+.surprise:hover {
 
     transform:
-        scale(1.08)
-        rotate(-5deg);
+        translateY(-3px)
+        scale(1.02);
 
     box-shadow:
         0 10px 25px
@@ -652,108 +437,30 @@ h1 {
 
 }
 
-.plane.dragging {
-
-    cursor: grabbing;
+.surprise:active {
 
     transform:
-        scale(1.12)
-        rotate(-8deg);
-
-    box-shadow:
-        0 12px 30px
-        rgba(217,107,136,.35);
+        scale(.96);
 
 }
 
-/* Plane flying */
+@keyframes buttonGlow {
 
-.plane.fly {
+    0%,100% {
 
-    animation:
-        planeFly .8s
-        ease-in forwards;
+        box-shadow:
+            0 7px 18px
+            rgba(217,107,136,.20);
 
-}
-
-@keyframes planeFly {
-
-    0% {
-        transform:
-            translateY(0)
-            rotate(-8deg)
-            scale(1.1);
     }
 
-    45% {
-        transform:
-            translateY(-20px)
-            rotate(-15deg)
-            scale(1.18);
+    50% {
+
+        box-shadow:
+            0 9px 27px
+            rgba(217,107,136,.35);
+
     }
-
-    100% {
-        transform:
-            translate(90px,-80px)
-            rotate(-25deg)
-            scale(.5);
-
-        opacity: 0;
-    }
-
-}
-
-/* =========================================
-   DRAG HINT
-========================================= */
-
-.drag-hint {
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: 100%;
-
-    color: var(--muted);
-
-    font-size: 10px;
-
-    opacity: .75;
-
-    pointer-events: none;
-
-}
-
-/* =========================================
-   FLYING TRAIL
-========================================= */
-
-.flight-trail {
-
-    position: absolute;
-
-    height: 3px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #f3b0c2
-        );
-
-    transform-origin: left center;
-
-    pointer-events: none;
-
-    opacity: .8;
 
 }
 
@@ -857,7 +564,7 @@ h1 {
 
     left: 8%;
 
-    bottom: 9%;
+    bottom: 25%;
 
     font-size: 21px;
 
@@ -1219,436 +926,124 @@ h1 {
 
 <div class="sparkle s4"></div>
 
-
 <!-- =====================================
      MAIN CARD
 ===================================== -->
 
 <div class="box">
 
-    <div class="heart">
-        ♡
+```
+<div class="heart">
+    ♡
+</div>
+
+
+<p class="small-title">
+    Today is a little more special...
+</p>
+
+
+<h1>
+    Happy Birthday ❤️
+</h1>
+
+
+<div class="cake">
+    🎂
+</div>
+
+
+<div class="wish">
+
+    <div class="name">
+        Happy Birthday, My Love ♡
     </div>
 
+    <br>
 
-    <p class="small-title">
-        Today is a little more special...
-    </p>
+    I hope your day is filled with
+    beautiful moments, genuine smiles,
+    and all the happiness you deserve.
 
+    <br><br>
 
-    <h1>
-        Happy Birthday ❤️
-    </h1>
+    Thank you for being one of the
+    most beautiful parts of my life.
 
+    <br><br>
 
-    <div class="cake">
-        🎂
-    </div>
+    I hope this new year of your life
+    brings you closer to everything
+    you've ever dreamed of.
 
+    <br><br>
 
-    <div class="wish">
+    And most importantly...
 
-        <div class="name">
-            Happy Birthday, My Love ♡
-        </div>
+    <br>
 
-        <br>
-
-        I hope your day is filled with
-        beautiful moments, genuine smiles,
-        and all the happiness you deserve.
-
-        <br><br>
-
-        Thank you for being one of the
-        most beautiful parts of my life.
-
-        <br><br>
-
-        I hope this new year of your life
-        brings you closer to everything
-        you've ever dreamed of.
-
-        <br><br>
-
-        And most importantly...
-
-        <br>
-
-        <strong>
-            I hope I get to be beside you
-            for many more birthdays. ❤️
-        </strong>
-
-    </div>
-
-
-    <div class="message">
-
-        This little website is only a tiny
-        way of telling you how special
-        you are to me.
-
-        <br>
-
-        There is still one more thing
-        waiting for you... 👀
-
-    </div>
-
-
-    <div class="divider"></div>
-
-
-    <!-- =================================
-         DRAG AIRPLANE
-    ================================== -->
-
-    <div class="flight-area" id="flightArea">
-
-        <div class="flight-path"></div>
-
-        <div class="destination">
-            💕
-        </div>
-
-        <div
-            class="plane"
-            id="plane"
-            aria-label="Drag airplane to continue"
-        >
-            ✈️
-        </div>
-
-        <div class="drag-hint">
-            Drag the little airplane → to continue
-        </div>
-
-    </div>
+    <strong>
+        I hope I get to be beside you
+        for many more birthdays. ❤️
+    </strong>
 
 </div>
 
 
+<div class="message">
+
+    This little website is only a tiny
+    way of telling you how special
+    you are to me.
+
+    <br>
+
+    There is still one more thing
+    waiting for you... 👀
+
+</div>
+
+
+<div class="divider"></div>
+
+
+<button
+    class="surprise"
+    onclick="goToSurprise()">
+
+    🎁 One More Surprise ♡
+
+</button>
+```
+
+</div>
+
 <script>
 
 /* =========================================
-   AIRPLANE DRAG SYSTEM
+   GO TO THIRD PAGE
 ========================================= */
 
-const plane =
-    document.getElementById("plane");
+function goToSurprise() {
 
-const flightArea =
-    document.getElementById("flightArea");
+    const box =
+        document.querySelector(".box");
 
-const box =
-    document.querySelector(".box");
-
-let dragging = false;
-
-let startPointerX = 0;
-
-let startPlaneLeft = 0;
-
-let currentLeft = 8;
-
-
-/* =========================================
-   CREATE FLIGHT TRAIL
-========================================= */
-
-function createTrail(x, y, length) {
-
-    const trail =
-        document.createElement("div");
-
-    trail.className =
-        "flight-trail";
-
-    trail.style.left =
-        x + "px";
-
-    trail.style.top =
-        y + "px";
-
-    trail.style.width =
-        Math.max(10, length) + "px";
-
-    trail.style.transform =
-        "rotate(0deg)";
-
-    flightArea.appendChild(trail);
-
-    setTimeout(function() {
-
-        trail.style.opacity = "0";
-
-        trail.style.transform =
-            "translateX(-15px)";
-
-    }, 20);
-
-    setTimeout(function() {
-
-        trail.remove();
-
-    }, 400);
-
-}
-
-
-/* =========================================
-   POINTER DOWN
-========================================= */
-
-plane.addEventListener(
-    "pointerdown",
-    function(event) {
-
-        event.preventDefault();
-
-        dragging = true;
-
-        plane.classList.add("dragging");
-
-        plane.setPointerCapture(
-            event.pointerId
-        );
-
-        startPointerX =
-            event.clientX;
-
-        startPlaneLeft =
-            currentLeft;
-
-        box.classList.add(
-            "paper-flying"
-        );
-
-    }
-);
-
-
-/* =========================================
-   POINTER MOVE
-========================================= */
-
-plane.addEventListener(
-    "pointermove",
-    function(event) {
-
-        if (!dragging) return;
-
-        event.preventDefault();
-
-        const movement =
-            event.clientX -
-            startPointerX;
-
-        const maxLeft =
-            flightArea.clientWidth -
-            plane.offsetWidth -
-            5;
-
-        currentLeft =
-            Math.max(
-                5,
-                Math.min(
-                    maxLeft,
-                    startPlaneLeft +
-                    movement
-                )
-            );
-
-        plane.style.left =
-            currentLeft + "px";
-
-
-        /*
-           Make the card feel like
-           a little paper rocket
-           while dragging.
-        */
-
-        const progress =
-            currentLeft / maxLeft;
-
-        const tilt =
-            (progress - .5) * 5;
-
-        const scale =
-            1 + progress * .025;
-
-        box.style.transform =
-            `rotate(${tilt}deg) scale(${scale})`;
-
-
-        /*
-           Airplane leaves a cute trail
-        */
-
-        createTrail(
-            currentLeft + 2,
-            43,
-            20
-        );
-
-
-        /*
-           Almost at destination
-        */
-
-        if (progress > .82) {
-
-            box.style.transform =
-                `rotate(-2deg) scale(1.035)`;
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   POINTER UP
-========================================= */
-
-plane.addEventListener(
-    "pointerup",
-    function(event) {
-
-        if (!dragging) return;
-
-        dragging = false;
-
-        plane.classList.remove(
-            "dragging"
-        );
-
-        plane.releasePointerCapture(
-            event.pointerId
-        );
-
-
-        const maxLeft =
-            flightArea.clientWidth -
-            plane.offsetWidth -
-            5;
-
-        const progress =
-            currentLeft / maxLeft;
-
-
-        /*
-           If airplane reached the
-           destination, continue.
-        */
-
-        if (progress >= .82) {
-
-            continueToNextPage();
-
-        } else {
-
-            /*
-               Slowly return airplane
-               to starting position.
-            */
-
-            plane.style.transition =
-                "left .5s cubic-bezier(.2,.8,.2,1)";
-
-            plane.style.left =
-                "8px";
-
-            currentLeft = 8;
-
-            box.style.transition =
-                "transform .5s ease";
-
-            box.style.transform =
-                "rotate(0deg) scale(1)";
-
-            box.classList.remove(
-                "paper-flying"
-            );
-
-
-            setTimeout(function() {
-
-                plane.style.transition =
-                    "";
-
-                box.style.transition =
-                    "";
-
-            }, 550);
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   ALSO SUPPORT TOUCH / MOUSE SAFETY
-========================================= */
-
-plane.addEventListener(
-    "pointercancel",
-    function() {
-
-        dragging = false;
-
-        plane.classList.remove(
-            "dragging"
-        );
-
-        plane.style.left =
-            "8px";
-
-        currentLeft = 8;
-
-        box.style.transform =
-            "rotate(0deg) scale(1)";
-
-        box.classList.remove(
-            "paper-flying"
-        );
-
-    }
-);
-
-
-/* =========================================
-   GO TO NEXT PAGE
-========================================= */
-
-function continueToNextPage() {
-
-    if (plane.classList.contains("fly")) {
-        return;
-    }
-
-    plane.classList.add("fly");
-
-    box.classList.remove(
-        "paper-flying"
-    );
+    /*
+       Small exit animation
+    */
 
     box.style.transition =
-        "transform .8s ease, opacity .8s ease";
+        "transform .5s ease, opacity .5s ease";
 
     box.style.transform =
-        "scale(.92) rotate(-2deg)";
+        "scale(1.05)";
 
     box.style.opacity =
         "0";
 
-
     /*
-       Open third page after
-       the flying animation.
+       Open third page
     */
 
     setTimeout(function() {
@@ -1656,7 +1051,7 @@ function continueToNextPage() {
         window.location.href =
             "third.html";
 
-    }, 800);
+    }, 500);
 
 }
 
@@ -1672,26 +1067,10 @@ window.addEventListener(
         const box =
             document.querySelector(".box");
 
-        const plane =
-            document.getElementById("plane");
-
         box.style.opacity = "1";
 
         box.style.transform =
             "translateY(0) scale(1)";
-
-        box.classList.remove(
-            "paper-flying"
-        );
-
-        plane.classList.remove(
-            "fly"
-        );
-
-        plane.style.left =
-            "8px";
-
-        currentLeft = 8;
 
     }
 );
@@ -1704,13 +1083,6 @@ window.addEventListener(
 document.addEventListener(
     "click",
     function(event) {
-
-        /*
-           Don't create the click sparkle
-           while dragging the airplane.
-        */
-
-        if (dragging) return;
 
         for (let i = 0; i < 5; i++) {
 
@@ -1754,8 +1126,7 @@ document.addEventListener(
             const angle =
                 (Math.PI * 2 / 5) * i;
 
-            const distance =
-                25 +
+            const distance = 25 +
                 Math.random() * 25;
 
             setTimeout(function() {
@@ -1785,6 +1156,4 @@ document.addEventListener(
 </script>
 
 </body>
-
 </html>
-```
