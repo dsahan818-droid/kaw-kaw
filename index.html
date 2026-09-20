@@ -1,1200 +1,2094 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>A Little Secret ♡</title>
 
+
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+    --main: #d96b88;
+    --main-light: #f3b0c2;
+    --light: #fff7f9;
+    --soft: #f3d9e1;
+    --text: #604953;
+    --muted: #947d85;
+}
+
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    color: var(--text);
+    background: #fff7f9;
+}
+
+
+/* ================================
+   BACKGROUND
+================================ */
+
+body::before,
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+body::before {
+
+    width: 500px;
+    height: 500px;
+
+    left: -210px;
+    top: -210px;
+
+    background: #f3d9e1;
+
+    opacity: .65;
+
+    animation:
+        backgroundFloat 9s ease-in-out infinite;
+}
+
+
+body::after {
+
+    width: 450px;
+    height: 450px;
+
+    right: -190px;
+    bottom: -190px;
+
+    background: #f4e4e8;
+
+    opacity: .7;
+
+    animation:
+        backgroundFloat2 11s ease-in-out infinite;
+}
+
+
+@keyframes backgroundFloat {
+
+    50% {
+        transform: translate(35px, 25px);
     }
 
-    body {
-        min-height: 100vh;
-        background: linear-gradient(180deg, #ffeef5 0%, #fff8fb 100%);
-        font-family: "Segoe UI", sans-serif;
-        overflow: hidden;
-        color: #5d4650;
+}
+
+
+@keyframes backgroundFloat2 {
+
+    50% {
+        transform: translate(-30px, -25px);
     }
 
-    .page {
-        width: 100%;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
+}
+
+
+/* ================================
+   MAIN BOX
+================================ */
+
+.box {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(94%, 430px);
+
+    padding: 28px 22px 25px;
+
+    background: rgba(255,255,255,.95);
+
+    border: 1px solid var(--soft);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 60px rgba(80,40,50,.12);
+
+    text-align: center;
+
+    animation:
+        boxAppear 1s cubic-bezier(.2,.8,.2,1);
+
+    transition:
+        transform .4s ease,
+        opacity .6s ease;
+}
+
+
+@keyframes boxAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.94);
     }
 
-    /* =========================
-       BACKGROUND CLOUDS
-    ========================= */
+    to {
 
-    .cloud {
-        position: absolute;
-        font-size: 55px;
-        opacity: 0.8;
-        pointer-events: none;
-        user-select: none;
-        animation: cloudFloat 8s ease-in-out infinite;
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 
-    .cloud.one {
-        top: 8%;
-        left: 5%;
-        animation-delay: 0s;
+}
+
+
+/* ================================
+   HEART
+================================ */
+
+.heart {
+
+    display: inline-block;
+
+    font-size: 25px;
+
+    color: var(--main);
+
+    animation:
+        heartBeat 2s ease-in-out infinite;
+}
+
+
+@keyframes heartBeat {
+
+    50% {
+        transform: scale(1.18);
     }
 
-    .cloud.two {
-        top: 15%;
-        right: 8%;
-        font-size: 45px;
-        animation-delay: 2s;
+}
+
+
+h1 {
+
+    margin-top: 5px;
+
+    color: var(--main);
+
+    font-size: 27px;
+
+    font-weight: 600;
+}
+
+
+.subtitle {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   CALENDAR HINT
+================================ */
+
+.calendar-hint {
+
+    margin-top: 17px;
+
+    padding: 10px 13px;
+
+    border-radius: 18px;
+
+    background: #fff0f5;
+
+    color: #805568;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ================================
+   CALENDAR
+================================ */
+
+.calendar {
+
+    position: relative;
+
+    margin-top: 15px;
+
+    padding: 17px 15px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffafd,
+            #fff3f7
+        );
+
+    border: 1px solid #f1c7d4;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.calendar-header {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    color: var(--main);
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.calendar-header span {
+
+    color: #c49aa6;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   DAYS
+================================ */
+
+.days {
+
+    position: relative;
+
+    z-index: 4;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+}
+
+
+.day-name {
+
+    padding-bottom: 4px;
+
+    color: #a1848d;
+
+    font-size: 10px;
+}
+
+
+.day {
+
+    min-height: 38px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.day:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.06);
+
+    background:
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 5px 15px rgba(90,45,60,.10);
+}
+
+
+.day.selected {
+
+    background: var(--main);
+
+    color: white;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 7px 18px
+        rgba(217,107,136,.25);
+
+    animation:
+        selectedDate .35s ease;
+}
+
+
+@keyframes selectedDate {
+
+    0% {
+        transform: scale(.8);
     }
 
-    .cloud.three {
-        top: 38%;
-        left: -10px;
-        font-size: 38px;
-        animation-delay: 4s;
-    }
-
-    @keyframes cloudFloat {
-        0%, 100% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(25px);
-        }
-    }
-
-    /* =========================
-       SUN
-    ========================= */
-
-    .sun {
-        position: absolute;
-        top: 30px;
-        right: 12%;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: #ffd86b;
-        box-shadow: 0 0 35px rgba(255, 213, 91, 0.6);
-        animation: sunPulse 4s ease-in-out infinite;
-        pointer-events: none;
-    }
-
-    @keyframes sunPulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.08);
-        }
-    }
-
-    /* =========================
-       MAIN BOX
-    ========================= */
-
-    .box {
-        width: min(92%, 440px);
-        max-height: 92vh;
-        overflow: visible;
-        background: rgba(255, 255, 255, 0.92);
-        border-radius: 30px;
-        padding: 28px 22px 25px;
-        box-shadow:
-            0 20px 60px rgba(194, 119, 145, 0.18),
-            0 5px 15px rgba(194, 119, 145, 0.1);
-        text-align: center;
-        position: relative;
-        z-index: 10;
-        border: 2px solid rgba(255, 196, 215, 0.65);
-        transition: transform 0.6s ease, opacity 0.6s ease;
-    }
-
-    .box::before {
-        content: "";
-        position: absolute;
-        inset: 7px;
-        border: 1px dashed rgba(230, 155, 180, 0.35);
-        border-radius: 24px;
-        pointer-events: none;
-    }
-
-    h1 {
-        font-family: Georgia, serif;
-        color: #d66d91;
-        font-size: 30px;
-        margin-bottom: 6px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .subtitle {
-        font-size: 13px;
-        color: #a37c89;
-        margin-bottom: 17px;
-        position: relative;
-        z-index: 2;
-    }
-
-    /* =========================
-       CALENDAR
-    ========================= */
-
-    .calendar-wrap {
-        position: relative;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .calendar {
-        width: 100%;
-        background: #fffdfd;
-        border-radius: 20px;
-        padding: 15px 10px 13px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(211, 136, 160, 0.12);
-        border: 1px solid #f5d8e2;
-
-        transition:
-            transform 0.5s ease,
-            box-shadow 0.5s ease;
-    }
-
-    /* paper rocket animation */
-    .calendar.paper-rocket {
-        animation: paperRocket 0.8s ease-in-out;
-    }
-
-    @keyframes paperRocket {
-        0% {
-            transform: translateX(0) rotate(0deg);
-        }
-
-        25% {
-            transform: translateX(-7px) rotate(-1deg);
-        }
-
-        50% {
-            transform: translateX(7px) rotate(1deg);
-        }
-
-        75% {
-            transform: translateX(-4px) rotate(-0.5deg);
-        }
-
-        100% {
-            transform: translateX(0) rotate(0deg);
-        }
-    }
-
-    .month {
-        font-family: Georgia, serif;
-        font-size: 22px;
-        color: #d86e93;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    .weekdays,
-    .days {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 4px;
-    }
-
-    .weekday {
-        font-size: 10px;
-        color: #b78b99;
-        font-weight: bold;
-        padding-bottom: 4px;
-    }
-
-    .day {
-        height: 34px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        font-size: 12px;
-        color: #745761;
-        cursor: pointer;
-        position: relative;
-        z-index: 3;
-        transition:
-            transform 0.2s ease,
-            background 0.2s ease,
-            color 0.2s ease;
-        user-select: none;
-    }
-
-    .day:hover {
-        transform: scale(1.1);
-        background: #fff0f5;
-    }
-
-    .day.selected {
-        background: #f29abb;
-        color: white;
-        font-weight: bold;
-        transform: scale(1.08);
-        box-shadow: 0 4px 10px rgba(229, 115, 157, 0.25);
-    }
-
-    .day.empty {
-        cursor: default;
-    }
-
-    .day.empty:hover {
-        transform: none;
-        background: transparent;
-    }
-
-    /* =========================
-       DECORATIONS ON CALENDAR
-    ========================= */
-
-    .scene {
-        position: absolute;
-        z-index: 5;
-        pointer-events: none;
-        user-select: none;
-    }
-
-    .calendar-sun {
-        top: 7px;
-        right: 20px;
-        font-size: 25px;
-        animation: tinySun 3s ease-in-out infinite;
-    }
-
-    @keyframes tinySun {
-        0%, 100% {
-            transform: rotate(0deg) scale(1);
-        }
-        50% {
-            transform: rotate(12deg) scale(1.12);
-        }
-    }
-
-    .calendar-cloud {
-        font-size: 19px;
-        opacity: 0.75;
-        animation: tinyCloud 5s ease-in-out infinite;
-    }
-
-    .calendar-cloud.one {
-        top: 40px;
-        left: 17px;
-    }
-
-    .calendar-cloud.two {
-        top: 72px;
-        right: 12px;
-        animation-delay: 1.5s;
-    }
-
-    @keyframes tinyCloud {
-        0%, 100% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(8px);
-        }
-    }
-
-    .calendar-plane {
-        top: 43px;
-        right: 50px;
-        font-size: 22px;
-        transform: rotate(-8deg);
-        animation: littlePlane 4s ease-in-out infinite;
-    }
-
-    @keyframes littlePlane {
-        0%, 100% {
-            transform: translate(0, 0) rotate(-8deg);
-        }
-        50% {
-            transform: translate(12px, -6px) rotate(-5deg);
-        }
-    }
-
-    .dog {
-        bottom: 4px;
-        left: 15px;
-        font-size: 24px;
-        animation: dogBounce 3s ease-in-out infinite;
-    }
-
-    @keyframes dogBounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-4px);
-        }
-    }
-
-    .tree {
-        bottom: 3px;
-        right: 13px;
-        font-size: 27px;
-        animation: treeMove 4s ease-in-out infinite;
-    }
-
-    @keyframes treeMove {
-        0%, 100% {
-            transform: rotate(-2deg);
-        }
-        50% {
-            transform: rotate(2deg);
-        }
-    }
-
-    /* FLOWER MOVED NEAR DATE 9 */
-    .flower-one {
-        left: 19%;
-        top: 88px;
-        font-size: 23px;
-        animation: flowerFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes flowerFloat {
-        0%, 100% {
-            transform: translateY(0) rotate(-3deg);
-        }
-        50% {
-            transform: translateY(-4px) rotate(4deg);
-        }
-    }
-
-    /* COW NEAR DATE 1 */
-    .cow {
-        left: 3%;
-        top: 53px;
-        font-size: 21px;
-        animation: cowMove 4s ease-in-out infinite;
-    }
-
-    @keyframes cowMove {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-3px) rotate(2deg);
-        }
-    }
-
-    /* =========================
-       QUESTION
-    ========================= */
-
-    .question {
-        margin-top: 17px;
-        font-family: Georgia, serif;
-        font-size: 15px;
-        color: #805967;
-        position: relative;
-        z-index: 3;
-    }
-
-    .question strong {
-        color: #d76f93;
-    }
-
-    /* =========================
-       COLOR OPTIONS
-    ========================= */
-
-    .colors {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        position: relative;
-        z-index: 5;
-    }
-
-    .color-option {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: 0 2px 8px rgba(120, 80, 90, 0.15);
-        cursor: pointer;
-        transition: transform 0.2s ease;
-        position: relative;
-    }
-
-    .color-option:hover {
+    70% {
         transform: scale(1.12);
     }
 
-    .color-option.selected {
-        outline: 3px solid #e58aa8;
-        transform: scale(1.1);
+    100% {
+        transform: scale(1.08);
     }
 
-    .color-pink {
-        background: #f49ab8;
+}
+
+
+/* ================================
+   CALENDAR DECORATIONS
+================================ */
+
+.scene {
+
+    position: absolute;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+/* SUN */
+
+.sun {
+
+    left: 15px;
+    top: 17px;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #ffd76b;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255,215,107,.12);
+
+    animation:
+        sunFloat 4s ease-in-out infinite;
+}
+
+
+.sun::before {
+
+    content: "☀";
+
+    position: absolute;
+
+    inset: -8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #f5bd45;
+
+    font-size: 51px;
+
+    line-height: 1;
+
+    opacity: .75;
+
+    animation:
+        sunSpin 14s linear infinite;
+}
+
+
+.sun-face {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #c98945;
+
+    font-size: 13px;
+
+    z-index: 2;
+}
+
+
+@keyframes sunFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
     }
 
-    .color-blue {
-        background: #9dc9ef;
+    50% {
+        transform:
+            translateY(-4px)
+            rotate(2deg);
     }
 
-    .color-yellow {
-        background: #f8d978;
+}
+
+
+@keyframes sunSpin {
+
+    to {
+        transform: rotate(360deg);
     }
 
-    .color-white {
-        background: white;
-        border: 1px solid #ddd;
+}
+
+
+/* CLOUD */
+
+.cloud {
+
+    width: 48px;
+    height: 19px;
+
+    background: white;
+
+    border: 2px solid #b9dcff;
+
+    border-radius: 20px;
+
+    animation:
+        cloudFloat 5s ease-in-out infinite;
+}
+
+
+.cloud::before,
+.cloud::after {
+
+    content: "";
+
+    position: absolute;
+
+    background: white;
+
+    border: 2px solid #b9dcff;
+
+    border-bottom: 0;
+
+    border-radius: 50%;
+}
+
+
+.cloud::before {
+
+    width: 22px;
+    height: 22px;
+
+    left: 7px;
+    top: -13px;
+}
+
+
+.cloud::after {
+
+    width: 17px;
+    height: 17px;
+
+    right: 7px;
+    top: -9px;
+}
+
+
+.cloud-bottom {
+
+    left: 50%;
+    bottom: 7px;
+
+    transform:
+        translateX(-50%)
+        scale(.72);
+
+    animation-delay: 2.5s;
+}
+
+
+@keyframes cloudFloat {
+
+    0%,100% {
+        margin-left: 0;
     }
 
-    /* =========================
-       ERROR MESSAGE
-    ========================= */
-
-    .message {
-        min-height: 21px;
-        margin-top: 8px;
-        font-size: 12px;
-        color: #d47796;
-        position: relative;
-        z-index: 5;
+    50% {
+        margin-left: 7px;
     }
 
-    .message.shake {
-        animation: shake 0.4s ease;
-    }
+}
 
-    @keyframes shake {
-        0%, 100% {
-            transform: translateX(0);
-        }
-        25% {
-            transform: translateX(-5px);
-        }
-        50% {
-            transform: translateX(5px);
-        }
-        75% {
-            transform: translateX(-3px);
-        }
-    }
 
-    /* =========================
-       AIRPLANE CONTROL
-    ========================= */
+/* CALENDAR PLANE */
 
-    .plane-area {
-        width: 100%;
-        margin-top: 18px;
-        position: relative;
-        z-index: 20;
-    }
+.plane {
 
-    .plane-track {
-        width: 100%;
-        height: 58px;
-        border-radius: 30px;
-        background: linear-gradient(
-            90deg,
-            rgba(255, 221, 232, 0.75),
-            rgba(255, 241, 247, 0.8)
+    right: 16px;
+    top: 16px;
+
+    font-size: 27px;
+
+    filter:
+        drop-shadow(
+            0 2px 2px
+            rgba(80,40,50,.12)
         );
-        border: 1px dashed #efb8cb;
-        position: relative;
-        overflow: hidden;
+
+    animation:
+        planeMove 5s ease-in-out infinite;
+}
+
+
+.plane-trail {
+
+    position: absolute;
+
+    width: 31px;
+    height: 18px;
+
+    right: 38px;
+    top: 32px;
+
+    border-top:
+        2px dashed #e6a8b8;
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-18deg);
+
+    opacity: .7;
+}
+
+
+@keyframes planeMove {
+
+    0%,100% {
+
+        transform:
+            translate(0,0)
+            rotate(-4deg);
     }
 
-    .plane-track::before {
-        content: "♡  •  •  •  •  •  •  ♡";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: rgba(216, 110, 147, 0.22);
-        font-size: 12px;
-        letter-spacing: 5px;
-        white-space: nowrap;
-        pointer-events: none;
+    50% {
+
+        transform:
+            translate(-7px,-5px)
+            rotate(3deg);
     }
 
-    .drag-plane {
-        position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%) rotate(-5deg);
-        width: 52px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 34px;
-        cursor: grab;
-        touch-action: none;
-        user-select: none;
-        z-index: 5;
+}
 
-        transition:
-            left 1.15s cubic-bezier(.22, .61, .36, 1),
-            transform 0.2s ease;
+
+/* DOG */
+
+.dog {
+
+    left: 10px;
+    bottom: 8px;
+
+    font-size: 31px;
+
+    animation:
+        dogBounce 3.5s ease-in-out infinite;
+}
+
+
+@keyframes dogBounce {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
     }
 
-    .drag-plane:hover {
-        transform: translateY(-50%) rotate(-5deg) scale(1.08);
+    50% {
+        transform:
+            translateY(-5px)
+            rotate(2deg);
     }
 
-    .drag-plane.dragging {
-        cursor: grabbing;
-        transition: none;
-        transform: translateY(-50%) rotate(-3deg) scale(1.1);
+}
+
+
+/* COW */
+
+.cow {
+
+    left: 3%;
+    top: 75px;
+
+    font-size: 25px;
+
+    animation:
+        cowBounce 3.8s ease-in-out infinite;
+}
+
+
+@keyframes cowBounce {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
     }
 
-    .plane-shadow {
-        position: absolute;
-        width: 28px;
-        height: 5px;
-        border-radius: 50%;
-        background: rgba(194, 119, 145, 0.18);
-        bottom: 8px;
-        left: 18px;
-        filter: blur(2px);
+    50% {
+        transform:
+            translateY(-4px)
+            rotate(3deg);
     }
 
-    /* IMPORTANT:
-       No "<- drag" text here anymore.
+}
+
+
+/* TREE */
+
+.tree {
+
+    right: 9px;
+    bottom: 5px;
+
+    font-size: 38px;
+
+    animation:
+        treeSway 4s ease-in-out infinite;
+
+    transform-origin:
+        bottom center;
+}
+
+
+@keyframes treeSway {
+
+    0%,100% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+
+}
+
+
+/* FLOWER */
+
+.flower {
+
+    font-size: 18px;
+
+    animation:
+        flowerFloat 3s ease-in-out infinite;
+}
+
+
+.flower-one {
+
+    left: 20%;
+    top: 91px;
+}
+
+
+@keyframes flowerFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+
+        transform:
+            translateY(-3px)
+            rotate(4deg);
+    }
+
+}
+
+
+/* ================================
+   DATE MESSAGE
+================================ */
+
+.date-message {
+
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.question {
+
+    margin-top: 14px;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+
+/* ================================
+   COLOR OPTIONS
+================================ */
+
+.color-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-top: 10px;
+}
+
+
+.color-option {
+
+    padding: 11px 5px;
+
+    border:
+        1px solid var(--soft);
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.color-option:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 6px 15px
+        rgba(80,40,50,.10);
+}
+
+
+.color-option.selected {
+
+    background: var(--main);
+
+    color: white;
+
+    border-color: var(--main);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 16px
+        rgba(217,107,136,.22);
+
+    animation:
+        colorSelect .3s ease;
+}
+
+
+@keyframes colorSelect {
+
+    0% {
+        transform: scale(.9);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* ================================
+   AIRPLANE CONTROL
+================================ */
+
+.plane-control {
+
+    position: relative;
+
+    width: 100%;
+    height: 72px;
+
+    margin-top: 14px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff0f5,
+            #fff8fa,
+            #fff0f5
+        );
+
+    border:
+        1px solid var(--soft);
+
+    overflow: hidden;
+
+    touch-action: none;
+
+    user-select: none;
+}
+
+
+.plane-track {
+
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+
+    top: 50%;
+
+    height: 2px;
+
+    border-top:
+        2px dashed #efc0ce;
+
+    transform:
+        translateY(-50%);
+
+    opacity: .75;
+}
+
+
+/* ================================
+   DRAG PLANE
+================================ */
+
+.drag-plane {
+
+    position: absolute;
+
+    left: 10px;
+    top: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform:
+        translateY(-50%);
+
+    font-size: 31px;
+
+    cursor: grab;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 4px 4px
+            rgba(80,40,50,.14)
+        );
+
+    /*
+       Important:
+       The normal drag has no transition.
+       Return animation is added by JavaScript.
     */
 
-    .plane-message {
-        margin-top: 5px;
-        font-size: 10px;
-        color: #b78b99;
-        opacity: 0.8;
+    transition:
+        filter .2s ease;
+}
+
+
+.drag-plane:active {
+
+    cursor: grabbing;
+}
+
+
+.drag-plane.dragging {
+
+    cursor: grabbing;
+
+    filter:
+        drop-shadow(
+            0 7px 7px
+            rgba(80,40,50,.18)
+        );
+}
+
+
+/* ================================
+   PLANE LABELS
+================================ */
+
+.plane-control::before,
+.plane-control::after {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #c49aa6;
+
+    font-size: 12px;
+}
+
+
+.plane-control::before {
+
+    content: "← drag";
+
+    left: 9px;
+    top: 12px;
+}
+
+
+.plane-control::after {
+
+    content: "drag →";
+
+    right: 9px;
+    top: 60px;
+}
+
+
+.plane-hint {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 7px;
+
+    transform:
+        translateX(-50%);
+
+    color: #a1848d;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+#error {
+
+    display: none;
+
+    margin-top: 10px;
+
+    color: var(--main);
+
+    font-size: 12px;
+
+    animation:
+        shake .4s ease;
+}
+
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
     }
 
-    /* =========================
-       DECORATIVE BOTTOM ITEMS
-    ========================= */
-
-    .bottom-heart {
-        position: absolute;
-        bottom: 10%;
-        left: 8%;
-        font-size: 25px;
-        animation: heartFloat 4s ease-in-out infinite;
-        pointer-events: none;
+    25% {
+        transform: translateX(-6px);
     }
 
-    @keyframes heartFloat {
-        0%, 100% {
-            transform: translateY(0) rotate(-5deg);
-        }
-        50% {
-            transform: translateY(-8px) rotate(5deg);
-        }
+    75% {
+        transform: translateX(6px);
     }
 
-    /* =========================
-       FADE OUT
-    ========================= */
+}
 
-    .box.leaving {
+
+/* ================================
+   CURSOR TRAIL
+================================ */
+
+.cursor-dot {
+
+    position: fixed;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--main);
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: .45;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        cursorFade .6s ease-out forwards;
+}
+
+
+@keyframes cursorFade {
+
+    from {
+
+        opacity: .45;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    to {
+
         opacity: 0;
-        transform: scale(0.95) translateY(-10px);
+
+        transform:
+            translate(-50%,-50%)
+            scale(0);
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+}
 
-    @media (max-width: 480px) {
-        .box {
-            padding: 23px 15px 20px;
-            border-radius: 25px;
-        }
 
-        h1 {
-            font-size: 26px;
-        }
+/* ================================
+   MOBILE
+================================ */
 
-        .calendar {
-            padding: 13px 7px 11px;
-        }
+@media (max-width: 420px) {
 
-        .day {
-            height: 31px;
-            font-size: 11px;
-        }
+    .box {
 
-        .flower-one {
-            left: 18%;
-            top: 84px;
-        }
-
-        .cow {
-            left: 2%;
-            top: 50px;
-        }
-
-        .calendar-plane {
-            right: 40px;
-        }
-
-        .plane-track {
-            height: 55px;
-        }
-
-        .drag-plane {
-            width: 48px;
-            font-size: 31px;
-        }
+        padding:
+            23px 15px 20px;
     }
+
+
+    h1 {
+
+        font-size: 24px;
+    }
+
+
+    .calendar {
+
+        padding:
+            13px 10px 18px;
+    }
+
+
+    .calendar-hint {
+
+        font-size: 10px;
+    }
+
+
+    .day {
+
+        min-height: 35px;
+
+        font-size: 12px;
+    }
+
+
+    .sun {
+
+        left: 8px;
+        top: 17px;
+
+        transform: scale(.78);
+    }
+
+
+    .plane {
+
+        right: 8px;
+        top: 17px;
+
+        font-size: 23px;
+    }
+
+
+    .dog {
+
+        left: 6px;
+
+        font-size: 27px;
+    }
+
+
+    .cow {
+
+        left: 1px;
+
+        font-size: 22px;
+    }
+
+
+    .tree {
+
+        right: 4px;
+
+        font-size: 33px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="page">
 
-    <!-- BACKGROUND -->
-    <div class="cloud one">☁️</div>
-    <div class="cloud two">☁️</div>
-    <div class="cloud three">☁️</div>
+<div class="box">
 
-    <div class="sun"></div>
 
-    <div class="bottom-heart">♡</div>
+    <div class="heart">
+        ♡
+    </div>
 
-    <!-- MAIN -->
-    <div class="box" id="mainBox">
 
-        <h1>A Little Secret ♡</h1>
+    <h1>
+        A Little Secret
+    </h1>
 
-        <div class="subtitle">
-            There is something waiting for you...
+
+    <p class="subtitle">
+        Some days are more special than others...
+    </p>
+
+
+    <div class="calendar-hint">
+
+        🌸 A little clue... think back to
+        the day our story began —
+        the first time we met as friends. ♡
+
+    </div>
+
+
+    <div class="calendar">
+
+
+        <div class="calendar-header">
+
+            <span>♡</span>
+
+            February 2026
+
+            <span>♡</span>
+
         </div>
 
-        <div class="calendar-wrap">
 
-            <div class="calendar" id="calendar">
+        <div class="scene sun">
 
-                <div class="month">February 2026</div>
-
-                <!-- CALENDAR DECORATIONS -->
-
-                <div class="scene calendar-sun">☀️</div>
-
-                <div class="scene calendar-cloud one">☁️</div>
-                <div class="scene calendar-cloud two">☁️</div>
-
-                <div class="scene calendar-plane">✈️</div>
-
-                <div class="scene dog">🐶</div>
-                <div class="scene tree">🌳</div>
-
-                <!-- flower near 9 -->
-                <div class="scene flower-one">🌸</div>
-
-                <!-- cow near 1 -->
-                <div class="scene cow">🐮</div>
-
-                <div class="weekdays">
-                    <div class="weekday">SUN</div>
-                    <div class="weekday">MON</div>
-                    <div class="weekday">TUE</div>
-                    <div class="weekday">WED</div>
-                    <div class="weekday">THU</div>
-                    <div class="weekday">FRI</div>
-                    <div class="weekday">SAT</div>
-                </div>
-
-                <div class="days" id="days"></div>
-
-            </div>
-        </div>
-
-        <div class="question">
-            Which date is hiding the secret? ♡
-        </div>
-
-        <div class="colors">
-
-            <div
-                class="color-option color-pink"
-                data-color="pink"
-                title="Pink">
-            </div>
-
-            <div
-                class="color-option color-blue"
-                data-color="blue"
-                title="Blue">
-            </div>
-
-            <div
-                class="color-option color-yellow"
-                data-color="yellow"
-                title="Yellow">
-            </div>
-
-            <div
-                class="color-option color-white"
-                data-color="white"
-                title="White">
+            <div class="sun-face">
+                •ᴗ•
             </div>
 
         </div>
 
-        <div class="message" id="message"></div>
 
-        <!-- AIRPLANE DRAG AREA -->
-        <div class="plane-area">
+        <div class="scene cloud cloud-bottom"></div>
 
-            <div class="plane-track" id="planeTrack">
 
-                <div
-                    class="drag-plane"
-                    id="dragPlane"
-                    role="button"
-                    aria-label="Drag airplane to continue">
-                    ✈️
-                </div>
+        <div class="scene plane">
+            ✈️
+        </div>
 
-            </div>
 
-            <div class="plane-message">
-                Fly to the right when you're ready ♡
-            </div>
+        <div class="scene plane-trail"></div>
+
+
+        <div class="scene dog">
+            🐶
+        </div>
+
+
+        <div class="scene cow">
+            🐮
+        </div>
+
+
+        <div class="scene tree">
+            🌳
+        </div>
+
+
+        <div class="scene flower flower-one">
+            🌷
+        </div>
+
+
+        <div class="days">
+
+
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+
+
+            <div class="day" data-date="1">1</div>
+            <div class="day" data-date="2">2</div>
+            <div class="day" data-date="3">3</div>
+            <div class="day" data-date="4">4</div>
+            <div class="day" data-date="5">5</div>
+            <div class="day" data-date="6">6</div>
+            <div class="day" data-date="7">7</div>
+
+
+            <div class="day" data-date="8">8</div>
+            <div class="day" data-date="9">9</div>
+            <div class="day" data-date="10">10</div>
+            <div class="day" data-date="11">11</div>
+            <div class="day" data-date="12">12</div>
+            <div class="day" data-date="13">13</div>
+            <div class="day" data-date="14">14</div>
+
+
+            <div class="day" data-date="15">15</div>
+            <div class="day" data-date="16">16</div>
+            <div class="day" data-date="17">17</div>
+            <div class="day" data-date="18">18</div>
+            <div class="day" data-date="19">19</div>
+            <div class="day" data-date="20">20</div>
+            <div class="day" data-date="21">21</div>
+
+
+            <div class="day" data-date="22">22</div>
+            <div class="day" data-date="23">23</div>
+            <div class="day" data-date="24">24</div>
+            <div class="day" data-date="25">25</div>
+            <div class="day" data-date="26">26</div>
+            <div class="day" data-date="27">27</div>
+            <div class="day" data-date="28">28</div>
 
         </div>
 
     </div>
 
+
+    <div
+        class="date-message"
+        id="dateMessage"
+    >
+        Choose a special day ♡
+    </div>
+
+
+    <div class="question">
+
+        And what color were you wearing
+        that day? ♡
+
+    </div>
+
+
+    <div class="color-options">
+
+
+        <div
+            class="color-option"
+            data-color="black"
+            onclick="selectColor(this)"
+        >
+            🖤 Black
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="white"
+            onclick="selectColor(this)"
+        >
+            🤍 White
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="blue"
+            onclick="selectColor(this)"
+        >
+            💙 Blue
+        </div>
+
+
+    </div>
+
+
+    <!-- DRAGGABLE AIRPLANE -->
+
+    <div
+        class="plane-control"
+        id="planeControl"
+        aria-label="Drag the airplane to continue"
+    >
+
+
+        <div class="plane-track"></div>
+
+
+        <div
+            class="drag-plane"
+            id="dragPlane"
+            role="button"
+            aria-label="Drag airplane to continue"
+        >
+            ✈️
+        </div>
+
+
+        <div
+            class="plane-hint"
+            id="planeHint"
+        >
+            Drag the little plane to the right ♡
+        </div>
+
+
+    </div>
+
+
+    <div id="error">
+
+        Hmm... one little detail
+        isn't quite right ♡
+
+    </div>
+
+
 </div>
 
 
 <script>
-/* =====================================================
-   CALENDAR
-===================================================== */
 
-const daysContainer = document.getElementById("days");
 
-const firstDay = 0; // February 1, 2026 is Sunday
-const totalDays = 28;
+/* ================================
+   CORRECT ANSWERS
+================================ */
+
+const correctDate = "13";
+
+const correctColor = "white";
+
 
 let selectedDate = null;
+
 let selectedColor = null;
 
-for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement("div");
-    empty.className = "day empty";
-    daysContainer.appendChild(empty);
-}
 
-for (let day = 1; day <= totalDays; day++) {
-
-    const dayElement = document.createElement("div");
-
-    dayElement.className = "day";
-    dayElement.textContent = day;
-
-    dayElement.dataset.day = day;
-
-    dayElement.addEventListener("click", function () {
-
-        document.querySelectorAll(".day").forEach(d => {
-            d.classList.remove("selected");
-        });
-
-        this.classList.add("selected");
-
-        selectedDate = String(day);
-
-        animateCalendar();
-        clearMessage();
-    });
-
-    daysContainer.appendChild(dayElement);
-}
+const days =
+    document.querySelectorAll(
+        ".day[data-date]"
+    );
 
 
-/* =====================================================
-   COLOR SELECTION
-===================================================== */
+/* ================================
+   DATE SELECTION
+================================ */
 
-const colorOptions =
-    document.querySelectorAll(".color-option");
+days.forEach(day => {
 
-colorOptions.forEach(option => {
+    day.addEventListener(
+        "click",
+        function() {
 
-    option.addEventListener("click", function () {
 
-        colorOptions.forEach(c => {
-            c.classList.remove("selected");
-        });
+            days.forEach(d => {
 
-        this.classList.add("selected");
+                d.classList.remove(
+                    "selected"
+                );
 
-        selectedColor = this.dataset.color;
+            });
 
-        clearMessage();
-    });
+
+            this.classList.add(
+                "selected"
+            );
+
+
+            selectedDate =
+                this.dataset.date;
+
+
+            document.getElementById(
+                "dateMessage"
+            ).textContent =
+                "February " +
+                selectedDate +
+                ", 2026 ♡";
+
+
+            checkReady();
+
+        }
+
+    );
 
 });
 
 
-/* =====================================================
-   CALENDAR ANIMATION
-===================================================== */
+/* ================================
+   COLOR SELECTION
+================================ */
 
-const calendar =
-    document.getElementById("calendar");
-
-function animateCalendar() {
-
-    calendar.classList.remove("paper-rocket");
-
-    void calendar.offsetWidth;
-
-    calendar.classList.add("paper-rocket");
-
-    setTimeout(() => {
-        calendar.classList.remove("paper-rocket");
-    }, 850);
-}
+function selectColor(element) {
 
 
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-const message =
-    document.getElementById("message");
-
-function clearMessage() {
-    message.textContent = "";
-    message.classList.remove("shake");
-}
-
-function showWrongAnswer() {
-
-    message.textContent =
-        "Hmm... that's not the secret yet ♡";
-
-    message.classList.remove("shake");
-
-    void message.offsetWidth;
-
-    message.classList.add("shake");
-
-}
+    const options =
+        document.querySelectorAll(
+            ".color-option"
+        );
 
 
-/* =====================================================
-   AIRPLANE DRAG SYSTEM
-===================================================== */
+    options.forEach(option => {
 
-const planeTrack =
-    document.getElementById("planeTrack");
+        option.classList.remove(
+            "selected"
+        );
 
-const dragPlane =
-    document.getElementById("dragPlane");
-
-const mainBox =
-    document.getElementById("mainBox");
+    });
 
 
-let isDragging = false;
-let startPointerX = 0;
-let startPlaneLeft = 0;
-
-let currentPlaneLeft = 8;
-
-const START_POSITION = 8;
-
-
-/* Get airplane boundaries */
-
-function getPlaneLimits() {
-
-    const trackWidth =
-        planeTrack.clientWidth;
-
-    const planeWidth =
-        dragPlane.offsetWidth;
-
-    const minLeft = 8;
-
-    const maxLeft =
-        trackWidth - planeWidth - 8;
-
-    return {
-        minLeft,
-        maxLeft
-    };
-}
-
-
-/* Set airplane position */
-
-function setPlanePosition(left) {
-
-    const limits =
-        getPlaneLimits();
-
-    left = Math.max(
-        limits.minLeft,
-        Math.min(left, limits.maxLeft)
+    element.classList.add(
+        "selected"
     );
 
-    currentPlaneLeft = left;
 
-    dragPlane.style.left =
-        left + "px";
+    selectedColor =
+        element.dataset.color;
+
+
+    checkReady();
+
 }
 
 
-/* =====================================================
-   SMOOTH RETURN
-===================================================== */
+/* ================================
+   CHECK ANSWERS
+================================ */
 
-function returnPlaneToStart() {
+function checkReady() {
 
-    isDragging = false;
 
-    dragPlane.classList.remove("dragging");
+    const hint =
+        document.getElementById(
+            "planeHint"
+        );
+
+
+    if (
+        selectedDate !== null &&
+        selectedColor !== null
+    ) {
+
+        hint.textContent =
+            "Everything is ready — fly to the right ♡";
+
+    }
+
+    else {
+
+        hint.textContent =
+            "Drag the little plane to the right ♡";
+
+    }
+
+}
+
+
+/* ================================
+   AIRPLANE DRAGGING
+================================ */
+
+const planeControl =
+    document.getElementById(
+        "planeControl"
+    );
+
+
+const dragPlane =
+    document.getElementById(
+        "dragPlane"
+    );
+
+
+let isDraggingPlane = false;
+
+let planeStartX = 0;
+
+let planeStartLeft = 10;
+
+
+/*
+   This prevents an old return animation
+   from interfering with a new drag.
+*/
+
+let returnTimer = null;
+
+
+/* ================================
+   GET POINTER POSITION
+================================ */
+
+function getPointerX(event) {
+
+    if (event.touches) {
+
+        return event.touches[0].clientX;
+
+    }
+
+    return event.clientX;
+
+}
+
+
+/* ================================
+   START DRAG
+================================ */
+
+function startPlaneDrag(event) {
+
 
     /*
-       Re-enable the smooth CSS transition.
+       Cancel any previous return
+       animation completely.
+    */
+
+    if (returnTimer) {
+
+        clearTimeout(returnTimer);
+
+        returnTimer = null;
+
+    }
+
+
+    isDraggingPlane = true;
+
+
+    planeStartX =
+        getPointerX(event);
+
+
+    /*
+       Get the CURRENT position.
+
+       This is important because if the plane
+       is returning and the user touches it,
+       we continue from its current position.
+    */
+
+    planeStartLeft =
+        dragPlane.offsetLeft;
+
+
+    dragPlane.classList.add(
+        "dragging"
+    );
+
+
+    /*
+       Disable CSS transition while
+       the user is manually dragging.
     */
 
     dragPlane.style.transition =
-        "left 1.25s cubic-bezier(.22,.61,.36,1), transform .2s ease";
+        "none";
 
-    dragPlane.style.left =
-        START_POSITION + "px";
 
-    currentPlaneLeft =
-        START_POSITION;
+    if (event.cancelable) {
 
-    /*
-       Keep the transition active long enough
-       to complete the movement.
-    */
+        event.preventDefault();
 
-    setTimeout(() => {
+    }
 
-        if (!isDragging) {
-
-            dragPlane.style.transition =
-                "left 1.25s cubic-bezier(.22,.61,.36,1), transform .2s ease";
-
-        }
-
-    }, 1300);
 }
 
 
-/* =====================================================
-   POINTER DOWN
-===================================================== */
+/* ================================
+   MOVE PLANE
+================================ */
 
-dragPlane.addEventListener(
-    "pointerdown",
-    function(event) {
+function movePlaneDrag(event) {
+
+
+    if (!isDraggingPlane) {
+
+        return;
+
+    }
+
+
+    const currentX =
+        getPointerX(event);
+
+
+    const deltaX =
+        currentX - planeStartX;
+
+
+    const maxLeft =
+        planeControl.clientWidth -
+        dragPlane.offsetWidth -
+        10;
+
+
+    const newLeft =
+        Math.max(
+            10,
+            Math.min(
+                maxLeft,
+                planeStartLeft + deltaX
+            )
+        );
+
+
+    dragPlane.style.left =
+        newLeft + "px";
+
+
+    if (event.cancelable) {
 
         event.preventDefault();
 
-        isDragging = true;
-
-        dragPlane.classList.add("dragging");
-
-        /*
-           Completely remove the return animation
-           while the user is dragging.
-        */
-
-        dragPlane.style.transition = "none";
-
-        startPointerX =
-            event.clientX;
-
-        startPlaneLeft =
-            currentPlaneLeft;
-
-        try {
-            dragPlane.setPointerCapture(
-                event.pointerId
-            );
-        } catch (e) {}
-
     }
-);
+
+}
 
 
-/* =====================================================
-   POINTER MOVE
-===================================================== */
+/* ================================
+   SMOOTH RETURN TO START
+================================ */
 
-dragPlane.addEventListener(
-    "pointermove",
-    function(event) {
+function returnPlaneToStart() {
 
-        if (!isDragging) {
-            return;
-        }
-
-        event.preventDefault();
-
-        const difference =
-            event.clientX - startPointerX;
-
-        const newLeft =
-            startPlaneLeft + difference;
-
-        setPlanePosition(newLeft);
-
-    }
-);
-
-
-/* =====================================================
-   POINTER UP
-===================================================== */
-
-dragPlane.addEventListener(
-    "pointerup",
-    function(event) {
-
-        if (!isDragging) {
-            return;
-        }
-
-        event.preventDefault();
-
-        isDragging = false;
-
-        dragPlane.classList.remove("dragging");
-
-        try {
-            dragPlane.releasePointerCapture(
-                event.pointerId
-            );
-        } catch (e) {}
-
-        checkPlaneDestination();
-
-    }
-);
-
-
-/* =====================================================
-   POINTER CANCEL
-===================================================== */
-
-dragPlane.addEventListener(
-    "pointercancel",
-    function() {
-
-        if (!isDragging) {
-            return;
-        }
-
-        isDragging = false;
-
-        dragPlane.classList.remove("dragging");
-
-        returnPlaneToStart();
-
-    }
-);
-
-
-/* =====================================================
-   CHECK DESTINATION
-===================================================== */
-
-function checkPlaneDestination() {
-
-    const limits =
-        getPlaneLimits();
 
     /*
-       Require the airplane to travel
-       about 85% of the track.
+       Stop dragging immediately.
+    */
+
+    isDraggingPlane = false;
+
+
+    dragPlane.classList.remove(
+        "dragging"
+    );
+
+
+    /*
+       Cancel any previous timer.
+    */
+
+    if (returnTimer) {
+
+        clearTimeout(returnTimer);
+
+        returnTimer = null;
+
+    }
+
+
+    /*
+       Make sure the browser sees the
+       current position before applying
+       the transition.
+
+       This prevents the airplane from
+       jumping instantly.
+    */
+
+    const currentPosition =
+        dragPlane.offsetLeft;
+
+
+    dragPlane.style.transition =
+        "none";
+
+
+    dragPlane.style.left =
+        currentPosition + "px";
+
+
+    /*
+       Force browser layout.
+    */
+
+    void dragPlane.offsetWidth;
+
+
+    /*
+       Now smoothly fly back.
+    */
+
+    dragPlane.style.transition =
+        "left 1.5s cubic-bezier(.22,.61,.36,1)";
+
+
+    dragPlane.style.left =
+        "10px";
+
+
+    /*
+       Clean up after animation.
+    */
+
+    returnTimer = setTimeout(() => {
+
+        dragPlane.style.transition =
+            "none";
+
+        dragPlane.style.left =
+            "10px";
+
+        returnTimer = null;
+
+    }, 1550);
+
+}
+
+
+/* ================================
+   SHOW WRONG ANSWER
+================================ */
+
+function showWrongAnswer() {
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    error.style.display =
+        "block";
+
+
+    error.style.animation =
+        "none";
+
+
+    void error.offsetWidth;
+
+
+    error.style.animation =
+        "shake .4s ease";
+
+
+    /*
+       ALWAYS return the plane
+       when the answer is wrong
+       or incomplete.
+    */
+
+    returnPlaneToStart();
+
+}
+
+
+/* ================================
+   RELEASE PLANE
+================================ */
+
+function endPlaneDrag() {
+
+
+    if (!isDraggingPlane) {
+
+        return;
+
+    }
+
+
+    /*
+       Stop the dragging state.
+    */
+
+    isDraggingPlane = false;
+
+
+    dragPlane.classList.remove(
+        "dragging"
+    );
+
+
+    const maxLeft =
+        planeControl.clientWidth -
+        dragPlane.offsetWidth -
+        10;
+
+
+    const currentLeft =
+        dragPlane.offsetLeft;
+
+
+    /*
+       The airplane must get very close
+       to the right side before checking
+       the answer.
     */
 
     const destination =
-        limits.minLeft +
-        (limits.maxLeft - limits.minLeft) * 0.85;
+        maxLeft - 8;
 
-    if (currentPlaneLeft >= destination) {
 
-        /*
-           Snap gently to the destination first.
-        */
+    /*
+       If the plane has NOT reached
+       the right side:
 
-        dragPlane.style.transition =
-            "left .35s ease-out";
+       ALWAYS return it smoothly.
+    */
 
-        dragPlane.style.left =
-            limits.maxLeft + "px";
-
-        currentPlaneLeft =
-            limits.maxLeft;
-
-        setTimeout(() => {
-            unlockPage();
-        }, 350);
-
-    } else {
-
-        /*
-           Not far enough:
-           smoothly return to beginning.
-        */
+    if (currentLeft < destination) {
 
         returnPlaneToStart();
 
+        return;
+
     }
-}
 
-
-/* =====================================================
-   CHECK ANSWER
-===================================================== */
-
-function unlockPage() {
 
     /*
-       Correct answer:
-       February 13 + White
+       The plane reached the right side.
+
+       Now check the answers.
     */
 
     if (
-        selectedDate === "13" &&
-        selectedColor === "white"
+        selectedDate === correctDate &&
+        selectedColor === correctColor
     ) {
 
-        message.textContent =
-            "You found it... ♡";
+        unlockPage();
 
-        mainBox.classList.add("leaving");
+    }
+
+    else {
+
+        /*
+           Wrong or empty answer:
+           show error + smoothly return.
+        */
+
+        showWrongAnswer();
+
+    }
+
+}
+
+
+/* ================================
+   POINTER EVENTS
+================================ */
+
+dragPlane.addEventListener(
+    "pointerdown",
+    startPlaneDrag
+);
+
+
+document.addEventListener(
+    "pointermove",
+    movePlaneDrag
+);
+
+
+document.addEventListener(
+    "pointerup",
+    endPlaneDrag
+);
+
+
+document.addEventListener(
+    "pointercancel",
+    endPlaneDrag
+);
+
+
+/* ================================
+   UNLOCK / CONTINUE
+================================ */
+
+function unlockPage() {
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    /*
+       CORRECT ANSWER
+    */
+
+    if (
+        selectedDate === correctDate &&
+        selectedColor === correctColor
+    ) {
+
+
+        const box =
+            document.querySelector(
+                ".box"
+            );
+
+
+        const planeHint =
+            document.getElementById(
+                "planeHint"
+            );
+
+
+        planeHint.textContent =
+            "Flying to your birthday surprise... ♡";
+
+
+        /*
+           Beautiful exit animation.
+        */
+
+        box.style.transform =
+            "scale(1.05)";
+
+
+        box.style.opacity =
+            "0";
+
 
         setTimeout(() => {
 
@@ -1203,106 +2097,207 @@ function unlockPage() {
 
         }, 700);
 
-        return;
+
     }
 
 
     /*
-       Wrong or incomplete answer.
+       WRONG OR EMPTY ANSWER
     */
 
-    showWrongAnswer();
+    else {
 
-    /*
-       Wait a tiny moment so the message appears,
-       then fly the airplane back smoothly.
-    */
+        showWrongAnswer();
 
-    setTimeout(() => {
-
-        returnPlaneToStart();
-
-    }, 250);
-}
-
-
-/* =====================================================
-   INITIAL POSITION
-===================================================== */
-
-function resetPlane() {
-
-    isDragging = false;
-
-    dragPlane.classList.remove("dragging");
-
-    dragPlane.style.transition = "none";
-
-    currentPlaneLeft =
-        START_POSITION;
-
-    dragPlane.style.left =
-        START_POSITION + "px";
-
-    /*
-       Force browser to register initial position
-       before restoring transition.
-    */
-
-    void dragPlane.offsetWidth;
-
-    dragPlane.style.transition =
-        "left 1.25s cubic-bezier(.22,.61,.36,1), transform .2s ease";
-}
-
-
-window.addEventListener(
-    "load",
-    function() {
-        resetPlane();
     }
-);
+
+}
 
 
-/* =====================================================
-   PAGE SHOW
-===================================================== */
+/* ================================
+   PAGE RESTORE
+================================ */
 
 window.addEventListener(
     "pageshow",
     function() {
 
-        selectedDate = null;
-        selectedColor = null;
 
-        document.querySelectorAll(".day").forEach(day => {
-            day.classList.remove("selected");
-        });
+        const box =
+            document.querySelector(
+                ".box"
+            );
 
-        colorOptions.forEach(color => {
-            color.classList.remove("selected");
-        });
 
-        clearMessage();
+        const error =
+            document.getElementById(
+                "error"
+            );
 
-        resetPlane();
+
+        box.style.opacity =
+            "1";
+
+
+        box.style.transform =
+            "translateY(0) scale(1)";
+
+
+        error.style.display =
+            "none";
+
+
+        /*
+           Always reset the plane
+           when page is restored.
+        */
+
+        if (returnTimer) {
+
+            clearTimeout(returnTimer);
+
+            returnTimer = null;
+
+        }
+
+
+        dragPlane.style.transition =
+            "none";
+
+
+        dragPlane.style.left =
+            "10px";
+
+
+        isDraggingPlane = false;
+
+
+        checkReady();
 
     }
+
 );
 
 
-/* =====================================================
-   PREVENT IMAGE / TEXT DRAG
-===================================================== */
+/* ================================
+   MOUSE TRAIL
+================================ */
 
-dragPlane.addEventListener(
-    "dragstart",
+let lastCursorTime = 0;
+
+
+document.addEventListener(
+    "mousemove",
     function(event) {
-        event.preventDefault();
+
+
+        const now =
+            Date.now();
+
+
+        if (
+            now - lastCursorTime < 60
+        ) {
+
+            return;
+
+        }
+
+
+        lastCursorTime =
+            now;
+
+
+        const dot =
+            document.createElement(
+                "div"
+            );
+
+
+        dot.className =
+            "cursor-dot";
+
+
+        dot.style.left =
+            event.clientX + "px";
+
+
+        dot.style.top =
+            event.clientY + "px";
+
+
+        document.body.appendChild(
+            dot
+        );
+
+
+        setTimeout(
+            () => dot.remove(),
+            600
+        );
+
     }
 );
+
+
+/* ================================
+   TOUCH TRAIL
+================================ */
+
+document.addEventListener(
+    "touchmove",
+    function(event) {
+
+
+        const touch =
+            event.touches[0];
+
+
+        if (!touch) {
+
+            return;
+
+        }
+
+
+        const dot =
+            document.createElement(
+                "div"
+            );
+
+
+        dot.className =
+            "cursor-dot";
+
+
+        dot.style.left =
+            touch.clientX + "px";
+
+
+        dot.style.top =
+            touch.clientY + "px";
+
+
+        document.body.appendChild(
+            dot
+        );
+
+
+        setTimeout(
+            () => dot.remove(),
+            600
+        );
+
+    },
+    {
+        passive: true
+    }
+);
+
 
 </script>
 
+
 </body>
+
 </html>
