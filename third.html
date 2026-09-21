@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -876,6 +877,574 @@ body {
 
 
 /* =========================================================
+   PAGE 4 MAGICAL PORTAL
+========================================================= */
+
+.page4-portal {
+
+    position: relative;
+
+    margin-top: 28px;
+
+    padding:
+        25px
+        10px
+        18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 185px;
+
+    overflow: visible;
+}
+
+
+/* Message */
+
+.portal-message {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, 8px)
+        scale(0.92);
+
+    width: max-content;
+
+    max-width: 90%;
+
+    opacity: 0;
+
+    color: #a45f7a;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 3px 12px
+        rgba(210, 130, 165, 0.18);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.55s ease,
+        transform 0.65s
+        cubic-bezier(.22,.61,.36,1);
+
+    z-index: 5;
+}
+
+
+.portal-message span {
+
+    display: inline-block;
+
+    margin-left: 3px;
+
+    animation:
+        heartbeat 1.6s ease-in-out infinite;
+}
+
+
+/* Make message appear when hovering */
+
+.love-portal:hover ~ .portal-message {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* =========================================================
+   MAGICAL HEART
+========================================================= */
+
+.love-portal {
+
+    position: relative;
+
+    width: 82px;
+
+    height: 82px;
+
+    margin-top: 23px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    -webkit-tap-highlight-color: transparent;
+
+    outline: none;
+
+    transition:
+        transform 0.45s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+
+/* glowing outer ring */
+
+.portal-ring {
+
+    position: absolute;
+
+    width: 66px;
+
+    height: 66px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(230, 157, 187, 0.48);
+
+    box-shadow:
+        0 0 0 7px
+        rgba(240, 184, 207, 0.08),
+        0 0 25px
+        rgba(226, 151, 182, 0.20);
+
+    transition:
+        width 0.7s ease,
+        height 0.7s ease,
+        box-shadow 0.7s ease,
+        border-color 0.7s ease;
+}
+
+
+/* heart */
+
+.portal-heart {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 53px;
+
+    height: 53px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffdce9,
+            #f3d9ff
+        );
+
+    color: #c87599;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    box-shadow:
+        0 9px 25px
+        rgba(202, 124, 158, 0.20);
+
+    transition:
+        transform 0.55s
+        cubic-bezier(.22,.61,.36,1),
+        box-shadow 0.55s ease;
+}
+
+
+/* little text below */
+
+.portal-hint {
+
+    margin-top: 12px;
+
+    font-size: 9px;
+
+    color: #ae929f;
+
+    letter-spacing: 0.3px;
+
+    opacity: 0.85;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* =========================================================
+   FLOATING FLOWERS
+========================================================= */
+
+.portal-flower {
+
+    position: absolute;
+
+    z-index: 2;
+
+    font-size: 15px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.8s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+
+.flower-one {
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-15deg);
+}
+
+
+.flower-two {
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(15deg);
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.portal-sparkle {
+
+    position: absolute;
+
+    z-index: 1;
+
+    color: #d79ab5;
+
+    font-size: 17px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.9s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+
+.sparkle-one {
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.sparkle-two {
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.sparkle-three {
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   PORTAL HOVER ANIMATION
+========================================================= */
+
+.love-portal:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.04);
+}
+
+
+.love-portal:hover .portal-ring {
+
+    width: 82px;
+
+    height: 82px;
+
+    border-color:
+        rgba(226, 143, 177, 0.65);
+
+    box-shadow:
+        0 0 0 10px
+        rgba(240, 184, 207, 0.07),
+        0 0 40px
+        rgba(226, 143, 177, 0.35);
+}
+
+
+.love-portal:hover .portal-heart {
+
+    transform:
+        scale(1.08)
+        rotate(-5deg);
+
+    box-shadow:
+        0 12px 32px
+        rgba(202, 124, 158, 0.30),
+        0 0 24px
+        rgba(242, 174, 204, 0.32);
+}
+
+
+.love-portal:hover .portal-flower {
+
+    opacity: 1;
+}
+
+
+.love-portal:hover .flower-one {
+
+    transform:
+        translate(-65px, -37px)
+        rotate(-20deg);
+}
+
+
+.love-portal:hover .flower-two {
+
+    transform:
+        translate(45px, -45px)
+        rotate(20deg);
+}
+
+
+.love-portal:hover .portal-sparkle {
+
+    opacity: 1;
+}
+
+
+.love-portal:hover .sparkle-one {
+
+    transform:
+        translate(-55px, 25px)
+        scale(1.1);
+}
+
+
+.love-portal:hover .sparkle-two {
+
+    transform:
+        translate(53px, 23px)
+        scale(0.9);
+}
+
+
+.love-portal:hover .sparkle-three {
+
+    transform:
+        translate(5px, -55px)
+        scale(1.2);
+}
+
+
+.love-portal:hover + .portal-message {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+.love-portal:hover ~ .portal-hint {
+
+    transform:
+        translateY(3px);
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   TOUCH / FOCUS
+========================================================= */
+
+.love-portal:focus-visible {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+}
+
+
+.love-portal:focus-visible .portal-ring {
+
+    width: 82px;
+
+    height: 82px;
+
+    box-shadow:
+        0 0 0 10px
+        rgba(240, 184, 207, 0.08),
+        0 0 40px
+        rgba(226, 143, 177, 0.35);
+}
+
+
+.love-portal:active {
+
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   EXIT ANIMATION
+========================================================= */
+
+.love-portal.leaving {
+
+    pointer-events: none;
+
+    animation:
+        portalLeave 0.8s
+        cubic-bezier(.22,.61,.36,1)
+        forwards;
+}
+
+
+.love-portal.leaving .portal-ring {
+
+    animation:
+        ringExpand 0.8s ease forwards;
+}
+
+
+.love-portal.leaving .portal-heart {
+
+    animation:
+        heartFly 0.8s ease forwards;
+}
+
+
+.page4-portal.leaving .portal-message {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0)
+        scale(1.05);
+}
+
+
+@keyframes portalLeave {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    45% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.35);
+        opacity: 0;
+    }
+}
+
+
+@keyframes ringExpand {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+
+@keyframes heartFly {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
    CHAT VIEWER
 ========================================================= */
 
@@ -1162,9 +1731,104 @@ body {
         font-size: 22px;
     }
 
+
+    /* Page 4 portal mobile */
+
+    .page4-portal {
+
+        margin-top: 24px;
+
+        min-height: 175px;
+
+        padding-top: 22px;
+    }
+
+
+    .portal-message {
+
+        font-size: 14px;
+    }
+
+
+    .love-portal {
+
+        width: 76px;
+
+        height: 76px;
+
+        margin-top: 20px;
+    }
+
+
+    .portal-heart {
+
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 31px;
+    }
+
+
+    .portal-ring {
+
+        width: 62px;
+
+        height: 62px;
+    }
+
+
+    .portal-hint {
+
+        font-size: 8px;
+
+        margin-top: 10px;
+    }
+
+
+    .love-portal:hover .flower-one {
+
+        transform:
+            translate(-52px, -32px)
+            rotate(-20deg);
+    }
+
+
+    .love-portal:hover .flower-two {
+
+        transform:
+            translate(38px, -38px)
+            rotate(20deg);
+    }
+
+
+    .love-portal:hover .sparkle-one {
+
+        transform:
+            translate(-45px, 22px)
+            scale(1.1);
+    }
+
+
+    .love-portal:hover .sparkle-two {
+
+        transform:
+            translate(43px, 21px)
+            scale(0.9);
+    }
+
+
+    .love-portal:hover .sparkle-three {
+
+        transform:
+            translate(5px, -48px)
+            scale(1.2);
+    }
+
 }
 
 </style>
+
 </head>
 
 
@@ -1226,7 +1890,6 @@ body {
         </p>
 
     </div>
-
 
 
     <!-- =====================================================
@@ -1302,7 +1965,6 @@ body {
     </div>
 
 
-
     <!-- =====================================================
          PROGRESS
     ====================================================== -->
@@ -1321,7 +1983,6 @@ body {
         <div class="dot"></div>
 
     </div>
-
 
 
     <!-- =====================================================
@@ -1361,7 +2022,6 @@ body {
     </div>
 
 
-
     <!-- =====================================================
          FIRST CHAT
     ====================================================== -->
@@ -1387,7 +2047,6 @@ body {
         </button>
 
     </div>
-
 
 
     <!-- =====================================================
@@ -1426,10 +2085,62 @@ body {
     </div>
 
 
-</div>
+    <!-- =====================================================
+         PAGE 4 MAGICAL BUTTON
+    ====================================================== -->
+
+    <div class="page4-portal" id="page4Portal">
+
+        <div class="portal-message">
+            I LOVE U KAW <span>♡</span>
+        </div>
+
+
+        <button
+            class="love-portal"
+            onclick="goToPage4()"
+            aria-label="Open the final surprise"
+        >
+
+            <span class="portal-ring"></span>
+
+            <span class="portal-heart">
+                ♡
+            </span>
+
+            <span class="portal-flower flower-one">
+                ✿
+            </span>
+
+            <span class="portal-flower flower-two">
+                ✿
+            </span>
+
+            <span class="portal-sparkle sparkle-one">
+                ✦
+            </span>
+
+            <span class="portal-sparkle sparkle-two">
+                ✧
+            </span>
+
+            <span class="portal-sparkle sparkle-three">
+                ·
+            </span>
+
+        </button>
+
+
+        <div class="portal-hint">
+            there's one more little surprise... ♡
+        </div>
+
+    </div>
+
 
 </div>
 
+</div>
 
 
 <!-- =========================================================
@@ -1487,7 +2198,6 @@ body {
     </div>
 
 </div>
-
 
 
 <script>
@@ -1558,7 +2268,6 @@ const memories = [
 
 
 let currentMemory = 0;
-
 
 
 /* =========================================================
@@ -1675,7 +2384,6 @@ function showMemory(index) {
 }
 
 
-
 /* =========================================================
    NEXT
 ========================================================= */
@@ -1712,7 +2420,6 @@ function nextMemory() {
     }
 
 }
-
 
 
 /* =========================================================
@@ -1753,7 +2460,6 @@ function restartMemories() {
 }
 
 
-
 /* =========================================================
    OPEN CHAT
 ========================================================= */
@@ -1769,7 +2475,6 @@ function openChat() {
         "hidden";
 
 }
-
 
 
 /* =========================================================
@@ -1788,6 +2493,43 @@ function closeChat() {
 
 }
 
+
+/* =========================================================
+   GO TO PAGE 4
+========================================================= */
+
+function goToPage4() {
+
+    const portal =
+        document.getElementById("page4Portal");
+
+    const message =
+        document.querySelector(".portal-message");
+
+
+    /* Show the love message */
+
+    message.style.opacity = "1";
+
+    message.style.transform =
+        "translate(-50%, 0) scale(1.05)";
+
+
+    /* Start magical exit */
+
+    portal.classList.add("leaving");
+
+
+    /* Open fourth page */
+
+    setTimeout(() => {
+
+        window.location.href =
+            "fourth.html";
+
+    }, 800);
+
+}
 
 
 /* =========================================================
@@ -1808,7 +2550,6 @@ document.addEventListener(
 );
 
 
-
 /* =========================================================
    INITIAL
 ========================================================= */
@@ -1817,5 +2558,7 @@ showMemory(0);
 
 </script>
 
+
 </body>
+
 </html>
