@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>One Last Little Surprise ♡</title>
+
+
+<style>
+
+/* =========================================================
+   BASIC
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5f8,
+            #fdf8ff,
+            #fffaf3
+        );
+
+    color: #5c4a54;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FIXED ANIMATED BACKGROUND ICONS
+========================================================= */
+
+.background-icon {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 0;
+
+    opacity: 0.55;
+
+    animation:
+        floatingIcon 4s ease-in-out infinite;
+}
+
+
+.calendar-icon {
+
+    top: 12%;
+    left: 6%;
+
+    font-size: 38px;
+
+    animation-delay: 0s;
+}
+
+
+.flower-icon {
+
+    top: 27%;
+    right: 6%;
+
+    font-size: 33px;
+
+    animation-delay: 1s;
+}
+
+
+.heart-icon {
+
+    bottom: 23%;
+    left: 6%;
+
+    font-size: 31px;
+
+    animation-delay: 2s;
+}
+
+
+.star-icon {
+
+    bottom: 12%;
+    right: 7%;
+
+    font-size: 30px;
+
+    animation-delay: 1.5s;
+}
+
+
+.gift-icon {
+
+    top: 49%;
+    left: 3%;
+
+    font-size: 34px;
+
+    animation-delay: 2.5s;
+}
+
+
+.music-icon {
+
+    top: 66%;
+    right: 4%;
+
+    font-size: 28px;
+
+    animation-delay: 0.8s;
+}
+
+
+@keyframes floatingIcon {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-4deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px)
+            rotate(4deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+
+    position: relative;
+
+    z-index: 1;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding:
+        27px
+        14px
+        50px;
+}
+
+
+.container {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    margin-bottom: 18px;
+
+    animation:
+        fadeDown 0.8s ease;
+}
+
+
+.header-heart {
+
+    display: inline-block;
+
+    font-size: 23px;
+
+    animation:
+        heartbeat 1.8s ease-in-out infinite;
+}
+
+
+.header h1 {
+
+    margin-top: 4px;
+
+    font-size: 24px;
+
+    color: #624e59;
+}
+
+
+.header p {
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #9a828d;
+}
+
+
+@keyframes fadeDown {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* =========================================================
+   GENERAL CARD
+========================================================= */
+
+.card {
+
+    width: 100%;
+
+    background:
+        rgba(255,255,255,0.91);
+
+    border-radius: 24px;
+
+    padding:
+        22px
+        18px;
+
+    margin-top: 15px;
+
+    box-shadow:
+        0 11px 30px
+        rgba(120,82,104,0.10);
+
+    animation:
+        fadeUp 0.7s ease;
+}
+
+
+.card-title {
+
+    font-size: 18px;
+
+    color: #624d59;
+
+    margin-bottom: 6px;
+}
+
+
+.card-subtitle {
+
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    color: #907b85;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   GIFT SECTION
+========================================================= */
+
+.gift-card {
+
+    min-height: 270px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.gift-box {
+
+    font-size: 70px;
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    animation:
+        giftFloat 2.3s ease-in-out infinite;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.gift-box:hover {
+
+    transform:
+        scale(1.08);
+}
+
+
+@keyframes giftFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+.gift-title {
+
+    margin-top: 10px;
+
+    font-size: 19px;
+
+    color: #624d59;
+}
+
+
+.gift-text {
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #907b85;
+}
+
+
+.open-gift-button {
+
+    margin-top: 17px;
+
+    padding:
+        10px
+        21px;
+
+    border: none;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0a8c2,
+            #c9a9eb
+        );
+
+    color: white;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        rgba(188,126,157,0.22);
+
+    transition:
+        0.25s ease;
+}
+
+
+.open-gift-button:hover {
+
+    transform:
+        translateY(-3px);
+}
+
+
+.open-gift-button:active {
+
+    transform:
+        scale(0.95);
+}
+
+
+/* =========================================================
+   HIDDEN SURPRISE CONTENT
+========================================================= */
+
+.surprise-content {
+
+    display: none;
+}
+
+.surprise-content.show {
+
+    display: block;
+
+    animation:
+        revealContent 0.8s ease;
+}
+
+
+@keyframes revealContent {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter {
+
+    margin-top: 13px;
+
+    padding:
+        17px;
+
+    border-radius: 18px;
+
+    background:
+        #fff9fc;
+
+    border:
+        1px dashed
+        #e4c8d6;
+
+    text-align: left;
+
+    position: relative;
+}
+
+
+.letter::before {
+
+    content: "💌";
+
+    position: absolute;
+
+    top: -14px;
+
+    right: 16px;
+
+    font-size: 24px;
+
+    animation:
+        littleBounce 2s ease-in-out infinite;
+}
+
+
+.letter h3 {
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #684f5b;
+
+    margin-bottom: 12px;
+}
+
+
+.letter p {
+
+    font-size: 11px;
+
+    line-height: 2;
+
+    color: #806d76;
+}
+
+
+.letter-signature {
+
+    margin-top: 12px;
+
+    text-align: right;
+
+    color: #a46d82;
+
+    font-size: 11px;
+}
+
+
+@keyframes littleBounce {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-3px);
+
+    }
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery {
+
+    margin-top: 14px;
+
+    position: relative;
+}
+
+
+.photo-frame {
+
+    width: 100%;
+
+    max-width: 300px;
+
+    height: 230px;
+
+    margin: 12px auto;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2f6,
+            #f8f0ff
+        );
+
+    border:
+        1px solid
+        #f0dce5;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 20px
+        rgba(130,90,110,0.08);
+}
+
+
+.photo-frame img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+}
+
+
+.photo-placeholder {
+
+    padding: 20px;
+
+    font-size: 12px;
+
+    color: #9a818d;
+
+    line-height: 1.8;
+}
+
+
+.gallery-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 8px;
+}
+
+
+.gallery-button {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #fff0f5;
+
+    color:
+        #a5657e;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.gallery-button:hover {
+
+    transform:
+        scale(1.08);
+
+    background:
+        #ffe6ef;
+}
+
+
+.photo-number {
+
+    font-size: 10px;
+
+    color: #a18390;
+}
+
+
+/* =========================================================
+   MEMORY TIMELINE
+========================================================= */
+
+.timeline {
+
+    margin-top: 17px;
+
+    text-align: left;
+}
+
+
+.timeline-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin: 10px 0;
+}
+
+
+.timeline-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        #fff0f5;
+
+    font-size: 16px;
+
+    animation:
+        littleBounce 2.5s ease-in-out infinite;
+}
+
+
+.timeline-text {
+
+    font-size: 11px;
+
+    color: #806d76;
+
+    line-height: 1.5;
+}
+
+
+.timeline-line {
+
+    width: 2px;
+
+    height: 10px;
+
+    background:
+        #efd8e2;
+
+    margin-left: 16px;
+}
+
+
+/* =========================================================
+   POEM
+========================================================= */
+
+.poem {
+
+    margin-top: 12px;
+
+    padding:
+        14px;
+
+    border-radius: 17px;
+
+    background:
+        #fff8fc;
+
+    border:
+        1px dashed
+        #e6cad8;
+
+    font-size: 11px;
+
+    line-height: 2;
+
+    color: #856e79;
+
+    position: relative;
+}
+
+
+.poem::before {
+
+    content: "🌸";
+
+    position: absolute;
+
+    top: -14px;
+
+    left: 16px;
+
+    font-size: 22px;
+
+    animation:
+        littleBounce 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    text-align: left;
+}
+
+
+.music-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.music-symbol {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        #fff0f5;
+
+    font-size: 19px;
+
+    animation:
+        musicPulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes musicPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+    }
+
+}
+
+
+.music-name {
+
+    font-size: 12px;
+
+    color: #705864;
+}
+
+
+.music-status {
+
+    font-size: 9px;
+
+    color: #a28994;
+
+    margin-top: 2px;
+}
+
+
+.music-button {
+
+    border: none;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1aac3,
+            #c9a8eb
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.music-button:hover {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   MEMORY CAPSULE
+========================================================= */
+
+.capsule-card {
+
+    text-align: center;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.lock-icon {
+
+    font-size: 43px;
+
+    margin-bottom: 8px;
+
+    animation:
+        lockFloat 2.3s ease-in-out infinite;
+}
+
+
+@keyframes lockFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-5px);
+
+    }
+
+}
+
+
+.capsule-button {
+
+    margin-top: 14px;
+
+    padding:
+        9px
+        18px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background:
+        #fff0f5;
+
+    color:
+        #a46780;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.capsule-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #ffe5ef;
+}
+
+
+.capsule-message {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding:
+        15px;
+
+    border-radius: 16px;
+
+    background:
+        #fff9fc;
+
+    border:
+        1px dashed
+        #e4c9d6;
+
+    animation:
+        revealContent 0.6s ease;
+}
+
+
+.capsule-message.show {
+
+    display: block;
+}
+
+
+.capsule-message h3 {
+
+    font-size: 16px;
+
+    color: #654e59;
+
+    margin-bottom: 8px;
+}
+
+
+.capsule-message p {
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    color: #806d76;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.final-card {
+
+    margin-top: 17px;
+
+    padding:
+        27px
+        17px;
+
+    background:
+        rgba(255,255,255,0.93);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 12px 32px
+        rgba(120,82,104,0.11);
+
+    display: none;
+
+    animation:
+        finalAppear 1s ease;
+}
+
+
+.final-card.show {
+
+    display: block;
+}
+
+
+.final-heart {
+
+    font-size: 42px;
+
+    animation:
+        heartbeat 1.8s infinite;
+}
+
+
+.final-card h2 {
+
+    margin-top: 8px;
+
+    font-size: 22px;
+
+    color: #624d59;
+}
+
+
+.final-card p {
+
+    margin:
+        10px
+        auto
+        0;
+
+    max-width: 370px;
+
+    font-size: 11px;
+
+    line-height: 1.9;
+
+    color: #806d76;
+}
+
+
+.start-button {
+
+    margin-top: 18px;
+
+    padding:
+        9px
+        19px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background:
+        #fff0f5;
+
+    color:
+        #a4657e;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.start-button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.95)
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .page {
+
+        padding:
+            23px
+            12px
+            40px;
+
+    }
+
+
+    .container {
+
+        max-width: 430px;
+
+    }
+
+
+    .header h1 {
+
+        font-size: 22px;
+
+    }
+
+
+    .background-icon {
+
+        opacity: 0.35;
+
+    }
+
+
+    .calendar-icon {
+
+        left: 1%;
+
+        font-size: 29px;
+
+    }
+
+
+    .flower-icon {
+
+        right: 1%;
+
+        font-size: 27px;
+
+    }
+
+
+    .gift-icon {
+
+        left: 0%;
+
+        font-size: 28px;
+
+    }
+
+
+    .heart-icon {
+
+        left: 1%;
+
+        font-size: 26px;
+
+    }
+
+
+    .star-icon {
+
+        right: 1%;
+
+        font-size: 24px;
+
+    }
+
+
+    .music-icon {
+
+        right: 1%;
+
+        font-size: 22px;
+
+    }
+
+
+    .photo-frame {
+
+        height: 215px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     FIXED ANIMATED ICONS
+========================================================= -->
+
+<div class="background-icon calendar-icon">
+    🗓️
+</div>
+
+<div class="background-icon flower-icon">
+    🌸
+</div>
+
+<div class="background-icon heart-icon">
+    🤍
+</div>
+
+<div class="background-icon star-icon">
+    ✨
+</div>
+
+<div class="background-icon gift-icon">
+    🎁
+</div>
+
+<div class="background-icon music-icon">
+    🎵
+</div>
+
+
+
+<!-- =========================================================
+     PAGE
+========================================================= -->
+
+<div class="page">
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-heart">
+            ♡
+        </div>
+
+        <h1>
+            One Last Little Surprise
+        </h1>
+
+        <p>
+            There's something waiting for you, Kawya... ♡
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         GIFT
+    ====================================================== -->
+
+    <div
+        class="card gift-card"
+        id="giftCard"
+    >
+
+        <div
+            class="gift-box"
+            id="giftBox"
+        >
+            🎁
+        </div>
+
+        <div class="gift-title">
+            A Little Something For You
+        </div>
+
+        <div class="gift-text">
+            Open it when you're ready ♡
+        </div>
+
+        <button
+            class="open-gift-button"
+            onclick="openGift()"
+        >
+            Open Your Surprise ♡
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SURPRISE CONTENT
+    ====================================================== -->
+
+    <div
+        class="surprise-content"
+        id="surpriseContent"
+    >
+
+
+        <!-- =================================================
+             LETTER
+        ================================================== -->
+
+        <div class="card">
+
+            <div class="card-title">
+                💌 A Little Letter
+            </div>
+
+            <div class="card-subtitle">
+                Some words I wanted to leave here for you.
+            </div>
+
+
+            <div class="letter">
+
+                <h3>
+                    Dear Kawya,
+                </h3>
+
+
+                <p>
+
+                    Some memories are small,
+                    but somehow they stay with us
+                    for a very long time.
+
+                    <br><br>
+
+                    From our first little chat,
+                    to the moments we have shared since then,
+                    I'm grateful for every memory
+                    that became part of this story.
+
+                    <br><br>
+
+                    This little website is just a collection
+                    of some of those moments.
+
+                    And I hope there will be many,
+                    many more memories to add here. ♡
+
+                </p>
+
+
+                <div class="letter-signature">
+
+                    Always cheering for you, ♡
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PHOTO GALLERY
+        ================================================== -->
+
+        <div class="card">
+
+            <div class="card-title">
+                📸 Our Little Moments
+            </div>
+
+            <div class="card-subtitle">
+                A few memories I want to keep.
+            </div>
+
+
+            <div class="gallery">
+
+                <div class="photo-frame">
+
+                    <!--
+                        PHOTO PLACEHOLDERS
+
+                        Put your photos in the same folder
+                        and change the names below.
+
+                        Example:
+
+                        memory1.jpg
+                        memory2.jpg
+                        memory3.jpg
+                    -->
+
+
+                    <img
+                        id="galleryImage"
+                        src=""
+                        alt="Memory"
+                    >
+
+
+                    <div
+                        class="photo-placeholder"
+                        id="photoPlaceholder"
+                    >
+
+                        📷
+
+                        <br><br>
+
+                        Add your first memory photo here. ♡
+
+                    </div>
+
+                </div>
+
+
+                <div class="gallery-controls">
+
+                    <button
+                        class="gallery-button"
+                        onclick="previousPhoto()"
+                    >
+                        ←
+                    </button>
+
+
+                    <span
+                        class="photo-number"
+                        id="photoNumber"
+                    >
+                        1 / 3
+                    </span>
+
+
+                    <button
+                        class="gallery-button"
+                        onclick="nextPhoto()"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MEMORY TIMELINE
+        ================================================== -->
+
+        <div class="card">
+
+            <div class="card-title">
+                🗓️ More Memories To Make
+            </div>
+
+            <div class="card-subtitle">
+                Our little story doesn't stop here.
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+                        💬
+                    </div>
+
+                    <div class="timeline-text">
+                        <b>First Chat</b><br>
+                        09 December 2025
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-line"></div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+                        🌸
+                    </div>
+
+                    <div class="timeline-text">
+                        <b>First Meetup</b><br>
+                        13 February 2026
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-line"></div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+                        🌷
+                    </div>
+
+                    <div class="timeline-text">
+                        <b>First Date</b><br>
+                        22 July 2026
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-line"></div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+                        ✨
+                    </div>
+
+                    <div class="timeline-text">
+                        <b>More Memories...</b><br>
+                        To be continued ♡
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             POEM
+        ================================================== -->
+
+        <div class="card">
+
+            <div class="card-title">
+                🌸 A Little Poem
+            </div>
+
+            <div class="card-subtitle">
+                A poem I'll complete one day.
+            </div>
+
+
+            <div class="poem">
+
+                ඔබේ සිනහව මතකයක් වගේ,<br>
+
+                නිහඬ දවසක හිතට එනවා... ♡<br><br>
+
+                ඔබ ළඟ නැති මොහොතකත්,<br>
+
+                ඔබේ මතකය ළඟම ඉන්නවා... 🌸<br><br>
+
+                <i>
+                    [ මෙතනට මම ලියන
+                    ලස්සනම කවිය
+                    එක දවසක දාන්නම්... ♡ ]
+                </i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MUSIC
+        ================================================== -->
+
+        <div class="card music-card">
+
+
+            <div class="music-info">
+
+                <div class="music-symbol">
+                    🎵
+                </div>
+
+
+                <div>
+
+                    <div class="music-name">
+                        A Little Tune ♡
+                    </div>
+
+                    <div
+                        class="music-status"
+                        id="musicStatus"
+                    >
+                        Press play when you want.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="music-button"
+                id="musicButton"
+                onclick="toggleMusic()"
+            >
+                ▶
+            </button>
+
+
+        </div>
+
+
+        <!--
+        =====================================================
+        MUSIC FILE
+
+        Put your music file in the same folder
+        as fourth.html.
+
+        Example:
+
+        birthday-song.mp3
+
+        Then change the src below to:
+
+        src="birthday-song.mp3"
+        =====================================================
+        -->
+
+        <audio
+            id="backgroundMusic"
+            loop
+        >
+
+            <source
+                src="your-music-file.mp3"
+                type="audio/mpeg"
+            >
+
+        </audio>
+
+
+
+        <!-- =================================================
+             MEMORY CAPSULE
+        ================================================== -->
+
+        <div class="card capsule-card">
+
+            <div class="lock-icon">
+                🔒
+            </div>
+
+
+            <div class="card-title">
+                A Little Memory Capsule
+            </div>
+
+
+            <div class="card-subtitle">
+
+                There's one tiny message
+                waiting for the future. ♡
+
+            </div>
+
+
+            <button
+                class="capsule-button"
+                onclick="openCapsule()"
+            >
+                🔐 Open Little Capsule
+            </button>
+
+
+            <div
+                class="capsule-message"
+                id="capsuleMessage"
+            >
+
+                <h3>
+                    Open this on 09 December 2027 ♡
+                </h3>
+
+
+                <p>
+
+                    If you're reading this on that day,
+                    I hope you're smiling.
+
+                    <br><br>
+
+                    One year from now,
+                    there will hopefully be
+                    many more memories to add
+                    to our little timeline.
+
+                    <br><br>
+
+                    Until then...
+
+                    <br>
+
+                    <b>
+                        Let's make more memories. 🌸
+                    </b>
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FINAL MESSAGE
+    ====================================================== -->
+
+    <div
+        class="final-card"
+        id="finalCard"
+    >
+
+        <div class="final-heart">
+            ♡
+        </div>
+
+
+        <h2>
+            Happy Birthday, Kawya ♡
+        </h2>
+
+
+        <p>
+
+            Thank you for being part of
+            these little memories.
+
+            <br><br>
+
+            These are only some of the
+            first chapters.
+
+            <br>
+
+            There are still so many
+            memories waiting to be made. 🌷
+
+            <br><br>
+
+            <b>
+                More memories are waiting for us. ♡
+            </b>
+
+        </p>
+
+
+        <button
+            class="start-button"
+            onclick="startAgain()"
+        >
+            ↶ Start Again
+        </button>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   GIFT OPENING
+========================================================= */
+
+function openGift() {
+
+    const gift =
+        document.getElementById("giftBox");
+
+    const giftCard =
+        document.getElementById("giftCard");
+
+    const content =
+        document.getElementById("surpriseContent");
+
+    const finalCard =
+        document.getElementById("finalCard");
+
+
+    /* Gift animation */
+
+    gift.style.animation = "none";
+
+    gift.style.transform =
+        "scale(1.25) rotate(8deg)";
+
+
+    setTimeout(() => {
+
+        gift.style.transform =
+            "scale(0.8) rotate(-5deg)";
+
+    }, 180);
+
+
+    setTimeout(() => {
+
+        giftCard.style.display =
+            "none";
+
+
+        content.classList.add("show");
+
+
+        finalCard.classList.add("show");
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }, 650);
+
+}
+
+
+
+/* =========================================================
+   PHOTO GALLERY
+========================================================= */
+
+
+/*
+    ADD YOUR PHOTOS HERE.
+
+    Example:
+
+    "memory1.jpg",
+    "memory2.jpg",
+    "memory3.jpg"
+
+*/
+
+const photos = [
+
+    "memory1.jpg",
+
+    "memory2.jpg",
+
+    "memory3.jpg"
+
+];
+
+
+let currentPhoto = 0;
+
+
+function showPhoto() {
+
+    const image =
+        document.getElementById("galleryImage");
+
+    const placeholder =
+        document.getElementById("photoPlaceholder");
+
+    const number =
+        document.getElementById("photoNumber");
+
+
+    const current =
+        photos[currentPhoto];
+
+
+    /*
+        If the photo is still a placeholder
+        or doesn't exist, show the cute
+        placeholder instead.
+    */
+
+    image.src = current;
+
+    image.style.display = "block";
+
+    placeholder.style.display = "none";
+
+
+    image.onerror = function() {
+
+        image.style.display = "none";
+
+        placeholder.style.display = "block";
+
+        placeholder.innerHTML =
+            "📷<br><br>" +
+            "Add your memory photo here. ♡";
+
+    };
+
+
+    number.textContent =
+        (currentPhoto + 1) +
+        " / " +
+        photos.length;
+
+}
+
+
+function nextPhoto() {
+
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+
+        currentPhoto = 0;
+
+    }
+
+    showPhoto();
+
+}
+
+
+function previousPhoto() {
+
+    currentPhoto--;
+
+    if (currentPhoto < 0) {
+
+        currentPhoto =
+            photos.length - 1;
+
+    }
+
+    showPhoto();
+
+}
+
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const music =
+    document.getElementById(
+        "backgroundMusic"
+    );
+
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+
+const musicStatus =
+    document.getElementById(
+        "musicStatus"
+    );
+
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play()
+            .then(() => {
+
+                musicButton.textContent =
+                    "Ⅱ";
+
+                musicStatus.textContent =
+                    "Playing a little tune ♡";
+
+            })
+            .catch(() => {
+
+                musicStatus.textContent =
+                    "Add your music file first ♡";
+
+            });
+
+    }
+
+    else {
+
+        music.pause();
+
+        musicButton.textContent =
+            "▶";
+
+        musicStatus.textContent =
+            "Music paused ♡";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MEMORY CAPSULE
+========================================================= */
+
+function openCapsule() {
+
+    const capsule =
+        document.getElementById(
+            "capsuleMessage"
+        );
+
+
+    capsule.classList.toggle("show");
+
+}
+
+
+
+/* =========================================================
+   START AGAIN
+========================================================= */
+
+function startAgain() {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+
+/* =========================================================
+   INITIAL PHOTO
+========================================================= */
+
+showPhoto();
+
+
+</script>
+
+
+</body>
+
+</html>
